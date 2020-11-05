@@ -1,0 +1,65 @@
+<resources>
+    <string name="app_name">Novcanik</string>
+    <string name="title_activity_home">HomeActivity</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+    <string name="menu_tools">Tools</string>
+    <string name="menu_share">Share</string>
+    <string name="menu_send">Send</string>
+
+    <string-array name="valute">
+        <item>BAM</item>
+        <item>RSD</item>
+        <item>HRK</item>
+        <item>USD</item>
+        <item>EUR</item>
+        <item>GBP</item>
+        <item>CHF</item>
+        <item>JPY</item>
+        <item>AUD</item>
+        <item>CAD</item>
+        <item>RUB</item>
+        <item>CHY</item>
+    </string-array>
+
+    <string-array name="profil">
+        <item>Novcanik</item>
+        <item>Devize</item>
+        <item>Banka</item>
+    </string-array>
+
+    <string-array name="category">
+        <item>Hrana i piće</item>
+        <item>Šoping</item>
+        <item>Transport</item>
+        <item>Režije</item>
+        <item>Automobil</item>
+        <item>Život i zabava</item>
+        <item>Investicije</item>
+        <item>Putovanja</item>
+        <item>Doktor i lijekovi</item>
+        <item>Edukacija</item>
+        <item>Ostalo</item>
+    </string-array>
+    <string name="title_activity_home2">home2Activity</string>
+    <string name="srp_registruj_se">Registruj se</string>
+    <string name="srp_prijavi_se">Prijavi se</string>
+    <string name="srp_unesite_svoj_email">Unesite svoj email</string>
+    <string name="srp_sacuvaj_sifru">Sacuvaj sifru</string>
+    <string name="srp_unesite_svoju_sifru">Unesite svoju sifru</string>
+    <string name="srp_novcanik">NOVČANIK</string>
+
+    <string-array name="plan">
+        <item>Dnevni</item>
+        <item>Sedmicni</item>
+        <item>Mjesecni</item>
+    </string-array>
+</resources>

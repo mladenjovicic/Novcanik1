@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/holo_green_dark"
+    tools:context=".addNewActivity">
+
+    <LinearLayout
+        android:id="@+id/box1"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/btnIncome"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#9acc60"
+            android:text="Prihod"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnExpense"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#669900"
+            android:text="Rashod"
+            android:textColor="#FFFFFF" />
+
+        <Button
+            android:id="@+id/btnTransfer"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#669900"
+            android:text="Transfer"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/box2"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/box1">
+
+        <TextView
+            android:id="@+id/textViewPON"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="+"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="45sp" />
+
+        <EditText
+            android:id="@+id/editTextEnterMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/background_light"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textColor="@android:color/background_light"
+            android:textColorLink="@android:color/background_light" />
+
+        <Spinner
+            android:id="@+id/spinnerChoseMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:backgroundTint="@android:color/background_light"
+            android:popupBackground="#9acc60"
+            android:textColor="@android:color/white"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/box3"
+        android:layout_width="0dp"
+        android:layout_height="120dp"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/box2">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewProfil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:ellipsize="none"
+                android:gravity="center"
+                android:text="   Račun:"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_light"
+                android:textSize="14sp" />
+
+            <Spinner
+                android:id="@+id/spinnerProfil"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/background_light"
+                android:contextClickable="false"
+                android:hapticFeedbackEnabled="false"
+                android:popupBackground="#9acc60"
+                android:textColor="@android:color/white" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:shadowColor="@android:color/background_light"
+                android:text="   Kategorija:"
+                android:textAlignment="textStart"
+                android:textAllCaps="true"
+                android:textColor="@android:color/background_light" />
+
+            <Spinner
+                android:id="@+id/spinnerCategoria"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:backgroundTint="@android:color/background_light"
+                android:popupBackground="#9acc60"
+                android:textColor="#FF0000" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAcceptActivity"
+        android:layout_width="115dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="72dp"
+        android:background="#ffffff"
+        android:text="Potvrdi unos"
+        android:textColor="#9acc60"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/box3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

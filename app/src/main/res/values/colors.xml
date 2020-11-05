@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorLightGreen">#9acc60</color>
+    <color name="colorDarkGreen">#669900</color>
+    <color name="colorRed">#ff0000</color>
+    <color name="color6a">#aaaaaa</color>
+
+
+    <color name="colorPie0">#D81B60</color>
+    <color name="colorPie1">#D81B60</color>
+    <color name="colorPie2">#D81B60</color>
+    <color name="colorPie3">#D81B60</color>
+    <color name="colorPie4">#D81B60</color>
+    <color name="colorPie5">#D81B60</color>
+    <color name="colorPie6">#D81B60</color>
+    <color name="colorPie7">#D81B60</color>
+</resources>
+

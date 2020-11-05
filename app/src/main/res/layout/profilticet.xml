@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayoutProfil"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/textViewDlt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="25dp"
+        android:layout_weight="1"
+        android:text="1"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="25sp"
+        android:visibility="gone" />
+
+    <ImageView
+        android:id="@+id/imageViewProfil"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@drawable/ic_menu_camera" />
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/textViewVrijednostTransakcije"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/textViewCategorija"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/textViewDatum"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="TextView"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/LinearLayoutButtons"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="visible">
+
+        <ImageView
+            android:id="@+id/ImageViewDelete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_delete" />
+
+        <ImageView
+            android:id="@+id/imageViewEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_edit" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBoxEdit"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/textViewPosNeg"
+            android:layout_width="55dp"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:text="+"
+            android:textAlignment="center"
+            android:textColor="#FFFFFF"
+            android:textSize="30sp" />
+
+        <EditText
+            android:id="@+id/editTextEnterValueMoney"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="30dp"
+            android:layout_marginBottom="30dp"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            android:textColor="#FFFFFF" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayoutBtnEdit"
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/ImageViewBack"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_revert" />
+
+        <ImageView
+            android:id="@+id/ImageViewSave"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            app:srcCompat="@android:drawable/ic_menu_save" />
+    </LinearLayout>
+
+</LinearLayout>
