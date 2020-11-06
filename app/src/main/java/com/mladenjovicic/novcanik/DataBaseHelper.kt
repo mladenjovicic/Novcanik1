@@ -33,7 +33,9 @@ val COL_ID_USER_PLA = "idUser"
 val COL_PLAN = "plan"
 val COL_PLAN_MONEY = "money"
 val COL_OTHER_MONEY = "otherMoney"
+val COL_MONEY_RATA= "moneyRate"
 val COL_NEXT_PAYMENT = "nextPayment"
+val COL_CATEGORY_PLAN = "categoryPlan"
 
 
 class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
@@ -49,6 +51,9 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         val createTableActions = "CREATE TABLE " + TABLENAMEACTIONS + " " +
                 "(" + COL_ID_ACT + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_ID_USER + " INTEGER," + COL_CURRENCY + " VARCHAR(256)," + COL_MONEY + " DOUBLE," + COL_CATEGORY + " VARCHAR(256)," + COL_PROFIL + " VARCHAR(256)," + COL_TIME_DATE + " VARCHAR(256))"
         db?.execSQL(createTableActions)
+
+        val createTablePlan = "CREATE TABLE "+ TABLENAMEPLAN +" "+ "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " INTEGER,"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," + COL_NEXT_PAYMENT + "VARCHAR(256))"
+        db?.execSQL(createTablePlan)
 
     }
 
@@ -113,6 +118,46 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
             Toast.makeText(context, "Uspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
         }
 
+    }
+    fun insertPlan(planUser: PlanUser){
+        val database = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COL_ID_USER_PLA, planUser.idUser)
+        contentValues.put(COL_PLAN, planUser.plan)
+        contentValues.put(COL_PLAN_MONEY, planUser.money)
+        contentValues.put(COL_OTHER_MONEY,planUser.otherMoney)
+        contentValues.put(COL_MONEY_RATA, planUser.moneyRata)
+        contentValues.put(COL_NEXT_PAYMENT,planUser.nextPayment)
+        contentValues.put(COL_CATEGORY_PLAN,planUser.categoryPlan)
+        val result = database.insert(TABLENAMEPLAN, null, contentValues)
+        if (result == (0).toLong()) {
+            Toast.makeText(context, "Neuspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "Uspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
+        }
+    }
+
+    fun readPlan(): MutableList<PlanUser>{
+        var list: MutableList<PlanUser> = arrayListOf()
+        val db = this.readableDatabase
+        val query = "Select * from $TABLENAMEPLAN"
+        val result = db.rawQuery(query, null)
+        if(result.moveToFirst()){
+            do{
+                val planUser = PlanUser()
+                planUser.id= result.getString(result.getColumnIndex(COL_ID)).toInt()
+                planUser.idUser= result.getString(result.getColumnIndex(COL_ID_USER_PLA)).toInt()
+                planUser.categoryPlan=result.getString(result.getColumnIndex(COL_CATEGORY_PLAN))
+                planUser.money=result.getString(result.getColumnIndex(COL_PLAN_MONEY)).toDouble()
+                planUser.moneyRata=result.getString(result.getColumnIndex(COL_MONEY_RATA)).toDouble()
+                planUser.nextPayment=result.getString(result.getColumnIndex(COL_NEXT_PAYMENT))
+                planUser.otherMoney=result.getString(result.getColumnIndex(COL_OTHER_MONEY)).toDouble()
+                planUser.plan=result.getString(result.getColumnIndex(COL_PLAN)).toInt()
+            }while (result.moveToNext())
+
+        }
+
+        return list
     }
 
     fun readActions(): MutableList<UserActvities> {
