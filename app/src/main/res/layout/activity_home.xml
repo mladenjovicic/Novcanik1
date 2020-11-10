@@ -184,7 +184,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:orientation="vertical"
-                        android:visibility="visible">
+                        android:visibility="gone">
+
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
@@ -211,47 +212,94 @@
                                     android:text="Kategorija"
                                     android:textColor="#FFFFFF" />
                             </LinearLayout>
+
                             <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:orientation="horizontal">
-                            <Spinner
-                                android:id="@+id/spinnerPlan"
-                                android:layout_width="match_parent"
-                                android:layout_height="match_parent"
-                                android:backgroundTint="@android:color/background_light"
-                                android:dropDownSelector="@android:color/background_light"
-                                android:popupBackground="#9acc60"
-                                android:textColor="@android:color/background_light"
-                                android:layout_weight="1"
-                                />
-                            <Spinner
-                                android:id="@+id/spinnerPlanCategoria"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:backgroundTint="@android:color/background_light"
-                                android:dropDownSelector="@android:color/background_light"
-                                android:popupBackground="#9acc60"
-                                android:textColor="@android:color/background_light"
-                                android:layout_weight="1"
-                                    />
+
+                                <Spinner
+                                    android:id="@+id/spinnerPlan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@android:color/background_light"
+                                    android:dropDownSelector="@android:color/background_light"
+                                    android:popupBackground="#9acc60"
+                                    android:textColor="@android:color/background_light" />
+
+                                <Spinner
+                                    android:id="@+id/spinnerPlanCategoria"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@android:color/background_light"
+                                    android:dropDownSelector="@android:color/background_light"
+                                    android:popupBackground="#9acc60"
+                                    android:textColor="@android:color/background_light" />
                             </LinearLayout>
 
-                            <TextView
+                            <LinearLayout
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="fasfa"
-                                android:textColor="#FFFFFF"></TextView>
-                            <EditText
-                                android:layout_width="150dp"
-                                android:layout_height="wrap_content"></EditText>
+                                android:orientation="horizontal">
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:text="Vrijednost troskova"
+                                    android:textAlignment="center"
+                                    android:textColor="#FFFFFF"
+                                    android:textSize="18sp"></TextView>
+
+                                <EditText
+                                    android:id="@+id/editTextValuePlan"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+                                    android:backgroundTint="@android:color/background_light"
+                                    android:ems="10"
+                                    android:inputType="numberDecimal"
+                                    android:textColor="@android:color/background_light"
+                                    android:textColorLink="@android:color/background_light"></EditText>
+                            </LinearLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <TextView
+                                    android:id="@+id/textView"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="2"
+                                    android:gravity="center"
+                                    android:text="Iznos rate"
+                                    android:textColor="@color/colorWhite"
+                                    android:textSize="18sp" />
+
+                                <EditText
+                                    android:id="@+id/editTextIzdvajanje"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:layout_weight="1"
+
+                                    android:backgroundTint="@android:color/background_light"
+                                    android:ems="10"
+                                    android:inputType="numberDecimal"
+                                    android:textColor="@android:color/background_light"
+                                    android:textColorLink="@android:color/background_light" />
+                            </LinearLayout>
+
                             <Button
+                                android:id="@+id/btnAcceptPlans"
                                 android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:id="@+id/btnAcceptPlans"/>
+                                android:layout_height="wrap_content" />
+
 
                         </LinearLayout>
-
 
 
                     </LinearLayout>
@@ -263,6 +311,7 @@
 
 
             </LinearLayout>
+
 
         </ScrollView>
 

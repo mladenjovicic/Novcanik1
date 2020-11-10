@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.provider.ContactsContract
 import android.widget.Toast
 
-val DATABASENAME = "MYDATABASE3"
+val DATABASENAME = "MYDATABASE4"
 //tabela za korsinika
 val TABLENAME = "Users"
 val COL_ID = "id"
@@ -27,11 +27,11 @@ val COL_TIME_DATE = "timeDate"
 val COL_CATEGORY = "category"
 val COL_PROFIL = "profil"
 //Tabela za planirane troskove
-val TABLENAMEPLAN = "Plan"
+val TABLENAMEPLAN = "PlanUser"
 val COL_ID_PLA = "id"
-val COL_ID_USER_PLA = "idUser"
+val COL_ID_USER_PLA = "idUserPlan"
 val COL_PLAN = "plan"
-val COL_PLAN_MONEY = "money"
+val COL_PLAN_MONEY = "moneyPlan"
 val COL_OTHER_MONEY = "otherMoney"
 val COL_MONEY_RATA= "moneyRate"
 val COL_NEXT_PAYMENT = "nextPayment"
@@ -52,7 +52,8 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
                 "(" + COL_ID_ACT + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_ID_USER + " INTEGER," + COL_CURRENCY + " VARCHAR(256)," + COL_MONEY + " DOUBLE," + COL_CATEGORY + " VARCHAR(256)," + COL_PROFIL + " VARCHAR(256)," + COL_TIME_DATE + " VARCHAR(256))"
         db?.execSQL(createTableActions)
 
-        val createTablePlan = "CREATE TABLE "+ TABLENAMEPLAN +" "+ "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " INTEGER,"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," + COL_NEXT_PAYMENT + "VARCHAR(256))"
+        val createTablePlan = "CREATE TABLE "+ TABLENAMEPLAN +" "+
+                "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " INTEGER,"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," + COL_NEXT_PAYMENT + " VARCHAR(256))"
         db?.execSQL(createTablePlan)
 
     }
@@ -124,7 +125,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         val contentValues = ContentValues()
         contentValues.put(COL_ID_USER_PLA, planUser.idUser)
         contentValues.put(COL_PLAN, planUser.plan)
-        contentValues.put(COL_PLAN_MONEY, planUser.money)
+        contentValues.put(COL_PLAN_MONEY, planUser.moneyPlan)
         contentValues.put(COL_OTHER_MONEY,planUser.otherMoney)
         contentValues.put(COL_MONEY_RATA, planUser.moneyRata)
         contentValues.put(COL_NEXT_PAYMENT,planUser.nextPayment)
@@ -140,19 +141,20 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
     fun readPlan(): MutableList<PlanUser>{
         var list: MutableList<PlanUser> = arrayListOf()
         val db = this.readableDatabase
-        val query = "Select * from $TABLENAMEPLAN"
+        val query = "select * from $TABLENAMEPLAN "
         val result = db.rawQuery(query, null)
         if(result.moveToFirst()){
             do{
                 val planUser = PlanUser()
-                planUser.id= result.getString(result.getColumnIndex(COL_ID)).toInt()
+                planUser.id= result.getString(result.getColumnIndex(COL_ID_PLA)).toInt()
                 planUser.idUser= result.getString(result.getColumnIndex(COL_ID_USER_PLA)).toInt()
                 planUser.categoryPlan=result.getString(result.getColumnIndex(COL_CATEGORY_PLAN))
-                planUser.money=result.getString(result.getColumnIndex(COL_PLAN_MONEY)).toDouble()
+                planUser.moneyPlan=result.getString(result.getColumnIndex(COL_PLAN_MONEY)).toDouble()
                 planUser.moneyRata=result.getString(result.getColumnIndex(COL_MONEY_RATA)).toDouble()
                 planUser.nextPayment=result.getString(result.getColumnIndex(COL_NEXT_PAYMENT))
                 planUser.otherMoney=result.getString(result.getColumnIndex(COL_OTHER_MONEY)).toDouble()
                 planUser.plan=result.getString(result.getColumnIndex(COL_PLAN)).toInt()
+                list.add(planUser)
             }while (result.moveToNext())
 
         }
@@ -205,6 +207,28 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_CATEGORY, category)
         contentValues.put(COL_PROFIL, profil)
         db.update(TABLENAMEACTIONS, contentValues, "id = ?", arrayOf(id))
+        return true
+    }
+    fun updatePlan(id: String,
+               idUser:Int,
+               plan:Int,
+               moneyPlan:Double,
+               otherMoney:Double,
+               moneyRata:Double,
+               categoryPlan:String,
+               nextPayment:String):Boolean{
+        val db = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COL_ID_PLA, id)
+        contentValues.put(COL_ID_USER_PLA,idUser)
+        contentValues.put(COL_PLAN, plan)
+        contentValues.put(COL_PLAN_MONEY, moneyPlan)
+        contentValues.put(COL_OTHER_MONEY, otherMoney)
+        contentValues.put(COL_MONEY_RATA, moneyRata)
+        contentValues.put(COL_CATEGORY_PLAN,categoryPlan)
+        contentValues.put(COL_NEXT_PAYMENT,nextPayment)
+
+        db.update(TABLENAMEPLAN, contentValues, "id = ?", arrayOf(id))
         return true
     }
 

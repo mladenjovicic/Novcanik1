@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.load.engine.Resource
 import com.github.mikephil.charting.charts.PieChart
@@ -26,6 +27,9 @@ import java.util.*
 
 
 import kotlinx.android.synthetic.main.activity_home.*
+import kotlinx.android.synthetic.main.activity_registre.*
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
 
 class HomeActivity : AppCompatActivity() {
@@ -94,6 +98,7 @@ class HomeActivity : AppCompatActivity() {
         val idUser = intent.getIntExtra("idUser", 0)
         val userValute = intent.getStringExtra("userValute")
 
+
         var spinnerPlan= findViewById<Spinner>(R.id.spinnerPlan)
         val adapter = ArrayAdapter.createFromResource(this, R.array.plan, R.layout.spinner_item)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
@@ -104,6 +109,48 @@ class HomeActivity : AppCompatActivity() {
         val adapterCat = ArrayAdapter.createFromResource(this, R.array.category, R.layout.spinner_item)
         adapterCat.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinnerPlanKategorija.adapter = adapterCat
+
+
+        val context1 = this
+        val db1 = DataBaseHandler(context1)
+        val userPlan = db1.readPlan()
+
+
+        for (i in 0 until userPlan.size) {
+            /*textViewTestAC.append(
+                userPlan[i].idUser.toString() +" test  "+  userPlan[i].nextPayment + userPlan[i].moneyRata.toString()
+            )*/
+            var datum = LocalDate.now()
+            if(userPlan[i].idUser==idUser){
+                if(userPlan[i].nextPayment == datum.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString()){
+                    if(userPlan[i].otherMoney>0.0){
+                        when(userPlan[i].plan) {
+                            0 -> {
+                                datum= LocalDate.now().plusDays(1)
+                            }
+                            1 -> {
+                                datum = LocalDate.now().plusDays(7)
+                            }
+                            2 -> {
+                                datum= LocalDate.now().plusDays(30)
+                            }
+
+                        }
+                        var ostatakNovca= userPlan[i].otherMoney-userPlan[i].moneyRata
+                        if(ostatakNovca<0){
+                            ostatakNovca = 0.0
+                        }
+
+                        val updatePlan = db1.updatePlan(userPlan[i].id.toString(),userPlan[i].idUser, userPlan[i].plan, userPlan[i].moneyPlan, ostatakNovca,
+                            userPlan[i].moneyRata,userPlan[i].categoryPlan, datum.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString())
+                        val userActivity = UserActvities(idUser, userValute, userPlan[i].moneyRata,userPlan[i].categoryPlan, "Ostalo",
+                            LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString())
+                    }
+                }
+
+            }
+        }
+
 
         for (i in 0 until readActions.size) {
             if(readActions[i].idUser==idUser&& readActions[i].profil== "Novcanik" ){
@@ -456,6 +503,7 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
+
         sumSum = sumMoneyBanka+sumMoneyDevize+sumMoneyNovcanik
         btnNovcanik.text ="Novcanik: \n $sumMoneyNovcanik"
         btnBanka.text = "Banka: \n $sumMoneyBanka"
@@ -861,11 +909,47 @@ class HomeActivity : AppCompatActivity() {
                 textViewShowMore.text = "Prikazi manje"
                 boxPT.visibility= View.VISIBLE
 
+
             }else{
                 textViewShowMore.text = "Prikazi vise"
                 boxPT.visibility = View.GONE
             }
+
+            val context1 = this
+            val db1 = DataBaseHandler(context1)
+
+            btnAcceptPlans.setOnClickListener {
+                if(editTextValuePlan.text.isNotEmpty()&&editTextIzdvajanje.text.isNotEmpty()){
+                    if(editTextValuePlan.text.toString().toDouble()>0.0 && editTextIzdvajanje.text.toString().toDouble()>0.0){
+                        var datum = LocalDate.now()
+                        when(spinnerPlan.selectedItemPosition){
+                            0 ->{datum = LocalDate.now().plusDays(1)
+                                Toast.makeText(this, "$datum" ,Toast.LENGTH_LONG).show()}
+                            1 ->{datum = LocalDate.now().plusDays(7)
+                                Toast.makeText(this, "$datum" ,Toast.LENGTH_LONG).show()}
+                            2 ->{datum = LocalDate.now().plusDays(30)
+                                Toast.makeText(this, "$datum" ,Toast.LENGTH_LONG).show()}
+                        }
+                        val userPlan = PlanUser(idUser,spinnerPlan.selectedItemPosition.toString().toInt(), editTextValuePlan.text.toString().toDouble(), editTextValuePlan.text.toString().toDouble(),
+                            editTextIzdvajanje.text.toString().toDouble(), spinnerPlanKategorija.selectedItem.toString(), datum.format(
+                                DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString())
+
+                       // var userPlan = PlanUser(1,1,2.0,2.0,1.0," test", " test2")
+                        db1.insertPlan(userPlan)
+                        editTextIzdvajanje.text.clear()
+                        editTextValuePlan.text.clear()
+
+
+                    }else{
+                        Toast.makeText(this, "Vrijednosti moraju biti iznad 0" ,Toast.LENGTH_LONG).show()
+                    }
+                }else{
+                    Toast.makeText(this, "Sva polja moraju biti popunjena" ,Toast.LENGTH_LONG).show()
+                    //toast greska prayno polje
+                }
+            }
         }
+
 
 
 

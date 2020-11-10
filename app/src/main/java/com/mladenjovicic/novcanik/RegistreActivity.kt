@@ -8,6 +8,7 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_registre.*
 import java.sql.DataTruncation
 
@@ -71,7 +72,22 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 textViewTestA.append(
                     userData[i].id.toString() + " e" + userData[i].email + " " +" p" + userData[i].password + "n " + userData[i].name+ " l" +userData[i].lastName + userData[i].primaryMoney + userData[i].userLang + "\n"
                 )
+
         }
+            val context1 = this
+            val db1 = DataBaseHandler(context1)
+            val userPlan = db1.readPlan()
+            textViewTestAC.text = "test "
+            for (i in 0 until userPlan.size) {
+                textViewTestAC.append(
+
+
+                 "id user" +  userPlan[i].idUser.toString() +" sledeca uplata  "+  userPlan[i].nextPayment +" visina rate "+ userPlan[i].moneyRata.toString() + " kategorija" + userPlan[i].categoryPlan+
+                         " money plan" + userPlan[i].moneyPlan + " plan " + userPlan[i].plan
+
+                    //userPlan[i].id.toString() + " e" + userPlan[i].email + " " +" p" + userData[i].password + "n " + userData[i].name+ " l" +userData[i].lastName + userData[i].primaryMoney + userData[i].userLang + "\n"
+                )
+            }
     }
 
     }
