@@ -66,11 +66,13 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                 Toast.makeText(this, "Popunite sva polja", Toast.LENGTH_SHORT).show() }
         }
         btnTestA.setOnClickListener {
-            val userData = db.readData()
+            val userAct = db.readActions()
+            textViewTestA.visibility = View.VISIBLE
+
             textViewTestA.text = ""
-            for (i in 0 until userData.size) {
+            for (i in 0 until userAct.size) {
                 textViewTestA.append(
-                    userData[i].id.toString() + " e" + userData[i].email + " " +" p" + userData[i].password + "n " + userData[i].name+ " l" +userData[i].lastName + userData[i].primaryMoney + userData[i].userLang + "\n"
+                    userAct[i].category
                 )
 
         }
@@ -83,7 +85,7 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
 
                  "id user" +  userPlan[i].idUser.toString() +" sledeca uplata  "+  userPlan[i].nextPayment +" visina rate "+ userPlan[i].moneyRata.toString() + " kategorija" + userPlan[i].categoryPlan+
-                         " money plan" + userPlan[i].moneyPlan + " plan " + userPlan[i].plan
+                         " money plan" + userPlan[i].moneyPlan + " plan " + userPlan[i].plan  + " "+ userPlan[i].otherMoney +" \n "
 
                     //userPlan[i].id.toString() + " e" + userPlan[i].email + " " +" p" + userData[i].password + "n " + userData[i].name+ " l" +userData[i].lastName + userData[i].primaryMoney + userData[i].userLang + "\n"
                 )

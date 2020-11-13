@@ -246,6 +246,8 @@ class profilActivity : AppCompatActivity() {
                 slikaPrfil.setImageResource(R.drawable.wallermoneyicone)
             } else if (profilAktivnost.get(position) == "Devize") {
                 slikaPrfil.setImageResource(R.drawable.walletgoldbar)
+            } else if (profilAktivnost.get(position)== "Ostalo"){
+                slikaPrfil.setImageResource(R.drawable.clockprofil)
             }
             moneys.text = "Novca: " + money.get(position) + " " + valuta.get(position)
             kategorija.text = "Kategorija: " + categoria.get(position)

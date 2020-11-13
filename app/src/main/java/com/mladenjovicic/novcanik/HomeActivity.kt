@@ -110,6 +110,11 @@ class HomeActivity : AppCompatActivity() {
         adapterCat.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinnerPlanKategorija.adapter = adapterCat
 
+        var spinnerPlanProfil= findViewById<Spinner>(R.id.spinnerProfilPlan)
+        val adapterProfil = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)
+        adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        spinnerPlanProfil.adapter = adapterProfil
+
 
         val context1 = this
         val db1 = DataBaseHandler(context1)
@@ -136,15 +141,23 @@ class HomeActivity : AppCompatActivity() {
                             }
 
                         }
+                        var getMoney = 0.0
                         var ostatakNovca= userPlan[i].otherMoney-userPlan[i].moneyRata
                         if(ostatakNovca<0){
                             ostatakNovca = 0.0
                         }
+                        if(userPlan[i].otherMoney >= userPlan[i].moneyRata){
+                            getMoney= userPlan[i].moneyRata
+                        }else if(userPlan[i].otherMoney < userPlan[i].moneyRata){
+                            getMoney = userPlan[i].otherMoney
+                        }
 
                         val updatePlan = db1.updatePlan(userPlan[i].id.toString(),userPlan[i].idUser, userPlan[i].plan, userPlan[i].moneyPlan, ostatakNovca,
-                            userPlan[i].moneyRata,userPlan[i].categoryPlan, datum.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString())
-                        val userActivity = UserActvities(idUser, userValute, userPlan[i].moneyRata,userPlan[i].categoryPlan, "Ostalo",
+                            userPlan[i].moneyRata,userPlan[i].categoryPlan, datum.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString(),userPlan[i].profilPlan)
+
+                        val userActivity = UserActvities(idUser, userValute.toString(), (getMoney)*-1,userPlan[i].categoryPlan, userPlan[i].profilPlan,
                             LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString())
+                        db.insertActions(userActivity)
                     }
                 }
 
@@ -155,7 +168,7 @@ class HomeActivity : AppCompatActivity() {
         for (i in 0 until readActions.size) {
             if(readActions[i].idUser==idUser&& readActions[i].profil== "Novcanik" ){
                 sumMOneyNovcanikaNEgativ = sumMOneyNovcanikaNEgativ + readActions[i].money
-                sumMOneyDevizeNEgativ = sumMOneyDevizeNEgativ + readActions[i].money
+                sumMoneyNovcanik = sumMoneyNovcanik + readActions[i].money
 
                 if (readActions[i].category=="Hrana i piće"){
                     var hipN = listWalletCategory[0] + readActions[i].money
@@ -502,10 +515,12 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
             }
+            if(readActions[i].idUser==idUser){
+                sumSum = sumSum + readActions[i].money
+            }
         }
 
-        sumSum = sumMoneyBanka+sumMoneyDevize+sumMoneyNovcanik
-        btnNovcanik.text ="Novcanik: \n $sumMoneyNovcanik"
+        btnNovcanik.text ="Novčanik: \n $sumMoneyNovcanik"
         btnBanka.text = "Banka: \n $sumMoneyBanka"
         btnDevise.text = "Devize: \n $sumMoneyDevize"
         btnAllMoney.text = "Sav novac: \n $sumSum"
@@ -645,8 +660,8 @@ class HomeActivity : AppCompatActivity() {
             btnBanka.setTextColor(getResources().getColor(R.color.colorWhite))
             btnAllMoney.setTextColor(getResources().getColor(R.color.colorWhite))
             btnNovcanik.setTextColor(getResources().getColor(R.color.colorLightGreen))
-            textViewHome.text = "Graficki prikaz prihoda u Novcaniku"
-            textViewHome1.text = "Gracicki prikaz rashoda u Novcaniku"
+            textViewHome.text = "Grafički prikaz prihoda u novčaniku"
+            textViewHome1.text = "Grafički prikaz rashoda u novčaniku"
             arrayBank.clear()
             arrayBankNegativ.clear()
             for (i in 0 until listCategorys.size) {
@@ -716,10 +731,10 @@ class HomeActivity : AppCompatActivity() {
             btnDevise.setTextColor(getResources().getColor(R.color.colorLightGreen))
             btnBanka.setTextColor(getResources().getColor(R.color.colorWhite))
             btnAllMoney.setTextColor(getResources().getColor(R.color.colorWhite))
-            btnDevise.setTextColor(getResources().getColor(R.color.colorWhite))
+            btnNovcanik.setTextColor(getResources().getColor(R.color.colorWhite))
 
-            textViewHome.text = "Graficki prikaz prihoda u deviznom racunu"
-            textViewHome1.text = "Graficki prikaz rashoda u deviznom racunu"
+            textViewHome.text = "Grafički prikaz prihoda u deviznom računu"
+            textViewHome1.text = "Grafički prikaz rashoda u deviznom računu"
             var listCategorys = res.getStringArray(R.array.category)
             arrayBank.clear()
             arrayBankNegativ.clear()
@@ -785,8 +800,8 @@ class HomeActivity : AppCompatActivity() {
             btnNovcanik.setTextColor(getResources().getColor(R.color.colorWhite))
 
 
-            textViewHome.text = "Graficki prikaz prihoda u Banci"
-            textViewHome1.text = "Graficki prikaz rashoda u Banci"
+            textViewHome.text = "Grafički prikaz prihoda u banci"
+            textViewHome1.text = "Grafički prikaz rashoda u banci"
             arrayBank.clear()
             arrayBankNegativ.clear()
             for (i in 0 until listCategorys.size) {
@@ -845,7 +860,8 @@ class HomeActivity : AppCompatActivity() {
             btnBanka.setBackgroundColor(getColor(R.color.colorLightGreen))
             btnAllMoney.setBackgroundColor(getColor(R.color.colorWhite))
             btnNovcanik.setBackgroundColor(getColor(R.color.colorLightGreen))
-            textViewHome.text = "Graficki prikaz svih troskova"
+            textViewHome.text = "Grafički prikaz svih prihoda"
+            textViewHome1.text = "Grafički prikaz svih rashoda"
             btnDevise.setTextColor(getResources().getColor(R.color.colorWhite))
             btnBanka.setTextColor(getResources().getColor(R.color.colorWhite))
             btnNovcanik.setTextColor(getResources().getColor(R.color.colorWhite))
@@ -904,14 +920,14 @@ class HomeActivity : AppCompatActivity() {
         textViewShowMore.setOnClickListener{
 
 
-            if(textViewShowMore.text == "Prikazi vise"){
+            if(textViewShowMore.text == "Prikaži više"){
 
-                textViewShowMore.text = "Prikazi manje"
+                textViewShowMore.text = "Prikaži  manje"
                 boxPT.visibility= View.VISIBLE
 
 
             }else{
-                textViewShowMore.text = "Prikazi vise"
+                textViewShowMore.text = "Prikaži više"
                 boxPT.visibility = View.GONE
             }
 
@@ -932,7 +948,7 @@ class HomeActivity : AppCompatActivity() {
                         }
                         val userPlan = PlanUser(idUser,spinnerPlan.selectedItemPosition.toString().toInt(), editTextValuePlan.text.toString().toDouble(), editTextValuePlan.text.toString().toDouble(),
                             editTextIzdvajanje.text.toString().toDouble(), spinnerPlanKategorija.selectedItem.toString(), datum.format(
-                                DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString())
+                                DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString(), spinnerPlanProfil.selectedItem.toString())
 
                        // var userPlan = PlanUser(1,1,2.0,2.0,1.0," test", " test2")
                         db1.insertPlan(userPlan)

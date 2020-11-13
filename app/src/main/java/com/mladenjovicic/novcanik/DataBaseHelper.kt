@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.provider.ContactsContract
 import android.widget.Toast
 
-val DATABASENAME = "MYDATABASE4"
+val DATABASENAME = "MYDATABASE5"
 //tabela za korsinika
 val TABLENAME = "Users"
 val COL_ID = "id"
@@ -36,6 +36,7 @@ val COL_OTHER_MONEY = "otherMoney"
 val COL_MONEY_RATA= "moneyRate"
 val COL_NEXT_PAYMENT = "nextPayment"
 val COL_CATEGORY_PLAN = "categoryPlan"
+val COL_PROFIL_PLAN = "profilPlan"
 
 
 class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
@@ -53,7 +54,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         db?.execSQL(createTableActions)
 
         val createTablePlan = "CREATE TABLE "+ TABLENAMEPLAN +" "+
-                "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " INTEGER,"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," + COL_NEXT_PAYMENT + " VARCHAR(256))"
+                "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " INTEGER,"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," + COL_NEXT_PAYMENT + " VARCHAR(256)," + COL_PROFIL_PLAN + " VARCHAR(256))"
         db?.execSQL(createTablePlan)
 
     }
@@ -101,7 +102,6 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         }
         return list
     }
-
     fun insertActions(userActvities: UserActvities) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
@@ -130,6 +130,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_MONEY_RATA, planUser.moneyRata)
         contentValues.put(COL_NEXT_PAYMENT,planUser.nextPayment)
         contentValues.put(COL_CATEGORY_PLAN,planUser.categoryPlan)
+        contentValues.put(COL_PROFIL_PLAN, planUser.profilPlan)
         val result = database.insert(TABLENAMEPLAN, null, contentValues)
         if (result == (0).toLong()) {
             Toast.makeText(context, "Neuspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
@@ -154,6 +155,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
                 planUser.nextPayment=result.getString(result.getColumnIndex(COL_NEXT_PAYMENT))
                 planUser.otherMoney=result.getString(result.getColumnIndex(COL_OTHER_MONEY)).toDouble()
                 planUser.plan=result.getString(result.getColumnIndex(COL_PLAN)).toInt()
+                planUser.profilPlan = result.getString(result.getColumnIndex(COL_PROFIL_PLAN))
                 list.add(planUser)
             }while (result.moveToNext())
 
@@ -216,7 +218,8 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
                otherMoney:Double,
                moneyRata:Double,
                categoryPlan:String,
-               nextPayment:String):Boolean{
+               nextPayment:String,
+               profilPlan:String):Boolean{
         val db = this.writableDatabase
         val contentValues = ContentValues()
         contentValues.put(COL_ID_PLA, id)
@@ -227,6 +230,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_MONEY_RATA, moneyRata)
         contentValues.put(COL_CATEGORY_PLAN,categoryPlan)
         contentValues.put(COL_NEXT_PAYMENT,nextPayment)
+        contentValues.put(COL_PROFIL_PLAN, profilPlan)
 
         db.update(TABLENAMEPLAN, contentValues, "id = ?", arrayOf(id))
         return true
