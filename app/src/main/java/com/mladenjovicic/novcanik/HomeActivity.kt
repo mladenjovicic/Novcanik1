@@ -937,6 +937,7 @@ class HomeActivity : AppCompatActivity() {
             btnAcceptPlans.setOnClickListener {
                 if(editTextValuePlan.text.isNotEmpty()&&editTextIzdvajanje.text.isNotEmpty()){
                     if(editTextValuePlan.text.toString().toDouble()>0.0 && editTextIzdvajanje.text.toString().toDouble()>0.0){
+                        if(editTextValuePlan.text.toString().toDouble()> editTextIzdvajanje.text.toString().toDouble()){
                         var datum = LocalDate.now()
                         when(spinnerPlan.selectedItemPosition){
                             0 ->{datum = LocalDate.now().plusDays(1)
@@ -949,11 +950,10 @@ class HomeActivity : AppCompatActivity() {
                         val userPlan = PlanUser(idUser,spinnerPlan.selectedItemPosition.toString().toInt(), editTextValuePlan.text.toString().toDouble(), editTextValuePlan.text.toString().toDouble(),
                             editTextIzdvajanje.text.toString().toDouble(), spinnerPlanKategorija.selectedItem.toString(), datum.format(
                                 DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString(), spinnerPlanProfil.selectedItem.toString())
-
-                       // var userPlan = PlanUser(1,1,2.0,2.0,1.0," test", " test2")
                         db1.insertPlan(userPlan)
                         editTextIzdvajanje.text.clear()
                         editTextValuePlan.text.clear()
+                        }
 
 
                     }else{

@@ -11,6 +11,7 @@ import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_registre.*
 import java.sql.DataTruncation
+import java.util.*
 
 
 class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -19,7 +20,37 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_registre)
-
+        var jezici = Locale.getDefault().language
+        var error_email_complet: Int =0
+        var error_sifra_manje8: Int= 0
+        var error_ppopuniti_sva_polja: Int =0
+        var registruj_se: Int = 0
+        var ime : Int = 0
+        var prezime: Int= 0
+        var email: Int=0
+        var sifra: Int= 0
+        var ponovite_sifru= 0
+        if(jezici=="bs" || jezici =="hr"|| jezici == "sr"){
+        error_email_complet=R.string.srp_greska_Email_nije_kompletan
+        error_sifra_manje8 = R.string.srp_greska_sifra_manje8
+        error_ppopuniti_sva_polja = R.string.srp_greska_popuniti_sva_polja
+        registruj_se = R.string.srp_registruj_se
+        ime = R.string.srp_ime
+        prezime = R.string.srp_prezime
+        email = R.string.srp_email
+        sifra = R.string.srp_sifra
+        ponovite_sifru= R.string.srp_ponovite_sifru
+        }else{
+            error_email_complet=R.string.eng_greska_Email_nije_kompletan
+            error_sifra_manje8 = R.string.eng_greska_sifra_manje8
+            error_ppopuniti_sva_polja = R.string.eng_greska_popuniti_sva_polja
+            registruj_se = R.string.eng_registruj_se
+            ime = R.string.eng_ime
+            prezime= R.string.eng_prezime
+            email =  R.string.eng_email
+            sifra = R.string.eng_sifra
+            ponovite_sifru= R.string.eng_ponovite_sifru
+        }
         //spinner za izbor primarnog novca
         var spinnerMoney= findViewById<Spinner>(R.id.spinnerMoney)
 
@@ -34,6 +65,12 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
         val context = this
         val db = DataBaseHandler(context)
+        btnRegistreUser.setText(registruj_se)
+        editTextNameUser.setHint(ime)
+        editTextLastNameUser.setHint(prezime)
+        editTextEmailUser.setHint(email)
+        editTextPasswordUser.setHint(sifra)
+        editTextPasswordAgainUser.setHint(ponovite_sifru)
 
         btnRegistreUser.setOnClickListener {
 
@@ -59,15 +96,15 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
 
                          }
                     } else{
-                                  Toast.makeText(this, "Email nije kompletan", Toast.LENGTH_SHORT).show()}
+                                  Toast.makeText(this, error_email_complet, Toast.LENGTH_SHORT).show()}
                 } else{
-                         Toast.makeText(this, "Sifra mora imati 8 karaktera", Toast.LENGTH_SHORT).show()}
+                         Toast.makeText(this, error_sifra_manje8, Toast.LENGTH_SHORT).show()}
             }else{
-                Toast.makeText(this, "Popunite sva polja", Toast.LENGTH_SHORT).show() }
+                Toast.makeText(this, error_ppopuniti_sva_polja, Toast.LENGTH_SHORT).show() }
         }
         btnTestA.setOnClickListener {
             val userAct = db.readActions()
-            textViewTestA.visibility = View.VISIBLE
+
 
             textViewTestA.text = ""
             for (i in 0 until userAct.size) {
@@ -109,5 +146,5 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
         editTextPasswordAgainUser.text.clear()
         editTextPasswordUser.text.clear()
 
-    }
-}
+    }}
+

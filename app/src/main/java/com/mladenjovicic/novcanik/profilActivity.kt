@@ -118,12 +118,12 @@ class profilActivity : AppCompatActivity() {
 
                 } else {
 
-                    Toast.makeText(this, "greska", Toast.LENGTH_SHORT).show()
+
                 }
             }
         }
         val profilStatus = intent.getIntExtra("profilStatus", 0)
-        //Toast.makeText(this, "$profilStatus", Toast.LENGTH_SHORT).show()
+
         val listView = findViewById<ListView>(R.id.listViewProfil)
         listView.adapter = profilAdapter(this)
     }

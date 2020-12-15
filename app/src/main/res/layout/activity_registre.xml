@@ -37,7 +37,7 @@
             android:layout_weight="1"
             android:backgroundTint="#ffffff"
             android:ems="10"
-            android:hint="Ime"
+            android:hint="@string/srp_ime"
             android:inputType="textPersonName"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light" />
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:backgroundTint="#ffffff"
             android:ems="10"
-            android:hint="Prezime"
+            android:hint="@string/srp_prezime"
             android:inputType="textPersonName"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light" />
@@ -92,7 +92,7 @@
             android:layout_weight="1"
             android:backgroundTint="#ffffff"
             android:ems="10"
-            android:hint="Email"
+            android:hint="@string/srp_email"
             android:inputType="textEmailAddress"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light" />
@@ -119,7 +119,7 @@
             android:layout_weight="1"
             android:backgroundTint="#ffffff"
             android:ems="10"
-            android:hint="Sifra"
+            android:hint="@string/srp_sifra"
             android:inputType="textPassword"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light" />
@@ -146,7 +146,7 @@
             android:layout_weight="1"
             android:backgroundTint="#ffffff"
             android:ems="10"
-            android:hint="Ponovite sifru"
+            android:hint="@string/srp_ponovite_sifru"
             android:inputType="textPassword"
             android:textColor="@android:color/background_light"
             android:textColorHint="@android:color/background_light" />
@@ -184,7 +184,7 @@
         android:layout_marginLeft="107dp"
         android:layout_marginRight="105dp"
         android:backgroundTint="#ffffff"
-        android:text="Registruj se"
+        android:text="@string/srp_registruj_se"
         android:textColor="#9acc60" />
 
     <LinearLayout
@@ -199,12 +199,13 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:visibility="gone" />
+
         <TextView
             android:id="@+id/textViewTestAC"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:visibility="visible" />
+            android:visibility="gone" />
     </LinearLayout>
 
 </LinearLayout>

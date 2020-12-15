@@ -56,6 +56,34 @@
     <string name="srp_sacuvaj_sifru">Sacuvaj sifru</string>
     <string name="srp_unesite_svoju_sifru">Unesite svoju sifru</string>
     <string name="srp_novcanik">NOVČANIK</string>
+    <string name="srp_greska_Email_nije_kompletan">Email nije kompletan</string>
+    <string name="srp_greska_sifra_manje8">Šifra mora imati 8 karaktera</string>
+    <string name="srp_greska_popuniti_sva_polja">Popunite sva polja</string>
+    <string name="srp_ime">Ime</string>
+    <string name="srp_prezime">Prezime</string>
+    <string name="srp_email">Email</string>
+    <string name="srp_sifra">Šifra</string>
+    <string name="srp_ponovite_sifru">Ponovite šifru</string>
+    <string name="srp_no_macth_profil">Unesene podaci ne odgovaraju nijednom nalogu</string>
+
+
+
+
+    <string name="eng_no_macth_profil">Unesene podaci ne odgovaraju nijednom nalogu</string>
+    <string name="eng_registruj_se">Register</string>
+    <string name="eng_prijavi_se">Login</string>
+    <string name="eng_unesite_svoj_email">Enter your email</string>
+    <string name="eng_sacuvaj_sifru">Sacuvaj sifru</string>
+    <string name="eng_unesite_svoju_sifru">Enter your password</string>
+    <string name="eng_novcanik">WALLERT</string>
+    <string name="eng_greska_Email_nije_kompletan">Email nije kompletan</string>
+    <string name="eng_greska_sifra_manje8">Šifra mora imati 8 karaktera</string>
+    <string name="eng_greska_popuniti_sva_polja">Popunite sva polja</string>
+    <string name="eng_ime">Name</string>
+    <string name="eng_prezime">Surname</string>
+    <string name="eng_email">Email</string>
+    <string name="eng_sifra">Password</string>
+    <string name="eng_ponovite_sifru">Repeat password</string>
 
     <string-array name="plan">
         <item>Dnevni</item>

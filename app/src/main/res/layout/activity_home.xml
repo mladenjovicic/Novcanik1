@@ -241,7 +241,6 @@
                                     android:layout_height="match_parent"
                                     android:layout_weight="1"
                                     android:backgroundTint="@android:color/background_light"
-                                    android:dropDownSelector="@android:color/background_light"
                                     android:popupBackground="#9acc60"
                                     android:textColor="@android:color/background_light" />
 
@@ -251,7 +250,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:backgroundTint="@android:color/background_light"
-                                    android:dropDownSelector="@android:color/background_light"
                                     android:popupBackground="#9acc60"
                                     android:textColor="@android:color/background_light" />
 
@@ -261,7 +259,6 @@
                                     android:layout_height="wrap_content"
                                     android:layout_weight="1"
                                     android:backgroundTint="@android:color/background_light"
-                                    android:dropDownSelector="@android:color/background_light"
                                     android:popupBackground="#9acc60"
                                     android:textColor="@android:color/background_light" />
                             </LinearLayout>
