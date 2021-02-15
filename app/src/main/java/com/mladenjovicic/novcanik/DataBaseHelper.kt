@@ -37,6 +37,29 @@ val COL_MONEY_RATA= "moneyRate"
 val COL_NEXT_PAYMENT = "nextPayment"
 val COL_CATEGORY_PLAN = "categoryPlan"
 val COL_PROFIL_PLAN = "profilPlan"
+//TAbela za valute
+val TABLENAMEVALUTE = "currencyValue"
+val COL_ID_VALUTE= "id"
+val COL_DATE_VALUT= "dateCurrency"
+val COL_CURRENCY_BAM="BAM"
+val COL_CURRENCY_RSD="RSD"
+val COL_CURRENCY_HRK="HRK"
+val COL_CURRENCY_USD="USD"
+val COL_CURRENCY_EUR="EUR"
+val COL_CURRENCY_GBP="GBO"
+val COL_CURRENCY_CHF="CHF"
+val COL_CURRENCY_JPY="JPY"
+val COL_CURRENCY_AUD="AUD"
+val COL_CURRENCY_CAD="CAD"
+val COL_CURRENCY_RUB="RUB"
+val COL_CURRENCY_CNY="CNY"
+
+
+
+
+
+
+
 
 
 class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
@@ -58,12 +81,68 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
                 COL_NEXT_PAYMENT + " VARCHAR(256)," + COL_PROFIL_PLAN + " VARCHAR(256))"
         db?.execSQL(createTablePlan)
 
+        val createTablecurrencyValue = "CREATE TABLE "+ TABLENAMEVALUTE +" "+
+                "("+ COL_ID_VALUTE+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_DATE_VALUT + " VARCHAR(256),"+ COL_CURRENCY_BAM+ " DOUBLE," + COL_CURRENCY_RSD + " DOUBLE," + COL_CURRENCY_HRK+ " DOUBLE,"+ COL_CURRENCY_HRK + " DOUBLE," + COL_CURRENCY_EUR  + " DOUBLE," +
+                COL_CURRENCY_GBP + " DOUBLE," + COL_CURRENCY_CHF+ " DOUBLE," + COL_CURRENCY_JPY+ " DOUBLE," + COL_CURRENCY_AUD+ " DOUBLE,"+ COL_CURRENCY_CAD+ " DOUBLE,"+ COL_CURRENCY_CAD+ " DOUBLE,"+ COL_CURRENCY_RUB+ " DOUBLE,"+ COL_CURRENCY_CNY + " DOUBLE)"
+        db?.execSQL(createTablePlan)
     }
 
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
 
 
+    }
+
+    fun insertValute(value: currencyValue) {
+        val database = this.writableDatabase
+        val contentValues = ContentValues()
+        contentValues.put(COL_DATE_VALUT, value.dateCurrency)
+        contentValues.put(COL_CURRENCY_BAM, value.BAM)
+        contentValues.put(COL_CURRENCY_RSD, value.RSD)
+        contentValues.put(COL_CURRENCY_HRK, value.HRK)
+        contentValues.put(COL_CURRENCY_USD, value.USD)
+        contentValues.put(COL_CURRENCY_EUR, value.EUR)
+        contentValues.put(COL_CURRENCY_GBP, value.GBP)
+        contentValues.put(COL_CURRENCY_CHF, value.CHF)
+        contentValues.put(COL_CURRENCY_JPY, value.JPY)
+        contentValues.put(COL_CURRENCY_AUD, value.AUD)
+        contentValues.put(COL_CURRENCY_CAD, value.CAD)
+        contentValues.put(COL_CURRENCY_RUB, value.RUB)
+        contentValues.put(COL_CURRENCY_CNY, value.CNY)
+
+        val result = database.insert(TABLENAMEVALUTE, null, contentValues)
+        if (result == (0).toLong()) {
+            Toast.makeText(context, " 404 ", Toast.LENGTH_SHORT).show()
+        } else {
+            Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
+        }
+    }
+    fun readValute(): MutableList<currencyValue> {
+        val list: MutableList<currencyValue> = ArrayList()
+        val db = this.readableDatabase
+        val query = "Select * from $TABLENAMEVALUTE"
+        val result = db.rawQuery(query, null)
+        if (result.moveToLast()) {
+            do {
+                val value = currencyValue()
+                value.id= result.getString(result.getColumnIndex(COL_ID_VALUTE)).toInt()
+                value.dateCurrency= result.getString(result.getColumnIndex(COL_DATE_VALUT))
+                value.BAM=result.getDouble(result.getColumnIndex(COL_CURRENCY_BAM))
+                value.RSD=result.getDouble(result.getColumnIndex(COL_CURRENCY_RSD))
+                value.HRK=result.getDouble(result.getColumnIndex(COL_CURRENCY_HRK))
+                value.USD=result.getDouble(result.getColumnIndex(COL_CURRENCY_USD))
+                value.EUR=result.getDouble(result.getColumnIndex(COL_CURRENCY_EUR))
+                value.GBP=result.getDouble(result.getColumnIndex(COL_CURRENCY_GBP))
+                value.CHF=result.getDouble(result.getColumnIndex(COL_CURRENCY_CHF))
+                value.JPY=result.getDouble(result.getColumnIndex(COL_CURRENCY_JPY))
+                value.AUD=result.getDouble(result.getColumnIndex(COL_CURRENCY_AUD))
+                value.CAD=result.getDouble(result.getColumnIndex(COL_CURRENCY_CAD))
+                value.RUB=result.getDouble(result.getColumnIndex(COL_CURRENCY_RUB))
+                value.CNY=result.getDouble(result.getColumnIndex(COL_CURRENCY_CNY))
+                list.add(value)
+            } while (result.moveToPrevious())
+        }
+        return list
     }
 
     fun insertData(user: User) {
