@@ -46,7 +46,7 @@ val COL_CURRENCY_RSD="RSD"
 val COL_CURRENCY_HRK="HRK"
 val COL_CURRENCY_USD="USD"
 val COL_CURRENCY_EUR="EUR"
-val COL_CURRENCY_GBP="GBO"
+val COL_CURRENCY_GBP="GBP"
 val COL_CURRENCY_CHF="CHF"
 val COL_CURRENCY_JPY="JPY"
 val COL_CURRENCY_AUD="AUD"
@@ -112,9 +112,9 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
 
         val result = database.insert(TABLENAMEVALUTE, null, contentValues)
         if (result == (0).toLong()) {
-            Toast.makeText(context, " 404 ", Toast.LENGTH_SHORT).show()
+
         } else {
-            Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
+
         }
     }
     fun readValute(): MutableList<currencyValue> {
