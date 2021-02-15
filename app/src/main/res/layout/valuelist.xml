@@ -8,6 +8,7 @@
         android:id="@+id/imageViewContryFlag"
         android:layout_width="100dp"
         android:layout_height="50dp"
+        android:visibility="visible"
         app:srcCompat="@drawable/bih_flag" />
 
     <TextView

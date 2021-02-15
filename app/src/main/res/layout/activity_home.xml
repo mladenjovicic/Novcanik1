@@ -369,8 +369,13 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:layout_weight="1"
+                            android:autoSizeTextType="none"
                             android:ems="10"
-                            android:inputType="numberDecimal" />
+                            android:hint="Unesite vrijednost za konvertovanje"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/colorWhite"
+                            android:textColorHint="@color/colorWhite"
+                            android:textSize="12sp" />
                     </LinearLayout>
 
                     <Button
@@ -380,7 +385,7 @@
                         android:layout_marginLeft="107dp"
                         android:layout_marginRight="105dp"
                         android:backgroundTint="#ffffff"
-                        android:text="Button"
+                        android:text="Proracaj"
                         android:textColor="#9acc60" />
 
 

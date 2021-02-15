@@ -104,7 +104,6 @@ class HomeActivity : AppCompatActivity() {
         val idUser = intent.getIntExtra("idUser", 0)
         val userValute = intent.getStringExtra("userValute")
 
-
         var spinnerPlan= findViewById<Spinner>(R.id.spinnerPlan)
         val adapter = ArrayAdapter.createFromResource(this, R.array.plan, R.layout.spinner_item)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
@@ -126,13 +125,9 @@ class HomeActivity : AppCompatActivity() {
         adapterMoney.setDropDownViewResource(R.layout.spinner_dropdown_item)
         choseSpinnerMoney.adapter = adapterMoney
 
-
-
         val context1 = this
         val db1 = DataBaseHandler(context1)
         val userPlan = db1.readPlan()
-
-
         for (i in 0 until userPlan.size) {
             /*textViewTestAC.append(
                 userPlan[i].idUser.toString() +" test  "+  userPlan[i].nextPayment + userPlan[i].moneyRata.toString()
@@ -175,8 +170,6 @@ class HomeActivity : AppCompatActivity() {
 
             }
         }
-
-
         for (i in 0 until readActions.size) {
             if(readActions[i].idUser==idUser&& readActions[i].profil== "Novcanik" ){
                 sumMOneyNovcanikaNEgativ = sumMOneyNovcanikaNEgativ + readActions[i].money
@@ -560,7 +553,6 @@ class HomeActivity : AppCompatActivity() {
         dataSetNegativ.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )
         //dataSet.setValueFormatter(new MyValueFormatter(mFormat, pieChart))
 
-
         val dataNegativ = PieData(dataSetNegativ)
         dataNegativ.setValueTextSize(5f)
         dataNegativ.setValueTextColor(Color.parseColor("#FFFFFF"))
@@ -573,9 +565,6 @@ class HomeActivity : AppCompatActivity() {
         pieChartNegativ.animateXY(5000, 5000)
         pieChartNegativ.description.text = " "
 
-
-
-
         if (sumMoneyBanka > 0.0){
             arrayBank.add(PieEntry(sumMoneyBanka.toFloat(), "Banka"))
         }
@@ -585,11 +574,6 @@ class HomeActivity : AppCompatActivity() {
         if(sumMoneyNovcanik> 0.0){
             arrayBank.add(PieEntry(sumMoneyNovcanik.toFloat(), "Novcanik"))
         }
-
-
-
-
-
 
         val dataSet = PieDataSet(arrayBank, "")
 
@@ -607,12 +591,6 @@ class HomeActivity : AppCompatActivity() {
         pieChart.invalidate()
         pieChart.animateXY(5000, 5000)
         pieChart.description.text = " "
-
-
-
-
-
-
 
         btnDevise.setOnLongClickListener()  {
             val intent = Intent(this, profilActivity::class.java)
@@ -927,16 +905,11 @@ class HomeActivity : AppCompatActivity() {
             pieChartNegativ.animateXY(5000, 5000)
             pieChartNegativ.description.text = " "
         }
-
         textViewShowMore.setOnClickListener{
-
-
             if(textViewShowMore.text == "Prikaži više"){
 
                 textViewShowMore.text = "Prikaži  manje"
                 boxPT.visibility= View.VISIBLE
-
-
             }else{
                 textViewShowMore.text = "Prikaži više"
                 boxPT.visibility = View.GONE
@@ -944,7 +917,6 @@ class HomeActivity : AppCompatActivity() {
 
             val context1 = this
             val db1 = DataBaseHandler(context1)
-
             btnAcceptPlans.setOnClickListener {
                 if(editTextValuePlan.text.isNotEmpty()&&editTextIzdvajanje.text.isNotEmpty()){
                     if(editTextValuePlan.text.toString().toDouble()>0.0 && editTextIzdvajanje.text.toString().toDouble()>0.0){
@@ -975,8 +947,6 @@ class HomeActivity : AppCompatActivity() {
                     //toast greska prayno polje
                 }
             }
-
-
         }
 
         btnConvertorValue.setOnClickListener {
@@ -1175,8 +1145,6 @@ class HomeActivity : AppCompatActivity() {
                         RUB1 = USD1*RUB
                         RSD1 = USD1*RSD
                     }
-
-
                 }
                 currenysValeus.set(0, BAM1)
                 currenysValeus.set(1,RSD1)
@@ -1191,8 +1159,6 @@ class HomeActivity : AppCompatActivity() {
                 currenysValeus.set(10,RUB1)
                 currenysValeus.set(11,CHY1)
 
-
-
                 val listView = findViewById<ListView>(R.id.listViewCurrenyValue)
                 listView.adapter = valueAdapter(this)
                 listViewCurrenyValue.visibility=View.VISIBLE
@@ -1201,9 +1167,6 @@ class HomeActivity : AppCompatActivity() {
             }
         }
 
-
-
-
         addNewActions.setOnClickListener { view ->
             var intentAddNewActivity = Intent(this, addNewActivity::class.java)
             intentAddNewActivity.putExtra("userValute", userValute)
@@ -1211,14 +1174,11 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intentAddNewActivity)
         }
     }
-
-
     private class  valueAdapter(context: Context):BaseAdapter(){
         private val mContext: Context
         init {
             mContext = context
         }
-
         override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
             val layoutInflater = LayoutInflater.from(mContext)
             val rowValue = layoutInflater.inflate(R.layout.valuelist, parent, false)
@@ -1229,7 +1189,6 @@ class HomeActivity : AppCompatActivity() {
             CurrencyValue.text= "" + currenysValeus.get(position).toString().take(10)
             CountryFlag.setImageResource(countryFlags.get(position))
             ValueCod.text = valueCode.get(position)
-
 
             return rowValue
         }
@@ -1245,9 +1204,5 @@ class HomeActivity : AppCompatActivity() {
         override fun getItemId(position: Int): Long {
             return position.toLong()
         }
-
     }
-
-
 }
-
