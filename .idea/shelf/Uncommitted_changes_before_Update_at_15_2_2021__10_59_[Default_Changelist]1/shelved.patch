@@ -1,0 +1,1348 @@
+Index: app/src/main/res/layout/activity_home.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    tools:context=\".HomeActivity\">\r\n\r\n    <androidx.constraintlayout.widget.ConstraintLayout\r\n        android:id=\"@+id/linearLayout\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"#669900\">\r\n\r\n        <ScrollView\r\n            android:id=\"@+id/scrollView2\"\r\n            android:layout_width=\"match_parent\"\r\n            android:layout_height=\"match_parent\"\r\n            app:layout_constraintEnd_toEndOf=\"parent\"\r\n            app:layout_constraintHorizontal_bias=\"0.0\"\r\n            app:layout_constraintStart_toStartOf=\"parent\"\r\n            tools:layout_editor_absoluteY=\"71dp\">\r\n\r\n            <LinearLayout\r\n                android:layout_width=\"match_parent\"\r\n                android:layout_height=\"300dp\"\r\n                android:orientation=\"vertical\">\r\n\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"1\"\r\n                    android:orientation=\"horizontal\">\r\n\r\n                    <TextView\r\n                        android:id=\"@+id/textView2\"\r\n                        android:layout_width=\"wrap_content\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:layout_weight=\"1\"\r\n                        android:text=\"Lista računa\"\r\n                        android:textAllCaps=\"true\"\r\n                        android:textColor=\"@color/colorWhite\"\r\n                        android:textSize=\"30sp\" />\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"1\"\r\n                    android:orientation=\"horizontal\">\r\n\r\n                    <Button\r\n                        android:id=\"@+id/btnNovcanik\"\r\n                        android:layout_width=\"150dp\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:layout_margin=\"10dp\"\r\n                        android:layout_weight=\"1\"\r\n                        android:background=\"#ffffff\"\r\n                        android:text=\"Novcanik\"\r\n                        android:textColor=\"#9acc60\" />\r\n\r\n                    <Button\r\n                        android:id=\"@+id/btnDevise\"\r\n                        android:layout_width=\"150dp\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:layout_margin=\"10dp\"\r\n                        android:layout_weight=\"1\"\r\n                        android:background=\"#9acc60\"\r\n                        android:text=\"Devize\"\r\n                        android:textColor=\"#ffffff\" />\r\n\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"match_parent\"\r\n                    android:layout_weight=\"1\"\r\n                    android:orientation=\"horizontal\">\r\n\r\n                    <Button\r\n                        android:id=\"@+id/btnBanka\"\r\n                        android:layout_width=\"150dp\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:layout_margin=\"10dp\"\r\n                        android:layout_weight=\"1\"\r\n                        android:background=\"#9acc60\"\r\n                        android:text=\"Banka\"\r\n                        android:textColor=\"#ffffff\" />\r\n\r\n                    <Button\r\n                        android:id=\"@+id/btnAllMoney\"\r\n                        android:layout_width=\"150dp\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:layout_margin=\"10dp\"\r\n                        android:layout_weight=\"1\"\r\n                        android:background=\"#9acc60\"\r\n                        android:text=\"Button\"\r\n                        android:textColor=\"#ffffff\" />\r\n                </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"wrap_content\"\r\n                    android:orientation=\"horizontal\"\r\n                    >\r\n                    <LinearLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:orientation=\"vertical\"\r\n                        android:layout_weight=\"1\">\r\n\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/textViewHome\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"35sp\"\r\n                            android:autoSizeTextType=\"uniform\"\r\n                            android:text=\"Grafička strukutra prihoda računa: \"\r\n                            android:textAlignment=\"center\"\r\n                            android:textColor=\"#FFFFFF\"\r\n                            android:textSize=\"14sp\" />\r\n                <com.github.mikephil.charting.charts.PieChart\r\n                    android:id=\"@+id/pieChart\"\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"250dp\" />\r\n                    </LinearLayout>\r\n                    <LinearLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:orientation=\"vertical\"\r\n                        android:layout_weight=\"1\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/textViewHome1\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"35sp\"\r\n                            android:autoSizeTextType=\"uniform\"\r\n                            android:text=\"Grafička strukutra rashoda računa: \"\r\n                            android:textAlignment=\"center\"\r\n                            android:textColor=\"#FFFFFF\"\r\n                            android:textSize=\"14sp\" />\r\n\r\n                        <com.github.mikephil.charting.charts.PieChart\r\n                            android:id=\"@+id/pieChart1\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"250dp\" />\r\n\r\n\r\n                    </LinearLayout>\r\n            </LinearLayout>\r\n\r\n                <LinearLayout\r\n                    android:layout_width=\"match_parent\"\r\n                    android:layout_height=\"250dp\"\r\n                    android:orientation=\"vertical\">\r\n\r\n                    <LinearLayout\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"wrap_content\"\r\n                        android:orientation=\"horizontal\"\r\n                        android:paddingStart=\"15dp\"\r\n                        android:paddingEnd=\"15dp\">\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/TextViewPT\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"match_parent\"\r\n                            android:layout_weight=\"1\"\r\n                            android:autoSizeTextType=\"uniform\"\r\n                            android:background=\"@color/colorLightGreen\"\r\n                            android:text=\"Planirani troškovi\"\r\n                            android:textColor=\"#FFFFFF\"\r\n                            android:textSize=\"18sp\" />\r\n\r\n                        <TextView\r\n                            android:id=\"@+id/textViewShowMore\"\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"match_parent\"\r\n                            android:layout_weight=\"1\"\r\n                            android:background=\"@color/colorLightGreen\"\r\n                            android:text=\"Prikazi više\"\r\n                            android:textAlignment=\"center\"\r\n                            android:textColor=\"#3F51B5\"\r\n                            android:textSize=\"18sp\" />\r\n                    </LinearLayout>\r\n\r\n                    <LinearLayout\r\n                        android:id=\"@+id/boxPT\"\r\n                        android:layout_width=\"match_parent\"\r\n                        android:layout_height=\"match_parent\"\r\n                        android:orientation=\"vertical\"\r\n                        android:paddingStart=\"15dp\"\r\n                        android:paddingEnd=\"15dp\"\r\n                        android:visibility=\"gone\">\r\n\r\n                        <LinearLayout\r\n                            android:layout_width=\"match_parent\"\r\n                            android:layout_height=\"match_parent\"\r\n                            android:orientation=\"vertical\">\r\n\r\n                            <LinearLayout\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:background=\"@color/colorLightGreen\"\r\n                                android:paddingTop=\"15sp\">\r\n\r\n                                <TextView\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"1\"\r\n                                    android:text=\"Plan:\"\r\n                                    android:textColor=\"#FFFFFF\" />\r\n\r\n                                <TextView\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"1\"\r\n                                    android:paddingRight=\"15sp\"\r\n                                    android:text=\"Kategorija:\"\r\n                                    android:textColor=\"#FFFFFF\" />\r\n\r\n                                <TextView\r\n                                    android:id=\"@+id/textView3\"\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"1\"\r\n                                    android:text=\"Račun:\"\r\n                                    android:textColor=\"#FFFFFF\" />\r\n                            </LinearLayout>\r\n\r\n                            <LinearLayout\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:background=\"@color/colorLightGreen\"\r\n                                android:orientation=\"horizontal\">\r\n\r\n                                <Spinner\r\n                                    android:id=\"@+id/spinnerPlan\"\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"1\"\r\n                                    android:backgroundTint=\"@android:color/background_light\"\r\n                                    android:dropDownSelector=\"@android:color/background_light\"\r\n                                    android:popupBackground=\"#9acc60\"\r\n                                    android:textColor=\"@android:color/background_light\" />\r\n\r\n                                <Spinner\r\n                                    android:id=\"@+id/spinnerPlanCategoria\"\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"wrap_content\"\r\n                                    android:layout_weight=\"1\"\r\n                                    android:backgroundTint=\"@android:color/background_light\"\r\n                                    android:dropDownSelector=\"@android:color/background_light\"\r\n                                    android:popupBackground=\"#9acc60\"\r\n                                    android:textColor=\"@android:color/background_light\" />\r\n\r\n                                <Spinner\r\n                                    android:id=\"@+id/spinnerProfilPlan\"\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"wrap_content\"\r\n                                    android:layout_weight=\"1\"\r\n                                    android:backgroundTint=\"@android:color/background_light\"\r\n                                    android:dropDownSelector=\"@android:color/background_light\"\r\n                                    android:popupBackground=\"#9acc60\"\r\n                                    android:textColor=\"@android:color/background_light\" />\r\n                            </LinearLayout>\r\n\r\n                            <LinearLayout\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:background=\"@color/colorLightGreen\"\r\n                                android:orientation=\"horizontal\">\r\n\r\n                                <TextView\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"2\"\r\n                                    android:gravity=\"center\"\r\n                                    android:text=\"Vrijednost troškova\"\r\n                                    android:textAlignment=\"center\"\r\n                                    android:textColor=\"#FFFFFF\"\r\n                                    android:textSize=\"18sp\"></TextView>\r\n\r\n                                <EditText\r\n                                    android:id=\"@+id/editTextValuePlan\"\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"1\"\r\n                                    android:backgroundTint=\"@android:color/background_light\"\r\n                                    android:ems=\"10\"\r\n                                    android:inputType=\"numberDecimal\"\r\n                                    android:textColor=\"@android:color/background_light\"\r\n                                    android:textColorLink=\"@android:color/background_light\"></EditText>\r\n                            </LinearLayout>\r\n\r\n                            <LinearLayout\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"wrap_content\"\r\n                                android:background=\"@color/colorLightGreen\">\r\n\r\n                                <TextView\r\n                                    android:id=\"@+id/textView\"\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"2\"\r\n                                    android:gravity=\"center\"\r\n                                    android:text=\"Iznos rate\"\r\n                                    android:textColor=\"@color/colorWhite\"\r\n                                    android:textSize=\"18sp\" />\r\n\r\n                                <EditText\r\n                                    android:id=\"@+id/editTextIzdvajanje\"\r\n                                    android:layout_width=\"match_parent\"\r\n                                    android:layout_height=\"match_parent\"\r\n                                    android:layout_weight=\"1\"\r\n\r\n                                    android:backgroundTint=\"@android:color/background_light\"\r\n                                    android:ems=\"10\"\r\n                                    android:inputType=\"numberDecimal\"\r\n                                    android:textColor=\"@android:color/background_light\"\r\n                                    android:textColorLink=\"@android:color/background_light\" />\r\n                            </LinearLayout>\r\n\r\n                            <LinearLayout\r\n                                android:layout_width=\"match_parent\"\r\n                                android:layout_height=\"match_parent\"\r\n                                android:background=\"@color/colorLightGreen\"\r\n                                android:gravity=\"center\">\r\n\r\n                                <Button\r\n                                    android:id=\"@+id/btnAcceptPlans\"\r\n                                    android:layout_width=\"150dp\"\r\n                                    android:layout_height=\"wrap_content\"\r\n                                    android:layout_gravity=\"center\"\r\n                                    android:background=\"@color/colorWhite\"\r\n                                    android:text=\"Potvrdi\"\r\n                                    android:textColor=\"@color/colorLightGreen\" />\r\n                            </LinearLayout>\r\n\r\n                        </LinearLayout>\r\n\r\n\r\n                    </LinearLayout>\r\n\r\n                </LinearLayout>\r\n\r\n\r\n\r\n\r\n\r\n            </LinearLayout>\r\n\r\n\r\n        </ScrollView>\r\n\r\n\r\n    </androidx.constraintlayout.widget.ConstraintLayout>\r\n\r\n    <com.google.android.material.floatingactionbutton.FloatingActionButton\r\n        android:id=\"@+id/addNewActions\"\r\n        android:layout_width=\"wrap_content\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_gravity=\"bottom|end\"\r\n        android:layout_margin=\"@dimen/fab_margin\"\r\n        app:backgroundTint=\"@android:color/background_light\"\r\n        app:srcCompat=\"@android:drawable/ic_menu_add\" />\r\n\r\n</androidx.coordinatorlayout.widget.CoordinatorLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_home.xml	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/res/layout/activity_home.xml	(date 1611673668627)
+@@ -102,34 +102,36 @@
+                 <LinearLayout
+                     android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+-                    android:orientation="horizontal"
+-                    >
++                    android:orientation="horizontal">
++
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="wrap_content"
+-                        android:orientation="vertical"
+-                        android:layout_weight="1">
++                        android:layout_weight="1"
++                        android:orientation="vertical">
+ 
+ 
+                         <TextView
+                             android:id="@+id/textViewHome"
+                             android:layout_width="match_parent"
++                            android:text="Grafička strukutra prihoda računa: "
+                             android:layout_height="35sp"
+                             android:autoSizeTextType="uniform"
+-                            android:text="Grafička strukutra prihoda računa: "
+                             android:textAlignment="center"
+                             android:textColor="#FFFFFF"
+                             android:textSize="14sp" />
+-                <com.github.mikephil.charting.charts.PieChart
+-                    android:id="@+id/pieChart"
+-                    android:layout_width="match_parent"
+-                    android:layout_height="250dp" />
++
++                        <com.github.mikephil.charting.charts.PieChart
++                            android:id="@+id/pieChart"
++                            android:layout_width="match_parent"
++                            android:layout_height="250dp" />
+                     </LinearLayout>
++
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="match_parent"
+-                        android:orientation="vertical"
+-                        android:layout_weight="1">
++                        android:layout_weight="1"
++                        android:orientation="vertical">
+ 
+                         <TextView
+                             android:id="@+id/textViewHome1"
+@@ -148,11 +150,11 @@
+ 
+ 
+                     </LinearLayout>
+-            </LinearLayout>
++                </LinearLayout>
+ 
+                 <LinearLayout
+                     android:layout_width="match_parent"
+-                    android:layout_height="250dp"
++                    android:layout_height="wrap_content"
+                     android:orientation="vertical">
+ 
+                     <LinearLayout
+@@ -241,9 +243,8 @@
+                                     android:layout_height="match_parent"
+                                     android:layout_weight="1"
+                                     android:backgroundTint="@android:color/background_light"
+-                                    android:dropDownSelector="@android:color/background_light"
+                                     android:popupBackground="#9acc60"
+-                                    android:textColor="@android:color/background_light" />
++                                    android:textColor="@android:color/white" />
+ 
+                                 <Spinner
+                                     android:id="@+id/spinnerPlanCategoria"
+@@ -261,9 +262,8 @@
+                                     android:layout_height="wrap_content"
+                                     android:layout_weight="1"
+                                     android:backgroundTint="@android:color/background_light"
+-                                    android:dropDownSelector="@android:color/background_light"
+                                     android:popupBackground="#9acc60"
+-                                    android:textColor="@android:color/background_light" />
++                                    android:textColor="@android:color/white" />
+                             </LinearLayout>
+ 
+                             <LinearLayout
+@@ -343,12 +343,412 @@
+ 
+                     </LinearLayout>
+ 
++                </LinearLayout>
++
++                <LinearLayout
++                    android:layout_width="match_parent"
++                    android:layout_height="wrap_content"
++                    android:layout_marginTop="25dp"
++                    android:orientation="vertical"
++                    android:visibility="visible">
++
++
++                    <LinearLayout
++                        android:layout_width="match_parent"
++                        android:layout_height="match_parent"
++                        android:orientation="horizontal"
++                        android:paddingStart="15dp"
++                        android:paddingEnd="15dp">
++
++                        <TextView
++                            android:id="@+id/textView5"
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent"
++                            android:layout_weight="1"
++                            android:autoSizeTextType="uniform"
++
++                            android:text="Izaberi novac za konvertovanje"
++                            android:textAlignment="center"
++                            android:textColor="#FFFFFF"
++                            android:textSize="14sp" />
++
++                        <TextView
++                            android:id="@+id/textView6"
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent"
++                            android:layout_weight="1"
++                            android:autoSizeTextType="uniform"
++
++                            android:text="Unesi vrijednost za konvertovanje"
++                            android:textAlignment="center"
++                            android:textColor="#FFFFFF"
++                            android:textSize="14sp" />
++                    </LinearLayout>
++
++                    <LinearLayout
++                        android:layout_width="match_parent"
++                        android:layout_height="match_parent"
++                        android:orientation="horizontal">
++
++                        <Spinner
++                            android:id="@+id/spinnerCurCal"
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent"
++                            android:layout_weight="1"
++                            android:backgroundTint="@android:color/background_light"
++                            android:popupBackground="#9acc60"
++                            android:textColor="@android:color/white" />
++
++                        <EditText
++                            android:id="@+id/editTextCurCal"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:layout_weight="1"
++                            android:ems="10"
++                            android:backgroundTint="#ffffff"
++                            android:hint="Unesite vrijedsnoti"
++                            android:inputType="numberDecimal"
++                            android:textColor="@android:color/background_light"
++                            android:textColorHint="@android:color/background_light"/>
++                    </LinearLayout>
++
++                    <LinearLayout
++                        android:layout_width="match_parent"
++                        android:layout_height="match_parent"
++                        android:orientation="horizontal">
++
++                        <Button
++                            android:id="@+id/btnCurCal"
++                            android:layout_width="match_parent"
++                            android:layout_height="match_parent"
++                            android:layout_marginLeft="106dp"
++                            android:layout_marginRight="106dp"
++                            android:background="#ffffff"
++                            android:text="Proračunaj"
++                            android:textColor="#9acc60" />
++
++                    </LinearLayout>
++
++                    <LinearLayout
++                        android:id="@+id/boxCur"
++                        android:layout_width="match_parent"
++                        android:layout_height="match_parent"
++                        android:layout_weight="1"
++                        android:orientation="vertical"
++                        android:paddingStart="15dp"
++                        android:paddingEnd="15dp"
++                        android:visibility="gone">
++
++                        <LinearLayout
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content">
++
++                            <TextView
++                                android:id="@+id/textViewCurUpdate"
++                                android:layout_width="match_parent"
++                                android:layout_height="wrap_content"
++                                android:text="  "
++                                android:textAlignment="textEnd"
++                                android:textColor="#FFFFFF" />
++
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxBAM"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/bih_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewBAM"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxRSD"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView2"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/serbia_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewRSD"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxHRK"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView3"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/croatia_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewHRK"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxUSD"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView13"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/usa_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewUSD"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxEUR"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView12"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/eu_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewEUR"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxGBP"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView14"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/uk_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewGBP"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxCHF"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView15"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/switzerland_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewCHF"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxJPY"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView16"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/japanese_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewJPY"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxAUD"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView17"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/australia_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewAUD"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxCAD"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView18"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/canada_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewCAD"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxRUB"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView19"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/russia_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewRUB"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxCHY"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <ImageView
++                                android:id="@+id/imageView20"
++                                android:layout_width="150dp"
++                                android:layout_height="50dp"
++                                android:layout_weight="1"
++                                app:srcCompat="@drawable/chine_flag" />
++
++                            <TextView
++                                android:id="@+id/textViewCHY"
++                                android:layout_width="match_parent"
++                                android:layout_height="match_parent"
++                                android:layout_weight="1"
++                                android:textAlignment="center"
++                                android:textColor="#FFFFFF"
++                                android:textSize="30sp" />
++                        </LinearLayout>
++
++                        <LinearLayout
++                            android:id="@+id/boxOther"
++                            android:layout_width="match_parent"
++                            android:layout_height="wrap_content"
++                            android:orientation="horizontal">
++
++                            <TextView
++                                android:id="@+id/textView19"
++                                android:layout_width="wrap_content"
++                                android:layout_height="wrap_content"
++                                android:layout_weight="1"
++                                android:text="TextView"
++                                android:visibility="gone" />
++                        </LinearLayout>
++
++
++                    </LinearLayout>
+                 </LinearLayout>
+ 
+ 
+-
+-
+-
+             </LinearLayout>
+ 
+ 
+Index: build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>// Top-level build file where you can add configuration options common to all sub-projects/modules.\r\n\r\nbuildscript {\r\n    ext.kotlin_version = '1.3.61'\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n        \r\n    }\r\n    dependencies {\r\n        classpath 'com.android.tools.build:gradle:3.5.3'\r\n        classpath \"org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version\"\r\n        // NOTE: Do not place your application dependencies here; they belong\r\n        // in the individual module build.gradle files\r\n    }\r\n}\r\n\r\nallprojects {\r\n    repositories {\r\n        google()\r\n        jcenter()\r\n        \r\n    }\r\n}\r\n\r\ntask clean(type: Delete) {\r\n    delete rootProject.buildDir\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- build.gradle	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ build.gradle	(date 1612357344276)
+@@ -1,15 +1,16 @@
+ // Top-level build file where you can add configuration options common to all sub-projects/modules.
+ 
+ buildscript {
+-    ext.kotlin_version = '1.3.61'
++    ext.kotlin_version = '1.3.72'
+     repositories {
+         google()
+         jcenter()
+         
+     }
+     dependencies {
+-        classpath 'com.android.tools.build:gradle:3.5.3'
++        classpath 'com.android.tools.build:gradle:4.1.2'
+         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
++        classpath 'com.google.gms:google-services:4.3.4'
+         // NOTE: Do not place your application dependencies here; they belong
+         // in the individual module build.gradle files
+     }
+@@ -19,9 +20,14 @@
+     repositories {
+         google()
+         jcenter()
++
++        maven { url 'https://jitpack.io' }
++        mavenCentral()
+         
+     }
+ }
++
++
+ 
+ task clean(type: Delete) {
+     delete rootProject.buildDir
+Index: app/src/main/java/com/mladenjovicic/novcanik/DataBaseHelper.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mladenjovicic.novcanik\r\n\r\nimport android.content.ContentValues\r\nimport android.content.Context\r\nimport android.database.sqlite.SQLiteDatabase\r\nimport android.database.sqlite.SQLiteOpenHelper\r\nimport android.provider.ContactsContract\r\nimport android.widget.Toast\r\n\r\nval DATABASENAME = \"MYDATABASE5\"\r\n//tabela za korsinika\r\nval TABLENAME = \"Users\"\r\nval COL_ID = \"id\"\r\nval COL_NAME = \"name\"\r\nval COL_LASTNAME = \"lastName\"\r\nval COL_EMAIL = \"email\"\r\nval COL_PASSWORD = \"password\"\r\nval COL_PRIMARY_MONEY = \"primaryMoney\"\r\nval COL_USER_LANG = \"userLang\"\r\n//tabela za Akcije korisnika\r\nval TABLENAMEACTIONS = \"Actions\"\r\nval COL_ID_ACT = \"id\"\r\nval COL_ID_USER = \"idUser\"\r\nval COL_CURRENCY = \"idValuta\"\r\nval COL_MONEY = \"money\"\r\nval COL_TIME_DATE = \"timeDate\"\r\nval COL_CATEGORY = \"category\"\r\nval COL_PROFIL = \"profil\"\r\n//Tabela za planirane troskove\r\nval TABLENAMEPLAN = \"PlanUser\"\r\nval COL_ID_PLA = \"id\"\r\nval COL_ID_USER_PLA = \"idUserPlan\"\r\nval COL_PLAN = \"plan\"\r\nval COL_PLAN_MONEY = \"moneyPlan\"\r\nval COL_OTHER_MONEY = \"otherMoney\"\r\nval COL_MONEY_RATA= \"moneyRate\"\r\nval COL_NEXT_PAYMENT = \"nextPayment\"\r\nval COL_CATEGORY_PLAN = \"categoryPlan\"\r\nval COL_PROFIL_PLAN = \"profilPlan\"\r\n\r\n\r\nclass DataBaseHandler(var context: Context) : SQLiteOpenHelper(\r\n    context, DATABASENAME, null,\r\n    1\r\n) {\r\n\r\n    override fun onCreate(db: SQLiteDatabase?) {\r\n        val createTable = \"CREATE TABLE \" + TABLENAME + \" \" +\r\n                \"(\" + COL_ID + \" INTEGER PRIMARY KEY AUTOINCREMENT,\" + COL_NAME + \" VARCHAR(256),\" + COL_LASTNAME + \" VARCHAR(256),\" + COL_EMAIL + \" VARCHAR(256),\" + COL_PASSWORD + \" VARCHAR(256),\" + COL_PRIMARY_MONEY + \" VARCHAR(256),\" + COL_USER_LANG + \" VARCHAR(256))\"\r\n        db?.execSQL(createTable)\r\n\r\n        val createTableActions = \"CREATE TABLE \" + TABLENAMEACTIONS + \" \" +\r\n                \"(\" + COL_ID_ACT + \" INTEGER PRIMARY KEY AUTOINCREMENT,\" + COL_ID_USER + \" INTEGER,\" + COL_CURRENCY + \" VARCHAR(256),\" + COL_MONEY + \" DOUBLE,\" + COL_CATEGORY + \" VARCHAR(256),\" + COL_PROFIL + \" VARCHAR(256),\" + COL_TIME_DATE + \" VARCHAR(256))\"\r\n        db?.execSQL(createTableActions)\r\n\r\n        val createTablePlan = \"CREATE TABLE \"+ TABLENAMEPLAN +\" \"+\r\n                \"(\"+ COL_ID_PLA+\" INTEGER PRIMARY KEY AUTOINCREMENT,\"+ COL_ID_USER_PLA + \" INTEGER,\"+COL_PLAN+ \" INTEGER,\" + COL_PLAN_MONEY + \" DOUBLE,\" + COL_OTHER_MONEY+ \" DOUBLE,\"+ COL_MONEY_RATA + \" DOUBLE,\" + COL_CATEGORY_PLAN  + \" VARCHAR(256),\" + COL_NEXT_PAYMENT + \" VARCHAR(256),\" + COL_PROFIL_PLAN + \" VARCHAR(256))\"\r\n        db?.execSQL(createTablePlan)\r\n\r\n    }\r\n\r\n\r\n    override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {\r\n\r\n\r\n    }\r\n\r\n    fun insertData(user: User) {\r\n        val database = this.writableDatabase\r\n        val contentValues = ContentValues()\r\n        contentValues.put(COL_NAME, user.name)\r\n        contentValues.put(COL_LASTNAME, user.lastName)\r\n        contentValues.put(COL_EMAIL, user.email)\r\n        contentValues.put(COL_PASSWORD, user.password)\r\n        contentValues.put(COL_PRIMARY_MONEY, user.primaryMoney)\r\n        contentValues.put(COL_USER_LANG, user.userLang)\r\n        val result = database.insert(TABLENAME, null, contentValues)\r\n        if (result == (0).toLong()) {\r\n            Toast.makeText(context, \"Neuspjesno ste se registrovali\", Toast.LENGTH_SHORT).show()\r\n        } else {\r\n            Toast.makeText(context, \"Uspjesno ste se registrovali\", Toast.LENGTH_SHORT).show()\r\n        }\r\n    }\r\n\r\n    fun readData(): MutableList<User> {\r\n        val list: MutableList<User> = ArrayList()\r\n        val db = this.readableDatabase\r\n        val query = \"Select * from $TABLENAME\"\r\n        val result = db.rawQuery(query, null)\r\n        if (result.moveToFirst()) {\r\n            do {\r\n                val user = User()\r\n                user.id = result.getString(result.getColumnIndex(COL_ID)).toInt()\r\n                user.name = result.getString(result.getColumnIndex(COL_NAME))\r\n                user.lastName = result.getString(result.getColumnIndex(COL_LASTNAME))\r\n                user.email = result.getString(result.getColumnIndex(COL_EMAIL))\r\n                user.password = result.getString(result.getColumnIndex(COL_PASSWORD))\r\n                user.primaryMoney = result.getString(result.getColumnIndex(COL_PRIMARY_MONEY))\r\n                user.userLang = result.getString(result.getColumnIndex(COL_USER_LANG))\r\n                list.add(user)\r\n            } while (result.moveToNext())\r\n        }\r\n        return list\r\n    }\r\n    fun insertActions(userActvities: UserActvities) {\r\n        val database = this.writableDatabase\r\n        val contentValues = ContentValues()\r\n        contentValues.put(COL_ID_USER, userActvities.idUser)\r\n        contentValues.put(COL_CURRENCY, userActvities.idValuta)\r\n        contentValues.put(COL_MONEY, userActvities.money)\r\n        contentValues.put(COL_TIME_DATE, userActvities.timeDate)\r\n        contentValues.put(COL_CATEGORY, userActvities.category)\r\n        contentValues.put(COL_PROFIL, userActvities.profil)\r\n        contentValues.put(COL_TIME_DATE, userActvities.timeDate)\r\n        val result = database.insert(TABLENAMEACTIONS, null, contentValues)\r\n        if (result == (0).toLong()) {\r\n            Toast.makeText(context, \"Neuspjesno ste se dodali akciju\", Toast.LENGTH_SHORT).show()\r\n        } else {\r\n            Toast.makeText(context, \"Uspjesno ste se dodali akciju\", Toast.LENGTH_SHORT).show()\r\n        }\r\n\r\n    }\r\n    fun insertPlan(planUser: PlanUser){\r\n        val database = this.writableDatabase\r\n        val contentValues = ContentValues()\r\n        contentValues.put(COL_ID_USER_PLA, planUser.idUser)\r\n        contentValues.put(COL_PLAN, planUser.plan)\r\n        contentValues.put(COL_PLAN_MONEY, planUser.moneyPlan)\r\n        contentValues.put(COL_OTHER_MONEY,planUser.otherMoney)\r\n        contentValues.put(COL_MONEY_RATA, planUser.moneyRata)\r\n        contentValues.put(COL_NEXT_PAYMENT,planUser.nextPayment)\r\n        contentValues.put(COL_CATEGORY_PLAN,planUser.categoryPlan)\r\n        contentValues.put(COL_PROFIL_PLAN, planUser.profilPlan)\r\n        val result = database.insert(TABLENAMEPLAN, null, contentValues)\r\n        if (result == (0).toLong()) {\r\n            Toast.makeText(context, \"Neuspjesno ste se dodali akciju\", Toast.LENGTH_SHORT).show()\r\n        } else {\r\n            Toast.makeText(context, \"Uspjesno ste se dodali akciju\", Toast.LENGTH_SHORT).show()\r\n        }\r\n    }\r\n\r\n    fun readPlan(): MutableList<PlanUser>{\r\n        var list: MutableList<PlanUser> = arrayListOf()\r\n        val db = this.readableDatabase\r\n        val query = \"select * from $TABLENAMEPLAN \"\r\n        val result = db.rawQuery(query, null)\r\n        if(result.moveToFirst()){\r\n            do{\r\n                val planUser = PlanUser()\r\n                planUser.id= result.getString(result.getColumnIndex(COL_ID_PLA)).toInt()\r\n                planUser.idUser= result.getString(result.getColumnIndex(COL_ID_USER_PLA)).toInt()\r\n                planUser.categoryPlan=result.getString(result.getColumnIndex(COL_CATEGORY_PLAN))\r\n                planUser.moneyPlan=result.getString(result.getColumnIndex(COL_PLAN_MONEY)).toDouble()\r\n                planUser.moneyRata=result.getString(result.getColumnIndex(COL_MONEY_RATA)).toDouble()\r\n                planUser.nextPayment=result.getString(result.getColumnIndex(COL_NEXT_PAYMENT))\r\n                planUser.otherMoney=result.getString(result.getColumnIndex(COL_OTHER_MONEY)).toDouble()\r\n                planUser.plan=result.getString(result.getColumnIndex(COL_PLAN)).toInt()\r\n                planUser.profilPlan = result.getString(result.getColumnIndex(COL_PROFIL_PLAN))\r\n                list.add(planUser)\r\n            }while (result.moveToNext())\r\n\r\n        }\r\n\r\n        return list\r\n    }\r\n\r\n    fun readActions(): MutableList<UserActvities> {\r\n        var list: MutableList<UserActvities> = arrayListOf()\r\n        val db = this.readableDatabase\r\n        val query = \"select * from $TABLENAMEACTIONS\"\r\n        val result = db.rawQuery(query, null)\r\n        if (result.moveToLast()) {\r\n            do {\r\n                val userActvities = UserActvities()\r\n                userActvities.id = result.getString(result.getColumnIndex(COL_ID_ACT)).toInt()\r\n                userActvities.idUser = result.getString(result.getColumnIndex(COL_ID_USER)).toInt()\r\n                userActvities.idValuta = result.getString(result.getColumnIndex(COL_CURRENCY))\r\n                userActvities.money = result.getString(result.getColumnIndex(COL_MONEY)).toDouble()\r\n                userActvities.category = result.getString(result.getColumnIndex(COL_CATEGORY))\r\n                userActvities.profil = result.getString(result.getColumnIndex(COL_PROFIL))\r\n                userActvities.timeDate = result.getString(result.getColumnIndex(COL_TIME_DATE))\r\n                list.add(userActvities)\r\n            } while (result.moveToPrevious())\r\n        }\r\n        return list\r\n    }\r\n\r\n    fun deleteActions(id: String): Int {\r\n        val db = this.writableDatabase\r\n        return db.delete(TABLENAMEACTIONS, \"id = ?\", arrayOf(id))\r\n    }\r\n\r\n    fun updateData(\r\n        id: String,\r\n        idUser: Int,\r\n        idValuta: String,\r\n        moneys: Double,\r\n        timeDate: String,\r\n        category: String,\r\n        profil: String\r\n    ): Boolean {\r\n        val db = this.writableDatabase\r\n        val contentValues = ContentValues()\r\n        contentValues.put(COL_ID_ACT, id)\r\n        contentValues.put(COL_ID_USER, idUser)\r\n        contentValues.put(COL_CURRENCY, idValuta)\r\n        contentValues.put(COL_MONEY, moneys)\r\n        contentValues.put(COL_TIME_DATE, timeDate)\r\n        contentValues.put(COL_CATEGORY, category)\r\n        contentValues.put(COL_PROFIL, profil)\r\n        db.update(TABLENAMEACTIONS, contentValues, \"id = ?\", arrayOf(id))\r\n        return true\r\n    }\r\n    fun updatePlan(id: String,\r\n               idUser:Int,\r\n               plan:Int,\r\n               moneyPlan:Double,\r\n               otherMoney:Double,\r\n               moneyRata:Double,\r\n               categoryPlan:String,\r\n               nextPayment:String,\r\n               profilPlan:String):Boolean{\r\n        val db = this.writableDatabase\r\n        val contentValues = ContentValues()\r\n        contentValues.put(COL_ID_PLA, id)\r\n        contentValues.put(COL_ID_USER_PLA,idUser)\r\n        contentValues.put(COL_PLAN, plan)\r\n        contentValues.put(COL_PLAN_MONEY, moneyPlan)\r\n        contentValues.put(COL_OTHER_MONEY, otherMoney)\r\n        contentValues.put(COL_MONEY_RATA, moneyRata)\r\n        contentValues.put(COL_CATEGORY_PLAN,categoryPlan)\r\n        contentValues.put(COL_NEXT_PAYMENT,nextPayment)\r\n        contentValues.put(COL_PROFIL_PLAN, profilPlan)\r\n\r\n        db.update(TABLENAMEPLAN, contentValues, \"id = ?\", arrayOf(id))\r\n        return true\r\n    }\r\n\r\n\r\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/mladenjovicic/novcanik/DataBaseHelper.kt	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/java/com/mladenjovicic/novcanik/DataBaseHelper.kt	(date 1613379485139)
+@@ -37,6 +37,22 @@
+ val COL_NEXT_PAYMENT = "nextPayment"
+ val COL_CATEGORY_PLAN = "categoryPlan"
+ val COL_PROFIL_PLAN = "profilPlan"
++//tabela za valute
++val TABLECURRENCYVALUE = "CurrencyValue"
++val COL_CUR_ID ="id"
++val COL_CUR_DATE= "dateCurrency"
++val COL_CUR_BAM ="BAM"
++val COL_CUR_RSD ="RSD"
++val COL_CUR_HRK ="HRK"
++val COL_CUR_USD ="USD"
++val COL_CUR_EUR ="EUR"
++val COL_CUR_GBP ="GBP"
++val COL_CUR_CHF ="CHF"
++val COL_CUR_JPY ="JPY"
++val COL_CUR_AUD ="AUD"
++val COL_CUR_CAD ="CAD"
++val COL_CUR_RUB ="RUB"
++val COL_CUR_CNY ="CNY"
+ 
+ 
+ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
+@@ -46,7 +62,7 @@
+ 
+     override fun onCreate(db: SQLiteDatabase?) {
+         val createTable = "CREATE TABLE " + TABLENAME + " " +
+-                "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_LASTNAME + " VARCHAR(256)," + COL_EMAIL + " VARCHAR(256)," + COL_PASSWORD + " VARCHAR(256)," + COL_PRIMARY_MONEY + " VARCHAR(256)," + COL_USER_LANG + " VARCHAR(256))"
++                "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_LASTNAME + " VARCHAR(256)," + COL_EMAIL + " VARCHAR(256) UNIQUE," + COL_PASSWORD + " VARCHAR(256)," + COL_PRIMARY_MONEY + " VARCHAR(256)," + COL_USER_LANG + " VARCHAR(256))"
+         db?.execSQL(createTable)
+ 
+         val createTableActions = "CREATE TABLE " + TABLENAMEACTIONS + " " +
+@@ -57,6 +73,12 @@
+                 "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " INTEGER,"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," + COL_NEXT_PAYMENT + " VARCHAR(256)," + COL_PROFIL_PLAN + " VARCHAR(256))"
+         db?.execSQL(createTablePlan)
+ 
++        val createTableCurrency = "CREATE TABLE "+ TABLECURRENCYVALUE+" "+
++                "("+ COL_CUR_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_CUR_DATE +
++                " VARCHAR(256)," + COL_CUR_BAM+ " DOUBLE,"+ COL_CUR_RSD+ " DOUBLE,"+ COL_CUR_HRK+ " DOUBLE,"+ COL_CUR_USD+ " DOUBLE,"+ COL_CUR_EUR+
++                " DOUBLE,"+ COL_CUR_GBP+ " DOUBLE,"+ COL_CUR_CHF+ " DOUBLE,"+ COL_CUR_JPY+ " DOUBLE,"+ COL_CUR_AUD+ " DOUBLE,"+ COL_CUR_CAD+ " DOUBLE,"+ COL_CUR_RUB+
++                " DOUBLE,"+ COL_CUR_CNY+ " DOUBLE)"
++        db?.execSQL(createTableCurrency)
+     }
+ 
+ 
+@@ -64,7 +86,6 @@
+ 
+ 
+     }
+-
+     fun insertData(user: User) {
+         val database = this.writableDatabase
+         val contentValues = ContentValues()
+@@ -81,7 +102,6 @@
+             Toast.makeText(context, "Uspjesno ste se registrovali", Toast.LENGTH_SHORT).show()
+         }
+     }
+-
+     fun readData(): MutableList<User> {
+         val list: MutableList<User> = ArrayList()
+         val db = this.readableDatabase
+@@ -138,7 +158,6 @@
+             Toast.makeText(context, "Uspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
+         }
+     }
+-
+     fun readPlan(): MutableList<PlanUser>{
+         var list: MutableList<PlanUser> = arrayListOf()
+         val db = this.readableDatabase
+@@ -163,7 +182,6 @@
+ 
+         return list
+     }
+-
+     fun readActions(): MutableList<UserActvities> {
+         var list: MutableList<UserActvities> = arrayListOf()
+         val db = this.readableDatabase
+@@ -184,12 +202,10 @@
+         }
+         return list
+     }
+-
+     fun deleteActions(id: String): Int {
+         val db = this.writableDatabase
+         return db.delete(TABLENAMEACTIONS, "id = ?", arrayOf(id))
+     }
+-
+     fun updateData(
+         id: String,
+         idUser: Int,
+@@ -235,6 +251,57 @@
+         db.update(TABLENAMEPLAN, contentValues, "id = ?", arrayOf(id))
+         return true
+     }
++    fun insertCurrency(currencyValue: currencyValue){
++        val database = this.writableDatabase
++        val contentValues = ContentValues()
+ 
++        contentValues.put(COL_CUR_DATE, currencyValue.dateCurrency)
++        contentValues.put(COL_CUR_BAM, currencyValue.BAM)
++        contentValues.put(COL_CUR_RSD, currencyValue.RSD)
++        contentValues.put(COL_CUR_HRK, currencyValue.HRK)
++        contentValues.put(COL_CUR_USD, currencyValue.USD)
++        contentValues.put(COL_CUR_EUR, currencyValue.EUR)
++        contentValues.put(COL_CUR_GBP, currencyValue.GBP)
++        contentValues.put(COL_CUR_CHF, currencyValue.CHF)
++        contentValues.put(COL_CUR_JPY, currencyValue.JPY)
++        contentValues.put(COL_CUR_AUD, currencyValue.AUD)
++        contentValues.put(COL_CUR_CAD, currencyValue.CAD)
++        contentValues.put(COL_CUR_RUB, currencyValue.RUB)
++        contentValues.put(COL_CUR_CNY, currencyValue.CNY)
++
++        val result = database.insert(TABLECURRENCYVALUE, null, contentValues)
++        if (result == (0).toLong()) {
++           // Toast.makeText(context, "404", Toast.LENGTH_SHORT).show()
++        } else {
++           // Toast.makeText(context, "405", Toast.LENGTH_SHORT).show()
++        }
++    }
++    fun readCurrency(): MutableList<currencyValue> {
++        val list: MutableList<currencyValue> = ArrayList()
++        val db = this.readableDatabase
++        val query = "Select * FROM $TABLECURRENCYVALUE"
++        val result = db.rawQuery(query, null)
++        if (result.moveToLast()) {
++            do {
++                val currencyValue = currencyValue()
++                currencyValue.id = result.getString(result.getColumnIndex(COL_CUR_ID)).toInt()
++                currencyValue.dateCurrency = result.getString(result.getColumnIndex(COL_CUR_DATE))
++                currencyValue.BAM = result.getDouble(result.getColumnIndex(COL_CUR_BAM))
++                currencyValue.RSD = result.getDouble(result.getColumnIndex(COL_CUR_RSD))
++                currencyValue.HRK = result.getDouble(result.getColumnIndex(COL_CUR_HRK))
++                currencyValue.USD = result.getDouble(result.getColumnIndex(COL_CUR_USD))
++                currencyValue.EUR = result.getDouble(result.getColumnIndex(COL_CUR_EUR))
++                currencyValue.GBP = result.getDouble(result.getColumnIndex(COL_CUR_GBP))
++                currencyValue.CHF = result.getDouble(result.getColumnIndex(COL_CUR_CHF))
++                currencyValue.JPY = result.getDouble(result.getColumnIndex(COL_CUR_JPY))
++                currencyValue.AUD = result.getDouble(result.getColumnIndex(COL_CUR_AUD))
++                currencyValue.CAD = result.getDouble(result.getColumnIndex(COL_CUR_CAD))
++                currencyValue.RUB = result.getDouble(result.getColumnIndex(COL_CUR_RUB))
++                currencyValue.CNY = result.getDouble(result.getColumnIndex(COL_CUR_CNY))
++                list.add(currencyValue)
++            } while (result.moveToPrevious())
++        }
++        return list
++    }
+ 
+ }
+\ No newline at end of file
+Index: app/src/main/res/layout/activity_registre.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<LinearLayout xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    xmlns:app=\"http://schemas.android.com/apk/res-auto\"\r\n    xmlns:tools=\"http://schemas.android.com/tools\"\r\n    android:layout_width=\"match_parent\"\r\n    android:layout_height=\"match_parent\"\r\n    android:background=\"#669900\"\r\n    android:orientation=\"vertical\"\r\n    tools:context=\".RegistreActivity\">\r\n\r\n    <ImageButton\r\n        android:id=\"@+id/btnTestA\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"150dp\"\r\n        android:background=\"#669900\"\r\n        android:scaleType=\"fitCenter\"\r\n        app:srcCompat=\"@drawable/wallethome\" />\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/linearLayoutNameUser\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginRight=\"15dp\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView10\"\r\n            android:layout_width=\"50dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_weight=\"1\"\r\n            app:srcCompat=\"@drawable/walletman\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/editTextNameUser\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:backgroundTint=\"#ffffff\"\r\n            android:ems=\"10\"\r\n            android:hint=\"Ime\"\r\n            android:inputType=\"textPersonName\"\r\n            android:textColor=\"@android:color/background_light\"\r\n            android:textColorHint=\"@android:color/background_light\" />\r\n\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/linearLayoutLastNameUser\"\r\n        android:layout_marginRight=\"15dp\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView11\"\r\n            android:layout_width=\"50dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_weight=\"1\"\r\n            app:srcCompat=\"@drawable/walletsurname\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/editTextLastNameUser\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:backgroundTint=\"#ffffff\"\r\n            android:ems=\"10\"\r\n            android:hint=\"Prezime\"\r\n            android:inputType=\"textPersonName\"\r\n            android:textColor=\"@android:color/background_light\"\r\n            android:textColorHint=\"@android:color/background_light\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/linearLayoutEmailUser\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_marginRight=\"15dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView6\"\r\n            android:layout_width=\"50dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_weight=\"1\"\r\n            app:srcCompat=\"@drawable/wallemessage\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/editTextEmailUser\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:backgroundTint=\"#ffffff\"\r\n            android:ems=\"10\"\r\n            android:hint=\"Email\"\r\n            android:inputType=\"textEmailAddress\"\r\n            android:textColor=\"@android:color/background_light\"\r\n            android:textColorHint=\"@android:color/background_light\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/linearLayoutPasswordUser\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_marginRight=\"15dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView7\"\r\n            android:layout_width=\"50dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_weight=\"1\"\r\n            app:srcCompat=\"@drawable/walletlock\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/editTextPasswordUser\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:backgroundTint=\"#ffffff\"\r\n            android:ems=\"10\"\r\n            android:hint=\"Sifra\"\r\n            android:inputType=\"textPassword\"\r\n            android:textColor=\"@android:color/background_light\"\r\n            android:textColorHint=\"@android:color/background_light\" />\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:id=\"@+id/linearLayoutPasswordAgainUser\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_marginRight=\"15dp\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView8\"\r\n            android:layout_width=\"50dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_weight=\"1\"\r\n            app:srcCompat=\"@drawable/walletlock\" />\r\n\r\n        <EditText\r\n            android:id=\"@+id/editTextPasswordAgainUser\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"1\"\r\n            android:backgroundTint=\"#ffffff\"\r\n            android:ems=\"10\"\r\n            android:hint=\"Ponovite sifru\"\r\n            android:inputType=\"textPassword\"\r\n            android:textColor=\"@android:color/background_light\"\r\n            android:textColorHint=\"@android:color/background_light\" />\r\n\r\n    </LinearLayout>\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"wrap_content\"\r\n        android:layout_marginRight=\"15dp\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <ImageView\r\n            android:id=\"@+id/imageView9\"\r\n            android:layout_width=\"40dp\"\r\n            android:layout_height=\"50dp\"\r\n            android:layout_weight=\"1\"\r\n            app:srcCompat=\"@drawable/wallermoneyicone\" />\r\n\r\n        <Spinner\r\n            android:id=\"@+id/spinnerMoney\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"match_parent\"\r\n            android:layout_weight=\"3\"\r\n            android:backgroundTint=\"@android:color/background_light\"\r\n            android:dropDownSelector=\"@android:color/background_light\"\r\n            android:popupBackground=\"#9acc60\"\r\n            android:textColor=\"@android:color/background_light\" />\r\n    </LinearLayout>\r\n\r\n    <Button\r\n        android:id=\"@+id/btnRegistreUser\"\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"60dp\"\r\n        android:layout_marginLeft=\"107dp\"\r\n        android:layout_marginRight=\"105dp\"\r\n        android:backgroundTint=\"#ffffff\"\r\n        android:text=\"Registruj se\"\r\n        android:textColor=\"#9acc60\" />\r\n\r\n    <LinearLayout\r\n        android:layout_width=\"match_parent\"\r\n        android:layout_height=\"match_parent\"\r\n        android:background=\"#669900\"\r\n        android:orientation=\"horizontal\">\r\n\r\n        <TextView\r\n            android:id=\"@+id/textViewTestA\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_weight=\"1\"\r\n            android:visibility=\"gone\" />\r\n        <TextView\r\n            android:id=\"@+id/textViewTestAC\"\r\n            android:layout_width=\"wrap_content\"\r\n            android:layout_height=\"wrap_content\"\r\n            android:layout_weight=\"1\"\r\n            android:visibility=\"visible\" />\r\n    </LinearLayout>\r\n\r\n</LinearLayout>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/res/layout/activity_registre.xml	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/res/layout/activity_registre.xml	(date 1611589639848)
+@@ -198,7 +198,7 @@
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_weight="1"
+-            android:visibility="gone" />
++            android:visibility="visible" />
+         <TextView
+             android:id="@+id/textViewTestAC"
+             android:layout_width="wrap_content"
+Index: app/build.gradle
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>apply plugin: 'com.android.application'\r\n\r\napply plugin: 'kotlin-android'\r\n\r\napply plugin: 'kotlin-android-extensions'\r\n\r\nandroid {\r\n    compileSdkVersion 28\r\n    buildToolsVersion \"29.0.2\"\r\n    defaultConfig {\r\n        applicationId \"com.mladenjovicic.novcanik\"\r\n        minSdkVersion 26\r\n        targetSdkVersion 28\r\n        versionCode 1\r\n        versionName \"1.0\"\r\n        testInstrumentationRunner \"androidx.test.runner.AndroidJUnitRunner\"\r\n    }\r\n    repositories {\r\n        maven { url 'https://jitpack.io' }\r\n    }\r\n    buildTypes {\r\n        release {\r\n            minifyEnabled false\r\n            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'\r\n        }\r\n    }\r\n}\r\n\r\ndependencies {\r\n    implementation fileTree(dir: 'libs', include: ['*.jar'])\r\n    implementation \"org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version\"\r\n    implementation 'androidx.appcompat:appcompat:1.0.2'\r\n    implementation 'androidx.core:core-ktx:1.0.2'\r\n    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'\r\n    implementation 'androidx.legacy:legacy-support-v4:1.0.0'\r\n    implementation 'com.google.android.material:material:1.0.0'\r\n    implementation 'androidx.navigation:navigation-fragment:2.0.0'\r\n    implementation 'androidx.navigation:navigation-ui:2.0.0'\r\n    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'\r\n    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'\r\n    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'\r\n    testImplementation 'junit:junit:4.12'\r\n    androidTestImplementation 'androidx.test.ext:junit:1.1.0'\r\n    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'\r\n    implementation \"com.github.bumptech.glide:glide:4.8.0\"\r\n    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'\r\n\r\n    annotationProcessor \"com.github.bumptech.glide:compiler:4.8.0\"\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/build.gradle	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/build.gradle	(date 1612375212473)
+@@ -1,49 +1,67 @@
+ apply plugin: 'com.android.application'
+ 
+ apply plugin: 'kotlin-android'
+-
++apply plugin: 'kotlin-kapt'
+ apply plugin: 'kotlin-android-extensions'
++apply plugin: 'com.google.gms.google-services'
+ 
+ android {
+-    compileSdkVersion 28
++    compileSdkVersion 29
+     buildToolsVersion "29.0.2"
+     defaultConfig {
+         applicationId "com.mladenjovicic.novcanik"
+         minSdkVersion 26
+-        targetSdkVersion 28
++        targetSdkVersion 29
+         versionCode 1
+         versionName "1.0"
+         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+     }
+-    repositories {
+-        maven { url 'https://jitpack.io' }
+-    }
++
+     buildTypes {
+         release {
+-            minifyEnabled false
++            minifyEnabled true
+             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+         }
+     }
++
++    compileOptions {
++        sourceCompatibility JavaVersion.VERSION_1_8
++        targetCompatibility JavaVersion.VERSION_1_8
++    }
++    kotlinOptions {
++        jvmTarget = "1.8"
++    }
+ }
+ 
+ dependencies {
+-    implementation fileTree(dir: 'libs', include: ['*.jar'])
++    implementation fileTree(dir: 'libs', include: ['*.aar'])
+     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+-    implementation 'androidx.appcompat:appcompat:1.0.2'
+-    implementation 'androidx.core:core-ktx:1.0.2'
+-    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+-    implementation 'com.google.android.material:material:1.0.0'
+-    implementation 'androidx.navigation:navigation-fragment:2.0.0'
+-    implementation 'androidx.navigation:navigation-ui:2.0.0'
+-    implementation 'androidx.lifecycle:lifecycle-extensions:2.0.0'
+-    implementation 'androidx.navigation:navigation-fragment-ktx:2.0.0'
+-    implementation 'androidx.navigation:navigation-ui-ktx:2.0.0'
++    implementation 'androidx.appcompat:appcompat:1.2.0'
++    implementation 'androidx.core:core-ktx:1.3.2'
++    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
++//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
++    implementation 'com.google.android.material:material:1.2.1'
++    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.3'
++    implementation 'androidx.navigation:navigation-ui-ktx:2.3.3'
++    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
++
++    implementation 'com.google.firebase:firebase-auth:20.0.2'
+     testImplementation 'junit:junit:4.12'
+-    androidTestImplementation 'androidx.test.ext:junit:1.1.0'
+-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.1.1'
++    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
++    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+     implementation "com.github.bumptech.glide:glide:4.8.0"
+     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+ 
+-    annotationProcessor "com.github.bumptech.glide:compiler:4.8.0"
++    kapt "com.github.bumptech.glide:compiler:4.8.0"
++    //za json api
++    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
++    implementation 'com.google.code.gson:gson:2.8.6'
++    //email1
++//    implementation 'com.sendgrid:sendgrid-java:4.7.1'
++    //email
++//    implementation 'com.sun.mail:android-mail:1.6.0'
++//    implementation 'com.sun.mail:android-activation:1.6.0'
++    //kotlin
++    implementation platform('com.google.firebase:firebase-bom:26.3.0')
++    implementation 'com.google.firebase:firebase-auth-ktx'
+ }
+Index: .idea/compiler.xml
+===================================================================
+--- .idea/compiler.xml	(date 1611568787175)
++++ .idea/compiler.xml	(date 1611568787175)
+@@ -0,0 +1,6 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="CompilerConfiguration">
++    <bytecodeTargetLevel target="1.8" />
++  </component>
++</project>
+\ No newline at end of file
+Index: .idea/jarRepositories.xml
+===================================================================
+--- .idea/jarRepositories.xml	(date 1611746161359)
++++ .idea/jarRepositories.xml	(date 1611746161359)
+@@ -0,0 +1,35 @@
++<?xml version="1.0" encoding="UTF-8"?>
++<project version="4">
++  <component name="RemoteRepositoriesConfiguration">
++    <remote-repository>
++      <option name="id" value="central" />
++      <option name="name" value="Maven Central repository" />
++      <option name="url" value="https://repo1.maven.org/maven2" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="jboss.community" />
++      <option name="name" value="JBoss Community repository" />
++      <option name="url" value="https://repository.jboss.org/nexus/content/repositories/public/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="BintrayJCenter" />
++      <option name="name" value="BintrayJCenter" />
++      <option name="url" value="https://jcenter.bintray.com/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="Google" />
++      <option name="name" value="Google" />
++      <option name="url" value="https://dl.google.com/dl/android/maven2/" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="maven" />
++      <option name="name" value="maven" />
++      <option name="url" value="https://jitpack.io" />
++    </remote-repository>
++    <remote-repository>
++      <option name="id" value="MavenRepo" />
++      <option name="name" value="MavenRepo" />
++      <option name="url" value="https://repo.maven.apache.org/maven2/" />
++    </remote-repository>
++  </component>
++</project>
+\ No newline at end of file
+Index: app/src/main/AndroidManifest.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"utf-8\"?>\r\n<manifest xmlns:android=\"http://schemas.android.com/apk/res/android\"\r\n    package=\"com.mladenjovicic.novcanik\">\r\n\r\n    <application\r\n        android:allowBackup=\"true\"\r\n        android:icon=\"@drawable/wallethome1\"\r\n        android:label=\"@string/app_name\"\r\n        android:roundIcon=\"@drawable/wallethome1\"\r\n        android:supportsRtl=\"true\"\r\n        android:theme=\"@style/AppTheme\"\r\n        >\r\n\r\n        <activity\r\n            android:name=\".profilActivity\"\r\n            android:theme=\"@style/AppTheme.Fullscreen\"/>\r\n        <activity\r\n            android:name=\".addNewActivity\"\r\n            android:theme=\"@style/AppTheme.Fullscreen\" />\r\n        <activity\r\n            android:name=\".HomeActivity\"\r\n            android:label=\"@string/title_activity_home\"\r\n            android:theme=\"@style/AppTheme.Fullscreen\" />\r\n        <activity\r\n            android:name=\".RegistreActivity\"\r\n            android:theme=\"@style/AppTheme.Fullscreen\" />\r\n        <activity\r\n            android:name=\".MainActivity\"\r\n            android:theme=\"@style/AppTheme.Fullscreen\">\r\n            <intent-filter>\r\n                <action android:name=\"android.intent.action.MAIN\" />\r\n\r\n                <category android:name=\"android.intent.category.LAUNCHER\" />\r\n            </intent-filter>\r\n        </activity>\r\n    </application>\r\n\r\n</manifest>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/AndroidManifest.xml	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/AndroidManifest.xml	(date 1611568875185)
+@@ -1,6 +1,8 @@
+ <?xml version="1.0" encoding="utf-8"?>
+ <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+     package="com.mladenjovicic.novcanik">
++    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
++    <uses-permission android:name="android.permission.INTERNET"/>
+ 
+     <application
+         android:allowBackup="true"
+Index: gradle/wrapper/gradle-wrapper.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Wed Sep 16 08:32:05 CEST 2020\r\ndistributionBase=GRADLE_USER_HOME\r\ndistributionPath=wrapper/dists\r\nzipStoreBase=GRADLE_USER_HOME\r\nzipStorePath=wrapper/dists\r\ndistributionUrl=https\\://services.gradle.org/distributions/gradle-5.4.1-all.zip\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>windows-1252
+===================================================================
+--- gradle/wrapper/gradle-wrapper.properties	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ gradle/wrapper/gradle-wrapper.properties	(date 1612354946605)
+@@ -1,6 +1,6 @@
+-#Wed Sep 16 08:32:05 CEST 2020
++#Wed Jan 27 19:17:41 CET 2021
+ distributionBase=GRADLE_USER_HOME
+ distributionPath=wrapper/dists
+ zipStoreBase=GRADLE_USER_HOME
+ zipStorePath=wrapper/dists
+-distributionUrl=https\://services.gradle.org/distributions/gradle-5.4.1-all.zip
++distributionUrl=https\://services.gradle.org/distributions/gradle-6.6-all.zip
+Index: .idea/gradle.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"GradleMigrationSettings\" migrationVersion=\"1\" />\r\n  <component name=\"GradleSettings\">\r\n    <option name=\"linkedExternalProjectsSettings\">\r\n      <GradleProjectSettings>\r\n        <option name=\"delegatedBuild\" value=\"false\" />\r\n        <option name=\"testRunner\" value=\"PLATFORM\" />\r\n        <option name=\"distributionType\" value=\"DEFAULT_WRAPPED\" />\r\n        <option name=\"externalProjectPath\" value=\"$PROJECT_DIR$\" />\r\n        <option name=\"modules\">\r\n          <set>\r\n            <option value=\"$PROJECT_DIR$\" />\r\n            <option value=\"$PROJECT_DIR$/app\" />\r\n          </set>\r\n        </option>\r\n        <option name=\"resolveModulePerSourceSet\" value=\"false\" />\r\n      </GradleProjectSettings>\r\n    </option>\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/gradle.xml	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ .idea/gradle.xml	(date 1611148379490)
+@@ -15,6 +15,7 @@
+           </set>
+         </option>
+         <option name="resolveModulePerSourceSet" value="false" />
++        <option name="useQualifiedModuleNames" value="true" />
+       </GradleProjectSettings>
+     </option>
+   </component>
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_1_7\" project-jdk-name=\"1.8\" project-jdk-type=\"JavaSDK\">\r\n    <output url=\"file://$PROJECT_DIR$/build/classes\" />\r\n  </component>\r\n  <component name=\"ProjectType\">\r\n    <option name=\"id\" value=\"Android\" />\r\n  </component>\r\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- .idea/misc.xml	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ .idea/misc.xml	(date 1611568787105)
+@@ -1,6 +1,6 @@
+ <?xml version="1.0" encoding="UTF-8"?>
+ <project version="4">
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+     <output url="file://$PROJECT_DIR$/build/classes" />
+   </component>
+   <component name="ProjectType">
+Index: app/src/main/java/com/mladenjovicic/novcanik/HomeActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mladenjovicic.novcanik\r\n\r\nimport android.content.Intent\r\nimport android.content.res.Resources\r\nimport android.graphics.Color\r\nimport android.graphics.Typeface\r\nimport android.os.Bundle\r\nimport android.util.Log\r\nimport android.view.View\r\nimport android.widget.AdapterView\r\nimport android.widget.ArrayAdapter\r\nimport android.widget.Spinner\r\nimport android.widget.Toast\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport com.bumptech.glide.load.engine.Resource\r\nimport com.github.mikephil.charting.charts.PieChart\r\nimport com.github.mikephil.charting.components.Legend\r\nimport com.github.mikephil.charting.data.Entry\r\nimport com.github.mikephil.charting.data.PieData\r\nimport com.github.mikephil.charting.data.PieDataSet\r\nimport com.github.mikephil.charting.data.PieEntry\r\nimport com.github.mikephil.charting.highlight.Highlight\r\nimport com.github.mikephil.charting.listener.OnChartValueSelectedListener\r\nimport com.github.mikephil.charting.utils.ColorTemplate\r\nimport com.github.mikephil.charting.utils.MPPointF\r\nimport java.util.*\r\n\r\n\r\nimport kotlinx.android.synthetic.main.activity_home.*\r\nimport kotlinx.android.synthetic.main.activity_registre.*\r\nimport java.time.LocalDate\r\nimport java.time.format.DateTimeFormatter\r\nimport kotlin.collections.ArrayList\r\n\r\nclass HomeActivity : AppCompatActivity() {\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_home)\r\n\r\n        work()\r\n\r\n\r\n    }\r\n    override fun onStart() {\r\n        super.onStart()\r\n        work()\r\n    }\r\n    override fun onResume() {\r\n        super.onResume()\r\n        work()\r\n    }\r\n\r\n\r\n    fun work(){\r\n        val context = this\r\n        val db = DataBaseHandler(context)\r\n        val readActions = db.readActions()\r\n\r\n        var sumMoneyNovcanik = 0.0\r\n        var sumMoneyDevize = 0.0\r\n        var sumMoneyBanka = 0.0\r\n        var sumSum = 0.0\r\n        var sumMOneyDevizeNEgativ = 0.0\r\n        var sumMOneyNovcanikaNEgativ = 0.0\r\n        var sumMOneyBankNEgativ = 0.0\r\n        val res: Resources = resources\r\n\r\n        val pieChart = findViewById<PieChart>(R.id.pieChart)\r\n        val pieChartNegativ = findViewById<PieChart>(R.id.pieChart1)\r\n        val arrayBank = ArrayList<PieEntry>()\r\n        val arrayBankNegativ = ArrayList<PieEntry>()\r\n\r\n        var listCategorys = res.getStringArray(R.array.category)\r\n        var listWalletCategory  = ArrayList<Double>()\r\n        var listDeviseCategory  = ArrayList<Double>()\r\n        var listBankCategory  = ArrayList<Double>()\r\n        var listALLCategory  = ArrayList<Double>()\r\n        var listDeviseCategoryNegativ = ArrayList<Double>()\r\n        var listWalletCategoryNeg = ArrayList<Double>()\r\n        var listBankCategoryNeg = ArrayList<Double>()\r\n        var listAllCategoryNeg = ArrayList<Double>()\r\n        for (j in 0 until listCategorys.size) {\r\n            listWalletCategory.add(0.0)\r\n            listBankCategory.add(0.0)\r\n            listDeviseCategory.add(0.0)\r\n            listALLCategory.add(0.0)\r\n            listDeviseCategoryNegativ.add(0.0)\r\n            listWalletCategoryNeg.add(0.0)\r\n            listBankCategoryNeg.add(0.0)\r\n            listAllCategoryNeg.add(0.0)\r\n        }\r\n\r\n        val nameUser = intent.getStringExtra(\"nameUser\")\r\n        val lastNameUser = intent.getStringExtra(\"lastnameUser\")\r\n        val emailUser = intent.getStringExtra(\"emailUser\")\r\n        val idUser = intent.getIntExtra(\"idUser\", 0)\r\n        val userValute = intent.getStringExtra(\"userValute\")\r\n\r\n\r\n        var spinnerPlan= findViewById<Spinner>(R.id.spinnerPlan)\r\n        val adapter = ArrayAdapter.createFromResource(this, R.array.plan, R.layout.spinner_item)\r\n        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerPlan.adapter = adapter\r\n        //spinnerPlan.onItemSelectedListener = this\r\n\r\n        var spinnerPlanKategorija= findViewById<Spinner>(R.id.spinnerPlanCategoria)\r\n        val adapterCat = ArrayAdapter.createFromResource(this, R.array.category, R.layout.spinner_item)\r\n        adapterCat.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerPlanKategorija.adapter = adapterCat\r\n\r\n        var spinnerPlanProfil= findViewById<Spinner>(R.id.spinnerProfilPlan)\r\n        val adapterProfil = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)\r\n        adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerPlanProfil.adapter = adapterProfil\r\n\r\n\r\n        val context1 = this\r\n        val db1 = DataBaseHandler(context1)\r\n        val userPlan = db1.readPlan()\r\n\r\n\r\n        for (i in 0 until userPlan.size) {\r\n            /*textViewTestAC.append(\r\n                userPlan[i].idUser.toString() +\" test  \"+  userPlan[i].nextPayment + userPlan[i].moneyRata.toString()\r\n            )*/\r\n            var datum = LocalDate.now()\r\n            if(userPlan[i].idUser==idUser){\r\n                if(userPlan[i].nextPayment == datum.format(DateTimeFormatter.ofPattern(\"dd-MMM-yyyy\")).toString()){\r\n                    if(userPlan[i].otherMoney>0.0){\r\n                        when(userPlan[i].plan) {\r\n                            0 -> {\r\n                                datum= LocalDate.now().plusDays(1)\r\n                            }\r\n                            1 -> {\r\n                                datum = LocalDate.now().plusDays(7)\r\n                            }\r\n                            2 -> {\r\n                                datum= LocalDate.now().plusDays(30)\r\n                            }\r\n\r\n                        }\r\n                        var getMoney = 0.0\r\n                        var ostatakNovca= userPlan[i].otherMoney-userPlan[i].moneyRata\r\n                        if(ostatakNovca<0){\r\n                            ostatakNovca = 0.0\r\n                        }\r\n                        if(userPlan[i].otherMoney >= userPlan[i].moneyRata){\r\n                            getMoney= userPlan[i].moneyRata\r\n                        }else if(userPlan[i].otherMoney < userPlan[i].moneyRata){\r\n                            getMoney = userPlan[i].otherMoney\r\n                        }\r\n\r\n                        val updatePlan = db1.updatePlan(userPlan[i].id.toString(),userPlan[i].idUser, userPlan[i].plan, userPlan[i].moneyPlan, ostatakNovca,\r\n                            userPlan[i].moneyRata,userPlan[i].categoryPlan, datum.format(DateTimeFormatter.ofPattern(\"dd-MMM-yyyy\")).toString(),userPlan[i].profilPlan)\r\n\r\n                        val userActivity = UserActvities(idUser, userValute.toString(), (getMoney)*-1,userPlan[i].categoryPlan, userPlan[i].profilPlan,\r\n                            LocalDate.now().format(DateTimeFormatter.ofPattern(\"dd-MMM-yyyy\")).toString())\r\n                        db.insertActions(userActivity)\r\n                    }\r\n                }\r\n\r\n            }\r\n        }\r\n\r\n\r\n        for (i in 0 until readActions.size) {\r\n            if(readActions[i].idUser==idUser&& readActions[i].profil== \"Novcanik\" ){\r\n                sumMOneyNovcanikaNEgativ = sumMOneyNovcanikaNEgativ + readActions[i].money\r\n                sumMoneyNovcanik = sumMoneyNovcanik + readActions[i].money\r\n\r\n                if (readActions[i].category==\"Hrana i piće\"){\r\n                    var hipN = listWalletCategory[0] + readActions[i].money\r\n                    listWalletCategory.set(0, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[0]+readActions[i].money\r\n                        listWalletCategoryNeg.set(0, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[0]+readActions[i].money\r\n                        listAllCategoryNeg.set(0,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Šoping\"){\r\n                    var hipN = listWalletCategory[1] + readActions[i].money\r\n                    listWalletCategory.set(1, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[1]+readActions[i].money\r\n                        listWalletCategoryNeg.set(1, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[1]+readActions[i].money\r\n                        listAllCategoryNeg.set(1,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Transport\"){\r\n                    var hipN = listWalletCategory[2] + readActions[i].money\r\n                    listWalletCategory.set(2, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[2]+readActions[i].money\r\n                        listWalletCategoryNeg.set(2, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[2]+readActions[i].money\r\n                        listAllCategoryNeg.set(2,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Režije\"){\r\n                    var hipN = listWalletCategory[3] + readActions[i].money\r\n                    listWalletCategory.set(3, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[3]+readActions[i].money\r\n                        listWalletCategoryNeg.set(3, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[3]+readActions[i].money\r\n                        listAllCategoryNeg.set(3,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Automobil\"){\r\n                    var hipN = listWalletCategory[4] + readActions[i].money\r\n                    listWalletCategory.set(4, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[4]+readActions[i].money\r\n                        listWalletCategoryNeg.set(4, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[4]+readActions[i].money\r\n                        listAllCategoryNeg.set(4,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Život i zabava\"){\r\n                    var hipN = listWalletCategory[5] + readActions[i].money\r\n                    listWalletCategory.set(5, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[5]+readActions[i].money\r\n                        listWalletCategoryNeg.set(5, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[5]+readActions[i].money\r\n                        listAllCategoryNeg.set(5,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Investicije\"){\r\n                    var hipN = listWalletCategory[6] + readActions[i].money\r\n                    listWalletCategory.set(6, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[6]+readActions[i].money\r\n                        listWalletCategoryNeg.set(6, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[6]+readActions[i].money\r\n                        listAllCategoryNeg.set(6,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Putovanja\"){\r\n                    var hipN = listWalletCategory[7] + readActions[i].money\r\n                    listWalletCategory.set(7, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[7]+readActions[i].money\r\n                        listWalletCategoryNeg.set(7, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[7]+readActions[i].money\r\n                        listAllCategoryNeg.set(7,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Doktor i lijekovi\"){\r\n                    var hipN = listWalletCategory[8] + readActions[i].money\r\n                    listWalletCategory.set(8, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[8]+readActions[i].money\r\n                        listWalletCategoryNeg.set(8, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[8]+readActions[i].money\r\n                        listAllCategoryNeg.set(8,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Edukacija\"){\r\n                    var hipN = listWalletCategory[9] + readActions[i].money\r\n                    listWalletCategory.set(9, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[9]+readActions[i].money\r\n                        listWalletCategoryNeg.set(9, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[9]+readActions[i].money\r\n                        listAllCategoryNeg.set(9,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Ostalo\"){\r\n                    var hipN = listWalletCategory[10] + readActions[i].money\r\n                    listWalletCategory.set(10, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listWalletCategoryNeg[10]+readActions[i].money\r\n                        listWalletCategoryNeg.set(10, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[10]+readActions[i].money\r\n                        listAllCategoryNeg.set(10,hipNNA)\r\n                    }\r\n                }\r\n\r\n            }\r\n            if(readActions[i].idUser==idUser&& readActions[i].profil== \"Devize\" ){\r\n                sumMOneyDevizeNEgativ = sumMOneyDevizeNEgativ + readActions[i].money\r\n                sumMoneyDevize = sumMoneyDevize + readActions[i].money\r\n                if (readActions[i].category==\"Hrana i piće\"){\r\n                    var hipN = listDeviseCategory[0] + readActions[i].money\r\n                    listDeviseCategory.set(0, hipN )\r\n\r\n                    if(readActions[i].money< 0){\r\n                    var hipNN = listDeviseCategoryNegativ[0]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(0, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[0]+readActions[i].money\r\n                        listAllCategoryNeg.set(0,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Šoping\"){\r\n                    var hipN = listDeviseCategory[1] + readActions[i].money\r\n                    listDeviseCategory.set(1, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[1]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(1, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[1]+readActions[i].money\r\n                        listAllCategoryNeg.set(1,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Transport\"){\r\n                    var hipN = listDeviseCategory[2] + readActions[i].money\r\n                    listDeviseCategory.set(2, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[2]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(2, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[2]+readActions[i].money\r\n                        listAllCategoryNeg.set(2,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Režije\"){\r\n                    var hipN = listDeviseCategory[3] + readActions[i].money\r\n                    listDeviseCategory.set(3, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[3]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(3, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[3]+readActions[i].money\r\n                        listAllCategoryNeg.set(3,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Automobil\"){\r\n                    var hipN = listDeviseCategory[4] + readActions[i].money\r\n                    listDeviseCategory.set(4, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[4]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(4, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[4]+readActions[i].money\r\n                        listAllCategoryNeg.set(4,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Život i zabava\"){\r\n                    var hipN = listDeviseCategory[5] + readActions[i].money\r\n                    listDeviseCategory.set(5, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[5]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(5, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[5]+readActions[i].money\r\n                        listAllCategoryNeg.set(5,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Investicije\"){\r\n                    var hipN = listDeviseCategory[6] + readActions[i].money\r\n                    listDeviseCategory.set(6, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[6]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(6, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[6]+readActions[i].money\r\n                        listAllCategoryNeg.set(6,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Putovanja\"){\r\n                    var hipN = listDeviseCategory[7] + readActions[i].money\r\n                    listDeviseCategory.set(7, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[7]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(7, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[7]+readActions[i].money\r\n                        listAllCategoryNeg.set(7,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Doktor i lijekovi\"){\r\n                    var hipN = listDeviseCategory[8] + readActions[i].money\r\n                    listDeviseCategory.set(8, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[8]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(8, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[8]+readActions[i].money\r\n                        listAllCategoryNeg.set(8,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Edukacija\"){\r\n                    var hipN = listDeviseCategory[9] + readActions[i].money\r\n                    listDeviseCategory.set(9, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[9]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(9, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[9]+readActions[i].money\r\n                        listAllCategoryNeg.set(9,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Ostalo\"){\r\n                    var hipN = listDeviseCategory[10] + readActions[i].money\r\n                    listDeviseCategory.set(10, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listDeviseCategoryNegativ[10]+readActions[i].money\r\n                        listDeviseCategoryNegativ.set(10, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[10]+readActions[i].money\r\n                        listAllCategoryNeg.set(10,hipNNA)\r\n                    }\r\n                }\r\n\r\n\r\n            }\r\n            if(readActions[i].idUser==idUser&& readActions[i].profil== \"Banka\" ){\r\n                sumMoneyBanka = sumMoneyBanka + readActions[i].money\r\n                sumMOneyBankNEgativ = sumMOneyBankNEgativ + readActions[i].money\r\n                if (readActions[i].category==\"Hrana i piće\"){\r\n                    var hipN = listBankCategory[0] + readActions[i].money\r\n                    listBankCategory.set(0, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[0]+readActions[i].money\r\n                        listBankCategoryNeg.set(0, hipNN)\r\n\r\n                        var hipNNA = listAllCategoryNeg[0]+readActions[i].money\r\n                        listAllCategoryNeg.set(0,hipNNA)\r\n                    }\r\n\r\n                }\r\n                if (readActions[i].category==\"Šoping\"){\r\n                    var hipN = listBankCategory[1] + readActions[i].money\r\n                    listBankCategory.set(1, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[1]+readActions[i].money\r\n                        listBankCategoryNeg.set(1, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[1]+readActions[i].money\r\n                        listAllCategoryNeg.set(1,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Transport\"){\r\n                    var hipN = listBankCategory[2] + readActions[i].money\r\n                    listBankCategory.set(2, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[2]+readActions[i].money\r\n                        listBankCategoryNeg.set(2, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[2]+readActions[i].money\r\n                        listAllCategoryNeg.set(2,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Režije\"){\r\n                    var hipN = listBankCategory[3] + readActions[i].money\r\n                    listBankCategory.set(3, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[3]+readActions[i].money\r\n                        listBankCategoryNeg.set(3, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[3]+readActions[i].money\r\n                        listAllCategoryNeg.set(3,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Automobil\"){\r\n                    var hipN = listBankCategory[4] + readActions[i].money\r\n                    listBankCategory.set(4, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[4]+readActions[i].money\r\n                        listBankCategoryNeg.set(4, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[4]+readActions[i].money\r\n                        listAllCategoryNeg.set(4,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Život i zabava\"){\r\n                    var hipN = listBankCategory[5] + readActions[i].money\r\n                    listBankCategory.set(5, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[5]+readActions[i].money\r\n                        listBankCategoryNeg.set(5, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[5]+readActions[i].money\r\n                        listAllCategoryNeg.set(5,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Investicije\"){\r\n                    var hipN = listBankCategory[6] + readActions[i].money\r\n                    listBankCategory.set(6, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[6]+readActions[i].money\r\n                        listBankCategoryNeg.set(6, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[6]+readActions[i].money\r\n                        listAllCategoryNeg.set(6,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Putovanja\"){\r\n                    var hipN = listBankCategory[7] + readActions[i].money\r\n                    listBankCategory.set(7, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[7]+readActions[i].money\r\n                        listBankCategoryNeg.set(7, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[7]+readActions[i].money\r\n                        listAllCategoryNeg.set(7,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Doktor i lijekovi\"){\r\n                    var hipN = listBankCategory[8] + readActions[i].money\r\n                    listBankCategory.set(8, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[8]+readActions[i].money\r\n                        listBankCategoryNeg.set(8, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[8]+readActions[i].money\r\n                        listAllCategoryNeg.set(8,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Edukacija\"){\r\n                    var hipN = listBankCategory[9] + readActions[i].money\r\n                    listBankCategory.set(9, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[9]+readActions[i].money\r\n                        listBankCategoryNeg.set(9, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[9]+readActions[i].money\r\n                        listAllCategoryNeg.set(9,hipNNA)\r\n                    }\r\n                }\r\n                if (readActions[i].category==\"Ostalo\"){\r\n                    var hipN = listBankCategory[10] + readActions[i].money\r\n                    listBankCategory.set(10, hipN )\r\n                    if(readActions[i].money< 0){\r\n                        var hipNN = listBankCategoryNeg[10]+readActions[i].money\r\n                        listBankCategoryNeg.set(10, hipNN)\r\n                        var hipNNA = listAllCategoryNeg[10]+readActions[i].money\r\n                        listAllCategoryNeg.set(10,hipNNA)\r\n                    }\r\n                }\r\n            }\r\n            if(readActions[i].idUser==idUser){\r\n                sumSum = sumSum + readActions[i].money\r\n            }\r\n        }\r\n\r\n        btnNovcanik.text =\"Novčanik: \\n $sumMoneyNovcanik\"\r\n        btnBanka.text = \"Banka: \\n $sumMoneyBanka\"\r\n        btnDevise.text = \"Devize: \\n $sumMoneyDevize\"\r\n        btnAllMoney.text = \"Sav novac: \\n $sumSum\"\r\n\r\n        for (j in 0 until listCategorys.size) {\r\n            var numv = listBankCategory[j]+listDeviseCategory[j]+listWalletCategory[j]\r\n            listALLCategory.set(j, numv)\r\n            if(listAllCategoryNeg[j]<0.0){\r\n\r\n\r\n\r\n                var upis = listAllCategoryNeg[j]*(-1)\r\n\r\n                arrayBankNegativ.add(PieEntry(upis.toFloat(), listCategorys[j]))\r\n            }\r\n        }\r\n\r\n\r\n        val dataSetNegativ = PieDataSet(arrayBankNegativ, \"\")\r\n        dataSetNegativ.setDrawIcons(false)\r\n\r\n        dataSetNegativ.sliceSpace = 3f\r\n        dataSetNegativ.iconsOffset = MPPointF(0F, 40F)\r\n        dataSetNegativ.selectionShift = 5f\r\n        dataSetNegativ.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n        //dataSet.setValueFormatter(new MyValueFormatter(mFormat, pieChart))\r\n\r\n\r\n        val dataNegativ = PieData(dataSetNegativ)\r\n        dataNegativ.setValueTextSize(5f)\r\n        dataNegativ.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n        pieChartNegativ.data = dataNegativ\r\n        pieChartNegativ.highlightValues(null)\r\n        pieChartNegativ.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n        pieChartNegativ.invalidate()\r\n        pieChartNegativ.setHoleColor(Color.parseColor(\"#FFFFFF\"))\r\n        pieChartNegativ.setUsePercentValues(true)\r\n        pieChartNegativ.animateXY(5000, 5000)\r\n        pieChartNegativ.description.text = \" \"\r\n\r\n\r\n\r\n\r\n        if (sumMoneyBanka > 0.0){\r\n            arrayBank.add(PieEntry(sumMoneyBanka.toFloat(), \"Banka\"))\r\n        }\r\n        if(sumMoneyDevize > 0.0){\r\n            arrayBank.add(PieEntry(sumMoneyDevize.toFloat(), \"Devize\"))\r\n        }\r\n        if(sumMoneyNovcanik> 0.0){\r\n            arrayBank.add(PieEntry(sumMoneyNovcanik.toFloat(), \"Novcanik\"))\r\n        }\r\n\r\n\r\n\r\n\r\n\r\n\r\n        val dataSet = PieDataSet(arrayBank, \"\")\r\n\r\n        dataSet.setDrawIcons(false)\r\n        dataSet.sliceSpace = 3f\r\n        dataSet.iconsOffset = MPPointF(0F, 40F)\r\n        dataSet.selectionShift = 5f\r\n        dataSet.setColors(*ColorTemplate.JOYFUL_COLORS )\r\n\r\n        val data = PieData(dataSet)\r\n        data.setValueTextSize(11f)\r\n        data.setValueTextColor(getColor(R.color.colorDarkGreen))\r\n        pieChart.data = data\r\n        pieChart.highlightValues(null)\r\n        pieChart.invalidate()\r\n        pieChart.animateXY(5000, 5000)\r\n        pieChart.description.text = \" \"\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n        btnDevise.setOnLongClickListener()  {\r\n            val intent = Intent(this, profilActivity::class.java)\r\n            intent.putExtra(\"profilStatus\", 2)\r\n            intent.putExtra(\"idUser\", idUser)\r\n            intent.putExtra(\"emailUser\", emailUser)\r\n            intent.putExtra(\"nameUser\", nameUser)\r\n            intent.putExtra(\"lastnameUser\", lastNameUser)\r\n            intent.putExtra(\"userValute\", userValute)\r\n            //intent.putExtra(\"userLang\", userLang)\r\n            startActivity(intent )\r\n\r\n            return@setOnLongClickListener true\r\n        }\r\n        btnNovcanik.setOnLongClickListener() {\r\n            val intent = Intent(this, profilActivity::class.java)\r\n            intent.putExtra(\"profilStatus\", 1)\r\n            intent.putExtra(\"idUser\", idUser)\r\n            intent.putExtra(\"emailUser\", emailUser)\r\n            intent.putExtra(\"nameUser\", nameUser)\r\n            intent.putExtra(\"lastnameUser\", lastNameUser)\r\n            intent.putExtra(\"userValute\", userValute)\r\n            //intent.putExtra(\"userLang\", userLang)\r\n            startActivity(intent )\r\n            return@setOnLongClickListener true\r\n\r\n        }\r\n        btnBanka.setOnLongClickListener() {\r\n            val intent = Intent(this, profilActivity::class.java)\r\n            intent.putExtra(\"profilStatus\", 3)\r\n            intent.putExtra(\"idUser\", idUser)\r\n            intent.putExtra(\"emailUser\", emailUser)\r\n            intent.putExtra(\"nameUser\", nameUser)\r\n            intent.putExtra(\"lastnameUser\", lastNameUser)\r\n            intent.putExtra(\"userValute\", userValute)\r\n            //intent.putExtra(\"userLang\", userLang)\r\n            startActivity(intent )\r\n            return@setOnLongClickListener true\r\n        }\r\n        btnAllMoney.setOnLongClickListener { val intent = Intent(this, profilActivity::class.java)\r\n            intent.putExtra(\"profilStatus\", 4)\r\n            intent.putExtra(\"idUser\", idUser)\r\n            intent.putExtra(\"emailUser\", emailUser)\r\n            intent.putExtra(\"nameUser\", nameUser)\r\n            intent.putExtra(\"lastnameUser\", lastNameUser)\r\n            intent.putExtra(\"userValute\", userValute)\r\n            //intent.putExtra(\"userLang\", userLang)\r\n            startActivity(intent )\r\n            return@setOnLongClickListener true }\r\n\r\n        btnNovcanik.setOnClickListener {\r\n            btnDevise.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnBanka.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnAllMoney.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnNovcanik.setBackgroundColor(getColor(R.color.colorWhite))\r\n            btnDevise.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnBanka.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnAllMoney.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnNovcanik.setTextColor(getResources().getColor(R.color.colorLightGreen))\r\n            textViewHome.text = \"Grafički prikaz prihoda u novčaniku\"\r\n            textViewHome1.text = \"Grafički prikaz rashoda u novčaniku\"\r\n            arrayBank.clear()\r\n            arrayBankNegativ.clear()\r\n            for (i in 0 until listCategorys.size) {\r\n\r\n                if(listWalletCategory[i]>0.0){\r\n                    arrayBank.add(PieEntry(listWalletCategory[i].toFloat(), listCategorys[i]))\r\n\r\n                }\r\n                if(listWalletCategoryNeg[i]<0.0){\r\n\r\n\r\n\r\n                    var upis = listWalletCategoryNeg[i]*(-1)\r\n\r\n                    var upis1 = upis / (listWalletCategoryNeg.sum()*-1)\r\n                    upis1 = upis1 * 100\r\n                    arrayBankNegativ.add(PieEntry(upis1.toFloat(), listCategorys[i]))\r\n                }\r\n            }\r\n            val dataSet = PieDataSet(arrayBank, \"\")\r\n\r\n            dataSet.setDrawIcons(false)\r\n            dataSet.sliceSpace = 3f\r\n            dataSet.iconsOffset = MPPointF(0F, 40F)\r\n            dataSet.selectionShift = 5f\r\n            dataSet.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n\r\n            val data = PieData(dataSet)\r\n            data.setValueTextSize(11f)\r\n            data.setValueTextColor(getColor(R.color.colorWhite))\r\n            pieChart.data = data\r\n            pieChart.highlightValues(null)\r\n            pieChart.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChart.invalidate()\r\n            pieChart.animateXY(5000, 5000)\r\n            pieChart.description.text = \" \"\r\n\r\n            val pieChartNegativ = findViewById<PieChart>(R.id.pieChart1)\r\n            val dataSetNegativ = PieDataSet(arrayBankNegativ, \"\")\r\n            dataSetNegativ.setDrawIcons(false)\r\n\r\n            dataSetNegativ.sliceSpace = 3f\r\n            dataSetNegativ.iconsOffset = MPPointF(0F, 40F)\r\n            dataSetNegativ.selectionShift = 5f\r\n            dataSetNegativ.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n            //dataSet.setValueFormatter(new MyValueFormatter(mFormat, pieChart))\r\n\r\n\r\n            val dataNegativ = PieData(dataSetNegativ)\r\n            dataNegativ.setValueTextSize(5f)\r\n            dataNegativ.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChartNegativ.data = dataNegativ\r\n            pieChartNegativ.highlightValues(null)\r\n            pieChartNegativ.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChartNegativ.invalidate()\r\n            pieChartNegativ.setHoleColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChartNegativ.setUsePercentValues(true)\r\n            pieChartNegativ.animateXY(5000, 5000)\r\n            pieChartNegativ.description.text = \" \"\r\n\r\n        }\r\n        btnDevise.setOnClickListener {\r\n            btnDevise.setBackgroundColor(getColor(R.color.colorWhite))\r\n            btnBanka.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnAllMoney.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnNovcanik.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnDevise.setTextColor(getResources().getColor(R.color.colorLightGreen))\r\n            btnBanka.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnAllMoney.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnNovcanik.setTextColor(getResources().getColor(R.color.colorWhite))\r\n\r\n            textViewHome.text = \"Grafički prikaz prihoda u deviznom računu\"\r\n            textViewHome1.text = \"Grafički prikaz rashoda u deviznom računu\"\r\n            var listCategorys = res.getStringArray(R.array.category)\r\n            arrayBank.clear()\r\n            arrayBankNegativ.clear()\r\n\r\n            for (i in 0 until listCategorys.size) {\r\n                if(listDeviseCategory[i]>0.0){\r\n                    arrayBank.add(PieEntry(listDeviseCategory[i].toFloat(), listCategorys[i]))\r\n                }\r\n                if(listDeviseCategoryNegativ[i]<0.0){\r\n\r\n\r\n                    var upis = listDeviseCategoryNegativ[i]*(-1)\r\n                    var upis1 = upis / (listDeviseCategoryNegativ.sum()*-1)\r\n                    upis1 = upis1 * 100\r\n                    arrayBankNegativ.add(PieEntry(upis1.toFloat(), listCategorys[i]))\r\n                }\r\n            }\r\n            val pieChart = findViewById<PieChart>(R.id.pieChart)\r\n            val dataSet = PieDataSet(arrayBank, \"\")\r\n            dataSet.setDrawIcons(false)\r\n            dataSet.sliceSpace = 3f\r\n            dataSet.iconsOffset = MPPointF(0F, 40F)\r\n            dataSet.selectionShift = 5f\r\n            dataSet.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n\r\n            val data = PieData(dataSet)\r\n            data.setValueTextSize(8f)\r\n            data.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChart.data = data\r\n            pieChart.highlightValues(null)\r\n            pieChart.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChart.invalidate()\r\n            pieChart.animateXY(5000, 5000)\r\n            pieChart.description.text = \" \"\r\n\r\n\r\n            val pieChartNegativ = findViewById<PieChart>(R.id.pieChart1)\r\n            val dataSetNegativ = PieDataSet(arrayBankNegativ, \"\")\r\n            dataSetNegativ.setDrawIcons(false)\r\n            dataSetNegativ.sliceSpace = 3f\r\n            dataSetNegativ.iconsOffset = MPPointF(0F, 40F)\r\n            dataSetNegativ.selectionShift = 5f\r\n            dataSetNegativ.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n\r\n            val dataNegativ = PieData(dataSetNegativ)\r\n            dataNegativ.setValueTextSize(8f)\r\n            dataNegativ.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChartNegativ.data = dataNegativ\r\n            pieChartNegativ.highlightValues(null)\r\n            pieChartNegativ.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChartNegativ.invalidate()\r\n            pieChartNegativ.animateXY(5000, 5000)\r\n            pieChartNegativ.description.text = \" \"\r\n        }\r\n        btnBanka.setOnClickListener {\r\n            btnDevise.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnBanka.setBackgroundColor(getColor(R.color.colorWhite))\r\n            btnAllMoney.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnNovcanik.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnDevise.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnBanka.setTextColor(getResources().getColor(R.color.colorLightGreen))\r\n            btnAllMoney.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnNovcanik.setTextColor(getResources().getColor(R.color.colorWhite))\r\n\r\n\r\n            textViewHome.text = \"Grafički prikaz prihoda u banci\"\r\n            textViewHome1.text = \"Grafički prikaz rashoda u banci\"\r\n            arrayBank.clear()\r\n            arrayBankNegativ.clear()\r\n            for (i in 0 until listCategorys.size) {\r\n                if(listBankCategory[i]>0.0){\r\n                arrayBank.add(PieEntry(listBankCategory[i].toFloat(), listCategorys[i]))\r\n                }\r\n                if(listBankCategoryNeg[i]<0.0){\r\n\r\n\r\n                    var upis = listBankCategoryNeg[i]*(-1)\r\n                    var upis1 = upis / (listBankCategoryNeg.sum()*-1)\r\n                    upis1 = upis1 * 100\r\n                    arrayBankNegativ.add(PieEntry(upis1.toFloat(), listCategorys[i]))\r\n                }\r\n            }\r\n\r\n            val dataSet = PieDataSet(arrayBank, \"\")\r\n\r\n            dataSet.setDrawIcons(false)\r\n            dataSet.sliceSpace = 3f\r\n            dataSet.iconsOffset = MPPointF(0F, 40F)\r\n            dataSet.selectionShift = 5f\r\n            dataSet.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n\r\n            val data = PieData(dataSet)\r\n            data.setValueTextSize(11f)\r\n            data.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChart.data = data\r\n            pieChart.highlightValues(null)\r\n            pieChart.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChart.invalidate()\r\n            pieChart.animateXY(5000, 5000)\r\n            pieChart.description.text = \" \"\r\n\r\n            val pieChartNegativ = findViewById<PieChart>(R.id.pieChart1)\r\n            val dataSetNegativ = PieDataSet(arrayBankNegativ, \"\")\r\n            dataSetNegativ.setDrawIcons(false)\r\n            dataSetNegativ.sliceSpace = 3f\r\n            dataSetNegativ.iconsOffset = MPPointF(0F, 40F)\r\n            dataSetNegativ.selectionShift = 5f\r\n            dataSetNegativ.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n\r\n            val dataNegativ = PieData(dataSetNegativ)\r\n            dataNegativ.setValueTextSize(8f)\r\n            dataNegativ.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChartNegativ.data = dataNegativ\r\n            pieChartNegativ.highlightValues(null)\r\n            pieChartNegativ.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChartNegativ.invalidate()\r\n            pieChartNegativ.animateXY(5000, 5000)\r\n            pieChartNegativ.description.text = \" \"\r\n\r\n        }\r\n        btnAllMoney.setOnClickListener {\r\n            btnDevise.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnBanka.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnAllMoney.setBackgroundColor(getColor(R.color.colorWhite))\r\n            btnNovcanik.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            textViewHome.text = \"Grafički prikaz svih prihoda\"\r\n            textViewHome1.text = \"Grafički prikaz svih rashoda\"\r\n            btnDevise.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnBanka.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnNovcanik.setTextColor(getResources().getColor(R.color.colorWhite))\r\n            btnAllMoney.setTextColor(getResources().getColor(R.color.colorLightGreen))\r\n\r\n            arrayBank.clear()\r\n            arrayBankNegativ.clear()\r\n            for (i in 0 until listCategorys.size) {\r\n                if(listALLCategory[i]>0.0){\r\n                arrayBank.add(PieEntry(listALLCategory[i].toFloat(), listCategorys[i]))}\r\n                if(listAllCategoryNeg[i]<0.0){\r\n\r\n\r\n                    var upis = listAllCategoryNeg[i]*(-1)\r\n                    var upis1 = upis / (listAllCategoryNeg.sum()*-1)\r\n                    upis1 = upis1 * 100\r\n                    arrayBankNegativ.add(PieEntry(upis1.toFloat(), listCategorys[i]))\r\n                }\r\n            }\r\n            val dataSet = PieDataSet(arrayBank, \"\")\r\n            dataSet.setDrawIcons(false)\r\n            dataSet.sliceSpace = 3f\r\n            dataSet.iconsOffset = MPPointF(0F, 40F)\r\n            dataSet.selectionShift = 5f\r\n            dataSet.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n\r\n            val data = PieData(dataSet)\r\n            data.setValueTextSize(11f)\r\n            data.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChart.data = data\r\n            pieChart.highlightValues(null)\r\n            pieChart.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChart.invalidate()\r\n            pieChart.animateXY(5000, 5000)\r\n            pieChart.description.text = \" \"\r\n\r\n            val pieChartNegativ = findViewById<PieChart>(R.id.pieChart1)\r\n            val dataSetNegativ = PieDataSet(arrayBankNegativ, \"\")\r\n            dataSetNegativ.setDrawIcons(false)\r\n            dataSetNegativ.sliceSpace = 3f\r\n            dataSetNegativ.iconsOffset = MPPointF(0F, 40F)\r\n            dataSetNegativ.selectionShift = 5f\r\n            dataSetNegativ.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )\r\n\r\n            val dataNegativ = PieData(dataSetNegativ)\r\n            dataNegativ.setValueTextSize(8f)\r\n            dataNegativ.setValueTextColor(Color.parseColor(\"#FFFFFF\"))\r\n            pieChartNegativ.data = dataNegativ\r\n            pieChartNegativ.highlightValues(null)\r\n            pieChartNegativ.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            pieChartNegativ.invalidate()\r\n            pieChartNegativ.animateXY(5000, 5000)\r\n            pieChartNegativ.description.text = \" \"\r\n        }\r\n\r\n        textViewShowMore.setOnClickListener{\r\n\r\n\r\n            if(textViewShowMore.text == \"Prikaži više\"){\r\n\r\n                textViewShowMore.text = \"Prikaži  manje\"\r\n                boxPT.visibility= View.VISIBLE\r\n\r\n\r\n            }else{\r\n                textViewShowMore.text = \"Prikaži više\"\r\n                boxPT.visibility = View.GONE\r\n            }\r\n\r\n            val context1 = this\r\n            val db1 = DataBaseHandler(context1)\r\n\r\n            btnAcceptPlans.setOnClickListener {\r\n                if(editTextValuePlan.text.isNotEmpty()&&editTextIzdvajanje.text.isNotEmpty()){\r\n                    if(editTextValuePlan.text.toString().toDouble()>0.0 && editTextIzdvajanje.text.toString().toDouble()>0.0){\r\n                        var datum = LocalDate.now()\r\n                        when(spinnerPlan.selectedItemPosition){\r\n                            0 ->{datum = LocalDate.now().plusDays(1)\r\n                                Toast.makeText(this, \"$datum\" ,Toast.LENGTH_LONG).show()}\r\n                            1 ->{datum = LocalDate.now().plusDays(7)\r\n                                Toast.makeText(this, \"$datum\" ,Toast.LENGTH_LONG).show()}\r\n                            2 ->{datum = LocalDate.now().plusDays(30)\r\n                                Toast.makeText(this, \"$datum\" ,Toast.LENGTH_LONG).show()}\r\n                        }\r\n                        val userPlan = PlanUser(idUser,spinnerPlan.selectedItemPosition.toString().toInt(), editTextValuePlan.text.toString().toDouble(), editTextValuePlan.text.toString().toDouble(),\r\n                            editTextIzdvajanje.text.toString().toDouble(), spinnerPlanKategorija.selectedItem.toString(), datum.format(\r\n                                DateTimeFormatter.ofPattern(\"dd-MMM-yyyy\")).toString(), spinnerPlanProfil.selectedItem.toString())\r\n\r\n                       // var userPlan = PlanUser(1,1,2.0,2.0,1.0,\" test\", \" test2\")\r\n                        db1.insertPlan(userPlan)\r\n                        editTextIzdvajanje.text.clear()\r\n                        editTextValuePlan.text.clear()\r\n\r\n\r\n                    }else{\r\n                        Toast.makeText(this, \"Vrijednosti moraju biti iznad 0\" ,Toast.LENGTH_LONG).show()\r\n                    }\r\n                }else{\r\n                    Toast.makeText(this, \"Sva polja moraju biti popunjena\" ,Toast.LENGTH_LONG).show()\r\n                    //toast greska prayno polje\r\n                }\r\n            }\r\n        }\r\n\r\n\r\n\r\n\r\n        addNewActions.setOnClickListener { view ->\r\n            var intentAddNewActivity = Intent(this, addNewActivity::class.java)\r\n            intentAddNewActivity.putExtra(\"userValute\", userValute)\r\n            intentAddNewActivity.putExtra(\"idUser\", idUser)\r\n            startActivity(intentAddNewActivity)\r\n        }\r\n    }\r\n\r\n\r\n\r\n\r\n\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/mladenjovicic/novcanik/HomeActivity.kt	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/java/com/mladenjovicic/novcanik/HomeActivity.kt	(date 1611766764115)
+@@ -35,13 +35,9 @@
+ class HomeActivity : AppCompatActivity() {
+ 
+     override fun onCreate(savedInstanceState: Bundle?) {
+-
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_home)
+-
+         work()
+-
+-
+     }
+     override fun onStart() {
+         super.onStart()
+@@ -56,8 +52,9 @@
+     fun work(){
+         val context = this
+         val db = DataBaseHandler(context)
++
++        val currencyHis = db.readCurrency()
+         val readActions = db.readActions()
+-
+         var sumMoneyNovcanik = 0.0
+         var sumMoneyDevize = 0.0
+         var sumMoneyBanka = 0.0
+@@ -81,6 +78,21 @@
+         var listWalletCategoryNeg = ArrayList<Double>()
+         var listBankCategoryNeg = ArrayList<Double>()
+         var listAllCategoryNeg = ArrayList<Double>()
++
++        var curDate= currencyHis[0].dateCurrency
++        var BAM = currencyHis[0].BAM
++        var RSD = currencyHis[0].RSD
++        var HRK = currencyHis[0].HRK
++        var USD = currencyHis[0].USD
++        var EUR = currencyHis[0].EUR
++        var RUB = currencyHis[0].RUB
++        var CAD = currencyHis[0].CAD
++        var AUD = currencyHis[0].AUD
++        var GBP = currencyHis[0].GBP
++        var JPY = currencyHis[0].JPY
++        var CNY = currencyHis[0].CNY
++        var CHF = currencyHis[0].CHF
++
+         for (j in 0 until listCategorys.size) {
+             listWalletCategory.add(0.0)
+             listBankCategory.add(0.0)
+@@ -115,12 +127,15 @@
+         adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)
+         spinnerPlanProfil.adapter = adapterProfil
+ 
++        var spinnerCurCal = findViewById<Spinner>(R.id.spinnerCurCal)
++        val adapterCurCal = ArrayAdapter.createFromResource(this, R.array.valute, R.layout.spinner_item)
++        adapterCurCal.setDropDownViewResource(R.layout.spinner_dropdown_item)
++        spinnerCurCal.adapter=adapterCurCal
+ 
+         val context1 = this
+         val db1 = DataBaseHandler(context1)
+         val userPlan = db1.readPlan()
+ 
+-
+         for (i in 0 until userPlan.size) {
+             /*textViewTestAC.append(
+                 userPlan[i].idUser.toString() +" test  "+  userPlan[i].nextPayment + userPlan[i].moneyRata.toString()
+@@ -164,7 +179,6 @@
+             }
+         }
+ 
+-
+         for (i in 0 until readActions.size) {
+             if(readActions[i].idUser==idUser&& readActions[i].profil== "Novcanik" ){
+                 sumMOneyNovcanikaNEgativ = sumMOneyNovcanikaNEgativ + readActions[i].money
+@@ -546,8 +560,6 @@
+         dataSetNegativ.iconsOffset = MPPointF(0F, 40F)
+         dataSetNegativ.selectionShift = 5f
+         dataSetNegativ.setColors(*ColorTemplate.JOYFUL_COLORS, *ColorTemplate.COLORFUL_COLORS, *ColorTemplate.MATERIAL_COLORS  )
+-        //dataSet.setValueFormatter(new MyValueFormatter(mFormat, pieChart))
+-
+ 
+         val dataNegativ = PieData(dataSetNegativ)
+         dataNegativ.setValueTextSize(5f)
+@@ -561,9 +573,6 @@
+         pieChartNegativ.animateXY(5000, 5000)
+         pieChartNegativ.description.text = " "
+ 
+-
+-
+-
+         if (sumMoneyBanka > 0.0){
+             arrayBank.add(PieEntry(sumMoneyBanka.toFloat(), "Banka"))
+         }
+@@ -574,11 +583,6 @@
+             arrayBank.add(PieEntry(sumMoneyNovcanik.toFloat(), "Novcanik"))
+         }
+ 
+-
+-
+-
+-
+-
+         val dataSet = PieDataSet(arrayBank, "")
+ 
+         dataSet.setDrawIcons(false)
+@@ -596,12 +600,6 @@
+         pieChart.animateXY(5000, 5000)
+         pieChart.description.text = " "
+ 
+-
+-
+-
+-
+-
+-
+         btnDevise.setOnLongClickListener()  {
+             val intent = Intent(this, profilActivity::class.java)
+             intent.putExtra("profilStatus", 2)
+@@ -964,9 +962,17 @@
+                     //toast greska prayno polje
+                 }
+             }
++
+         }
+ 
++        btnCurCal.setOnClickListener {
++            currency()
++        }
+ 
++        btnCurCal.setOnLongClickListener {
++            boxCur.visibility=View.GONE
++            return@setOnLongClickListener true
++        }
+ 
+ 
+         addNewActions.setOnClickListener { view ->
+@@ -977,8 +983,253 @@
+         }
+     }
+ 
++    fun currency(){
++        if(editTextCurCal.text.isNotEmpty()){
++            if (editTextCurCal.text.toString().toDouble()>0){
++                val context = this
++                val db = DataBaseHandler(context)
++
++                val currencyHis = db.readCurrency()
++
++                var curDate= currencyHis[0].dateCurrency
++                var BAM = currencyHis[0].BAM
++                var RSD = currencyHis[0].RSD
++                var HRK = currencyHis[0].HRK
++                var USD = currencyHis[0].USD
++                var EUR = currencyHis[0].EUR
++                var RUB = currencyHis[0].RUB
++                var CAD = currencyHis[0].CAD
++                var AUD = currencyHis[0].AUD
++                var GBP = currencyHis[0].GBP
++                var JPY = currencyHis[0].JPY
++                var CNY = currencyHis[0].CNY
++                var CHF = currencyHis[0].CHF
++
++                var BAM1 = 0.0
++                var RSD1 = 0.0
++                var HRK1 = 0.0
++                var USD1 = 0.0
++                var EUR1 = 0.0
++                var RUB1 = 0.0
++                var CAD1 = 0.0
++                var AUD1 = 0.0
++                var GBP1 = 0.0
++                var JPY1 = 0.0
++                var CNY1 = 0.0
++                var CHF1 = 0.0
++
++                boxCur.visibility=View.VISIBLE
++                when(spinnerCurCal.selectedItemPosition){
++                    //bam
++                    0->{
++                        BAM1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = BAM1*(1.0/BAM)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++
++
++                    }
++                    //rsd
++                    1->{
++                        RSD1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = RSD1*(1.0/RSD)
++                        BAM1 = USD1 * BAM
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++
++                    }
++                    //hrk
++                    2->{
++                        HRK1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = HRK1*(1.0/HRK)
++                        RSD1 = USD1 * RSD
++                        BAM1 = USD1 * BAM
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++
++                    }
++                    //USD
++                    3->{
++                        USD1 = editTextCurCal.text.toString().toDouble()
++
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++                        BAM1 = USD1 * BAM
++
++                    }
++                    //EUR
++                    4->{
++                        EUR1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = EUR1*(1.0/EUR)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        BAM1 = USD1 * BAM
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
+ 
++                    }
++                    //GBP
++                    5->{
++                        GBP1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = GBP1*(1.0/GBP)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        BAM1 = USD1 * BAM
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++                    }
++                    //CHF
++                    6->{
++                        CHF1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = CHF1*(1.0/CHF)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        BAM1 = USD1 * BAM
++                    }
++                    //JPY
++                    7->{
++                        JPY1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = JPY1*(1.0/JPY)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        BAM1=  USD1 * BAM
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++                    }
++                    //AUD
++                    8->{
++                        AUD1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = AUD1*(1.0/AUD)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        BAM1 = USD1 * BAM
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++                    }
++                    //CAD
++                    9->{
++                        CAD1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = CAD1*(1.0/CAD)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        BAM1 = USD1 * BAM
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++                    }
++                    //RUB
++                    10->{
++                        RUB1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = RUB1*(1.0/RUB)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        BAM1 = USD1 * BAM
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        CNY1 = USD1 * CNY
++                        CHF1 = USD1 * CHF
++                    }
++                    //CHY
++                    11->{
++                        CNY1 = editTextCurCal.text.toString().toDouble()
++                        USD1 = CNY1*(1.0/CNY)
++                        RSD1 = USD1 * RSD
++                        HRK1 = USD1 * HRK
++                        EUR1 = USD1 * EUR
++                        RUB1 = USD1 * RUB
++                        CAD1 = USD1 * CAD
++                        AUD1 = USD1 * AUD
++                        GBP1 = USD1 * GBP
++                        JPY1=  USD1 * JPY
++                        BAM1 = USD1 * BAM
++                        CHF1 = USD1 * CHF}
++                }
+ 
++                textViewBAM.text = BAM1.toString().take(8)+" BAM"
++                textViewRSD.text = RSD1.toString().take(8)+" RSD"
++                textViewHRK.text = HRK1.toString().take(8)+" HRK"
++                textViewUSD.text = USD1.toString().take(8)+" USD"
++                textViewGBP.text = GBP1.toString().take(8)+" GBP"
++                textViewCHF.text = CHF1.toString().take(8)+" CHF"
++                textViewJPY.text = JPY1.toString().take(8)+" JPY"
++                textViewAUD.text = AUD1.toString().take(8)+" AUD"
++                textViewCAD.text = CAD1.toString().take(8)+" CAD"
++                textViewRUB.text = RUB1.toString().take(8)+" RUB"
++                textViewCHY.text = CNY1.toString().take(8)+" CNY"
++                textViewEUR.text = EUR1.toString().take(8)+" EUR"
++                textViewCurUpdate.text ="Podaci azurirani: "+ curDate
+ 
++
++
++            }else{
++                Toast.makeText(this, "Vrijednost mora biti veca od 0", Toast.LENGTH_SHORT)
++            }
++        }else{
++            Toast.makeText(this,"Polje za konverziju mora biti popunjeno", Toast.LENGTH_SHORT)
++        }
+ 
+-}
++    }
++}
+\ No newline at end of file

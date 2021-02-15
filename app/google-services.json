@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "822295931730",
+    "project_id": "novacnik-ab14d",
+    "storage_bucket": "novacnik-ab14d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:822295931730:android:bc5867b07e25793f9a688b",
+        "android_client_info": {
+          "package_name": "com.mladenjovicic.novcanik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "822295931730-9t32966up6k7bd9011kdtqn8sgo2ssgi.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDG_8sWbtZ3VwmL5LLB15NzOzqU0gV8IT0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "822295931730-9t32966up6k7bd9011kdtqn8sgo2ssgi.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

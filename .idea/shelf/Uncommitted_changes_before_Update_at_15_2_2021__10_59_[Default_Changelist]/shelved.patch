@@ -1,0 +1,310 @@
+Index: app/src/main/java/com/mladenjovicic/novcanik/RegistreActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mladenjovicic.novcanik\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.AdapterView\r\nimport android.widget.ArrayAdapter\r\nimport android.widget.Spinner\r\nimport android.widget.Toast\r\nimport kotlinx.android.synthetic.main.activity_home.*\r\nimport kotlinx.android.synthetic.main.activity_registre.*\r\nimport java.sql.DataTruncation\r\n\r\n\r\nclass RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {\r\n\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_registre)\r\n\r\n        //spinner za izbor primarnog novca\r\n        var spinnerMoney= findViewById<Spinner>(R.id.spinnerMoney)\r\n\r\n        val adapter = ArrayAdapter.createFromResource(this, R.array.valute, R.layout.spinner_item)\r\n        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerMoney.adapter = adapter\r\n        spinnerMoney.onItemSelectedListener = this\r\n        //\r\n        var lang= \"Ba\"\r\n        var money:String\r\n        val emailPattern = \"[a-zA-Z0-9._-]+@[a-z]+\\\\.+[a-z]+\"\r\n\r\n        val context = this\r\n        val db = DataBaseHandler(context)\r\n\r\n        btnRegistreUser.setOnClickListener {\r\n\r\n            money= spinnerMoney.selectedItem.toString()\r\n            //Provjera da li su sva polja popunjena\r\n            if (editTextEmailUser.text.toString().isNotEmpty() && editTextNameUser.text.toString().isNotEmpty()\r\n                && editTextLastNameUser.text.toString().isNotEmpty()&& editTextPasswordAgainUser.text.toString().isNotEmpty()\r\n                && editTextPasswordUser.text.toString().isNotEmpty()){\r\n                //provjera da li je sifra duza od 8 karaktera\r\n                if(editTextPasswordUser.text.length  >= 8){\r\n                    //provjera da li je unesen ispravan email\r\n                    if(editTextEmailUser.text.matches(emailPattern.toRegex())){\r\n                        //provjera da li se sifra i ponovljena sifra ista\r\n                         if (editTextPasswordUser.text.toString() == editTextPasswordAgainUser.text.toString()){\r\n                             Toast.makeText(this, \"Its toast!\", Toast.LENGTH_SHORT).show()\r\n                             val user = User(editTextNameUser.text.toString(), editTextLastNameUser.text.toString(),editTextEmailUser.text.toString(),editTextPasswordUser.text.toString(),money,lang)\r\n                             db.insertData(user)\r\n                             clearField()\r\n\r\n                             var intent = Intent(this, MainActivity::class.java)\r\n                             intent.putExtra(\"login\", true)\r\n                             startActivity(intent)\r\n\r\n                         }\r\n                    } else{\r\n                                  Toast.makeText(this, \"Email nije kompletan\", Toast.LENGTH_SHORT).show()}\r\n                } else{\r\n                         Toast.makeText(this, \"Sifra mora imati 8 karaktera\", Toast.LENGTH_SHORT).show()}\r\n            }else{\r\n                Toast.makeText(this, \"Popunite sva polja\", Toast.LENGTH_SHORT).show() }\r\n        }\r\n        btnTestA.setOnClickListener {\r\n            val userAct = db.readActions()\r\n            textViewTestA.visibility = View.VISIBLE\r\n\r\n            textViewTestA.text = \"\"\r\n            for (i in 0 until userAct.size) {\r\n                textViewTestA.append(\r\n                    userAct[i].category\r\n                )\r\n\r\n        }\r\n            val context1 = this\r\n            val db1 = DataBaseHandler(context1)\r\n            val userPlan = db1.readPlan()\r\n            textViewTestAC.text = \"test \"\r\n            for (i in 0 until userPlan.size) {\r\n                textViewTestAC.append(\r\n\r\n\r\n                 \"id user\" +  userPlan[i].idUser.toString() +\" sledeca uplata  \"+  userPlan[i].nextPayment +\" visina rate \"+ userPlan[i].moneyRata.toString() + \" kategorija\" + userPlan[i].categoryPlan+\r\n                         \" money plan\" + userPlan[i].moneyPlan + \" plan \" + userPlan[i].plan  + \" \"+ userPlan[i].otherMoney +\" \\n \"\r\n\r\n                    //userPlan[i].id.toString() + \" e\" + userPlan[i].email + \" \" +\" p\" + userData[i].password + \"n \" + userData[i].name+ \" l\" +userData[i].lastName + userData[i].primaryMoney + userData[i].userLang + \"\\n\"\r\n                )\r\n            }\r\n    }\r\n\r\n    }\r\n    //spinner za izbor primarnog novca\r\n    override fun onNothingSelected(parent: AdapterView<*>?) {\r\n        TODO(\"not implemented\") //To change body of created functions use File | Settings | File Templates.\r\n    }\r\n    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {\r\n        val money: String = parent?.getItemAtPosition(position).toString()\r\n\r\n\r\n    }\r\n    private fun clearField() {\r\n        editTextEmailUser.text.clear()\r\n        editTextNameUser.text.clear()\r\n        editTextLastNameUser.text.clear()\r\n        editTextPasswordAgainUser.text.clear()\r\n        editTextPasswordUser.text.clear()\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/mladenjovicic/novcanik/RegistreActivity.kt	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/java/com/mladenjovicic/novcanik/RegistreActivity.kt	(date 1613382677206)
+@@ -1,16 +1,26 @@
+ package com.mladenjovicic.novcanik
+ 
++import android.content.Context
+ import android.content.Intent
++import android.net.Uri
+ import androidx.appcompat.app.AppCompatActivity
+ import android.os.Bundle
++import android.util.Log
+ import android.view.View
+ import android.widget.AdapterView
+ import android.widget.ArrayAdapter
+ import android.widget.Spinner
+ import android.widget.Toast
++import com.google.firebase.auth.FirebaseAuth
++import com.google.firebase.auth.FirebaseAuthEmailException
++import com.google.firebase.auth.ktx.auth
++import com.google.firebase.ktx.Firebase
+ import kotlinx.android.synthetic.main.activity_home.*
+ import kotlinx.android.synthetic.main.activity_registre.*
+ import java.sql.DataTruncation
++import java.io.IOException;
++
++
+ 
+ 
+ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
+@@ -48,9 +58,38 @@
+                     if(editTextEmailUser.text.matches(emailPattern.toRegex())){
+                         //provjera da li se sifra i ponovljena sifra ista
+                          if (editTextPasswordUser.text.toString() == editTextPasswordAgainUser.text.toString()){
+-                             Toast.makeText(this, "Its toast!", Toast.LENGTH_SHORT).show()
++                             //Toast.makeText(this, "Its toast!", Toast.LENGTH_SHORT).show()
+                              val user = User(editTextNameUser.text.toString(), editTextLastNameUser.text.toString(),editTextEmailUser.text.toString(),editTextPasswordUser.text.toString(),money,lang)
+                              db.insertData(user)
++                            //TODO
++
++                            /* val auth = Firebase.auth
++                             auth.createUserWithEmailAndPassword(editTextEmailUser.text.toString(), editTextPasswordUser.text.toString()).addOnCompleteListener {task ->
++                               if(task.isSuccessful){
++                                val userFire= auth.currentUser
++                                   //updateUI(user)
++                                 println("registracija")}
++                               else{
++                                   Log.w( "createUserWithEmail:failure", task.exception)
++                                   Toast.makeText(baseContext, "Authentication failed.",
++                                       Toast.LENGTH_SHORT).show()
++                                   //updateUI(null)
++                               }
++                             }*/
++
++
++
++                                FirebaseAuth.getInstance().createUserWithEmailAndPassword(editTextEmailUser.text.toString(), editTextPasswordUser.text.toString())
++                                    .addOnCompleteListener{
++                                        if (!it.isSuccessful){
++                                            return@addOnCompleteListener
++                                            println("UID: "+it.result?.user?.uid)
++                                        }
++                                        if(!it.isCanceled){
++                                            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show()
++                                        }
++                                }
++
+                              clearField()
+ 
+                              var intent = Intent(this, MainActivity::class.java)
+@@ -66,13 +105,13 @@
+                 Toast.makeText(this, "Popunite sva polja", Toast.LENGTH_SHORT).show() }
+         }
+         btnTestA.setOnClickListener {
+-            val userAct = db.readActions()
++            val currencyHis = db.readCurrency()
+             textViewTestA.visibility = View.VISIBLE
+ 
+             textViewTestA.text = ""
+-            for (i in 0 until userAct.size) {
++            for (i in 0 until currencyHis.size) {
+                 textViewTestA.append(
+-                    userAct[i].category
++                    currencyHis[i].BAM.toString()
+                 )
+ 
+         }
+@@ -92,15 +131,16 @@
+             }
+     }
+ 
++    }
++
++    fun sendEmail(context: Context){
++        val emailIntent = Intent(Intent.ACTION_SENDTO, Uri.fromParts("mailto", "email@example.com", null))
+     }
+     //spinner za izbor primarnog novca
+-    override fun onNothingSelected(parent: AdapterView<*>?) {
+-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+-    }
++    override fun onNothingSelected(parent: AdapterView<*>?) {}
+     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+         val money: String = parent?.getItemAtPosition(position).toString()
+ 
+-
+     }
+     private fun clearField() {
+         editTextEmailUser.text.clear()
+@@ -108,6 +148,8 @@
+         editTextLastNameUser.text.clear()
+         editTextPasswordAgainUser.text.clear()
+         editTextPasswordUser.text.clear()
++    }
++    private fun sendEmail(){
+ 
+     }
+ }
+Index: .idea/.name
+===================================================================
+--- .idea/.name	(date 1611568786753)
++++ .idea/.name	(date 1611568786753)
+@@ -0,0 +1,1 @@
++Novcanik
+\ No newline at end of file
+Index: app/src/main/java/com/mladenjovicic/novcanik/MainActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mladenjovicic.novcanik\r\n\r\nimport android.content.Intent\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.Toast\r\nimport com.bumptech.glide.Glide\r\nimport kotlinx.android.synthetic.main.activity_main.*\r\nimport kotlinx.android.synthetic.main.activity_registre.*\r\nimport kotlin.concurrent.thread\r\n\r\nvar login = false\r\nvar autoLogin = false\r\nclass MainActivity : AppCompatActivity() {\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n\r\n        val context = this\r\n\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_main)\r\n        Glide.with(this).load(R.drawable.loding).into(imageViewLoding)\r\n\r\n        btnRegisterAct.setOnClickListener {\r\n            val intent = Intent(this, RegistreActivity::class.java )\r\n            startActivity(intent)\r\n        }\r\n\r\n        if(login == true){\r\n            val intent = Intent(this, RegistreActivity::class.java )\r\n            startActivity(intent)\r\n        }else{\r\n\r\n        }\r\n\r\n        imageViewLoding.visibility = View.GONE\r\n        text_home.visibility = View.GONE\r\n        loginBox.visibility = View.VISIBLE\r\n\r\n\r\n            val db = DataBaseHandler(context)\r\n            btnLoginUser.setOnClickListener {\r\n                //Provjera da li je editText za email i šifru prazni\r\n                if(editTextUserEmailLogin.text.toString().isNotEmpty()&& editTextUserPasswordLogin.text.toString().isNotEmpty()){\r\n                    //provjera podataka u bazi podataka\r\n                    val userData = db.readData()\r\n                    for (i in 0 until userData.size) {\r\n                    var userId = userData[i].id.toInt()\r\n                    var userEmail = userData[i].email.toString()\r\n                    var userPassword = userData[i].password.toString()\r\n                    var userName = userData[i].name.toString()\r\n                    var userLastname = userData[i].lastName.toString()\r\n                    var userValute=userData[i].primaryMoney.toString()\r\n                    var userLang = userData[i].userLang.toString()\r\n                    if(userEmail == editTextUserEmailLogin.text.toString()&& userPassword == editTextUserPasswordLogin.text.toString()){\r\n                        val intent = Intent(this, HomeActivity::class.java )\r\n                        intent.putExtra(\"idUser\", userId)\r\n                        intent.putExtra(\"emailUser\", userEmail)\r\n                        intent.putExtra(\"nameUser\", userName)\r\n                        intent.putExtra(\"lastnameUser\", userLastname)\r\n                        intent.putExtra(\"userValute\", userValute)\r\n                        intent.putExtra(\"userLang\", userLang)\r\n                        startActivity(intent)\r\n                        break\r\n\r\n                    }else{\r\n                        Toast.makeText(context, \"Unesene podaci ne odgovaraju nijednom nalogu\", Toast.LENGTH_SHORT).show()\r\n                    }\r\n\r\n\r\n                }\r\n\r\n                if (checkBoxSave.isChecked){\r\n                    autoLogin = true\r\n\r\n                }else{\r\n                    autoLogin = false\r\n                }\r\n            }else{\r\n                    Toast.makeText(this, \"Niste unijeli podatke \", Toast.LENGTH_SHORT).show()\r\n                }\r\n\r\n        }\r\n\r\n\r\n    }\r\n}\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/mladenjovicic/novcanik/MainActivity.kt	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/java/com/mladenjovicic/novcanik/MainActivity.kt	(date 1612785396351)
+@@ -8,19 +8,67 @@
+ import com.bumptech.glide.Glide
+ import kotlinx.android.synthetic.main.activity_main.*
+ import kotlinx.android.synthetic.main.activity_registre.*
++import okhttp3.*
++import org.json.JSONException
++import org.json.JSONObject
++import java.io.IOException
++import java.time.LocalDate
++import java.time.format.DateTimeFormatter
+ import kotlin.concurrent.thread
++import com.google.firebase.auth.FirebaseAuth
++
+ 
+ var login = false
+ var autoLogin = false
++val apiKey = "04b0aa8e72bc4d03a61f742175c58d95"
++var BAM:String = ""
++var RSD:String = ""
++var HRK:String = ""
++var USD:String = ""
++var EUR:String = ""
++var GBP:String = ""
++var CHF:String = ""
++var JPY:String = ""
++var AUD:String = ""
++var CAD:String = ""
++var RUB:String = ""
++var CNY:String = ""
++var dateCurrency:String = ""
++var tableCheck = 0
++
+ class MainActivity : AppCompatActivity() {
+ 
+     override fun onCreate(savedInstanceState: Bundle?) {
+ 
+         val context = this
+-
++        val db = DataBaseHandler(context)
+         super.onCreate(savedInstanceState)
+         setContentView(R.layout.activity_main)
+-        Glide.with(this).load(R.drawable.loding).into(imageViewLoding)
++//        Glide.with(this).load(R.drawable.loding).into(imageViewLoding)
++        val currencyHis = db.readCurrency()
++        var datum = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
++        println("datsss"+ datum.toString())
++        val userPlan = db.readPlan()
++
++        for (i in 0 until currencyHis.size) {
++            println(" looo"+tableCheck)
++            tableCheck++
++            if (tableCheck>=1){
++                break
++            }else{
++
++            }
++        }
++        if(tableCheck == 0){
++                val currencyVal = currencyValue("2021-01-27",1.610665,97.4,6.2187,1.0,0.822132,0.72775
++                ,0.886654,103.607,1.289998,1.269385,75.1062,6.4652)
++                db.insertCurrency(currencyVal)
++                fetchJson()
++            }else{
++               if(currencyHis[0].dateCurrency!=datum.toString()){
++                   fetchJson()
++                    }
++                }
+ 
+         btnRegisterAct.setOnClickListener {
+             val intent = Intent(this, RegistreActivity::class.java )
+@@ -39,10 +87,20 @@
+         loginBox.visibility = View.VISIBLE
+ 
+ 
+-            val db = DataBaseHandler(context)
++
+             btnLoginUser.setOnClickListener {
+-                //Provjera da li je editText za email i šifru prazni
++                //Provjera da li je editText za email i šifru prazno
+                 if(editTextUserEmailLogin.text.toString().isNotEmpty()&& editTextUserPasswordLogin.text.toString().isNotEmpty()){
++                    FirebaseAuth.getInstance().signInWithEmailAndPassword(editTextUserEmailLogin.text.toString(),editTextUserPasswordLogin.text.toString()).addOnCompleteListener {
++                        if (!it.isSuccessful){
++                            return@addOnCompleteListener
++                            println("provjera333"+it.result?.user?.uid)
++                            Toast.makeText(this, it.result?.user?.uid, Toast.LENGTH_SHORT).show()
++
++                        }
++
++                        Thread.sleep(5000)
++                    }
+                     //provjera podataka u bazi podataka
+                     val userData = db.readData()
+                     for (i in 0 until userData.size) {
+@@ -84,5 +142,59 @@
+         }
+ 
+ 
++    }
++    fun fetchJson(){
++        println("provjera")
++
++        val url = "https://api.currencyfreaks.com/latest?apikey=$apiKey&symbols=BAM,RSD,HRK,USD,EUR,GBP,CHF,JPY,AUD,CAD,RUB,CNY"
++        val request = Request.Builder().url(url).build()
++        val client = OkHttpClient()
++        client.newCall(request).enqueue(object: Callback {
++            override fun onResponse(call: Call, response: Response) {
++                val body = response?.body?.string()
++
++
++                println("test "+ body)
++
++                try {
++                    val obj = JSONObject(body)
++                    val rates: JSONObject = obj.getJSONObject("rates")
++
++                    dateCurrency= obj.getString("date")
++                    BAM = rates.getString("BAM")
++                    RSD = rates.getString("RSD")
++                    HRK = rates.getString("HRK")
++                    USD = rates.getString("USD")
++                    EUR = rates.getString("EUR")
++                    GBP = rates.getString("GBP")
++                    CHF = rates.getString("CHF")
++                    JPY = rates.getString("JPY")
++                    AUD = rates.getString("AUD")
++                    CAD = rates.getString("CAD")
++                    RUB = rates.getString("RUB")
++                    CNY = rates.getString("CNY")
++
++                    println("test1+ ${GBP.toDouble()} "+ BAM+CAD+RSD+"   "+dateCurrency)
++                    val context = this@MainActivity
++                    val db = DataBaseHandler(context)
++                    val currencyVal = currencyValue(dateCurrency.take(10),BAM.toDouble(),RSD.toDouble(),HRK.toDouble(),USD.toDouble(),EUR.toDouble(),GBP.toDouble()
++                        ,CHF.toDouble(),JPY.toDouble(),AUD.toDouble(),CAD.toDouble(),RUB.toDouble(),CNY.toDouble())
++                    db.insertCurrency(currencyVal)
++
++
++                }catch (e: JSONException){
++                    println("ne radi")
++                    e.printStackTrace()
++                }
++
++
++
++
++            }
++            override fun onFailure(call: Call, e: IOException) {
++                println("greska bodz")
++            }
++        })
++
+     }
+ }
+Index: app/src/main/java/com/mladenjovicic/novcanik/addNewActivity.kt
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.mladenjovicic.novcanik\r\n\r\nimport android.content.Intent\r\nimport android.graphics.Color\r\nimport android.os.Bundle\r\nimport android.view.View\r\nimport android.widget.AdapterView\r\nimport android.widget.ArrayAdapter\r\nimport android.widget.Spinner\r\nimport androidx.appcompat.app.AppCompatActivity\r\nimport kotlinx.android.synthetic.main.activity_add_new.*\r\nimport java.time.LocalDate\r\nimport java.time.LocalDateTime\r\nimport java.time.format.DateTimeFormatter\r\n\r\n\r\nclass addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {\r\n\r\n    override fun onCreate(savedInstanceState: Bundle?) {\r\n        super.onCreate(savedInstanceState)\r\n        setContentView(R.layout.activity_add_new)\r\n        var profilStatus:String\r\n        var profilStatus2:String\r\n        var transfer =  false\r\n        var colorTest = \"colorLightGreen\"\r\n\r\n        val context = this\r\n        val db = DataBaseHandler(context)\r\n\r\n\r\n        var userId = intent.getIntExtra(\"idUser\", 0)\r\n        var userValute = intent.getStringExtra(\"userValute\")\r\n\r\n\r\n\r\n        //spinner\r\n        var spinnerProfil1 = findViewById<Spinner>(R.id.spinnerCategoria)\r\n        val adapterProfil1 = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)\r\n        adapterProfil1.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerProfil1.adapter = adapterProfil1\r\n        spinnerProfil1.onItemSelectedListener = this\r\n\r\n\r\n        var spinnerChoseMoney =findViewById<Spinner>(R.id.spinnerChoseMoney)\r\n        val adapter = ArrayAdapter.createFromResource(this, R.array.valute, R.layout.spinner_item)\r\n        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerChoseMoney.adapter = adapter\r\n        spinnerChoseMoney.onItemSelectedListener = this\r\n        var spinnerPositon = adapter.getPosition(userValute)\r\n        spinnerChoseMoney.setSelection(spinnerPositon)\r\n\r\n        var spinnerCategoria = findViewById<Spinner>(R.id.spinnerCategoria)\r\n        val adapterCategoria = ArrayAdapter.createFromResource(this, R.array.category, R.layout.spinner_item)\r\n        adapterCategoria.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerCategoria.adapter = adapterCategoria\r\n        spinnerCategoria.onItemSelectedListener = this\r\n\r\n        var spinnerProfil = findViewById<Spinner>(R.id.spinnerProfil)\r\n        val adapterProfil = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)\r\n        adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n        spinnerProfil.adapter = adapterProfil\r\n        spinnerProfil.onItemSelectedListener = this\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n        btnIncome.setOnClickListener {\r\n            transfer = false\r\n            textViewPON.text=\"+\"\r\n            textViewProfil.text= \"   Račun: \"\r\n            textViewCategoria.text = \"   Kategorija: \"\r\n            btnIncome.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnExpense.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            btnTransfer.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n\r\n            var spinnerProfil = findViewById<Spinner>(R.id.spinnerProfil)\r\n            val adapterProfil = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)\r\n            adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n            spinnerProfil.adapter = adapterProfil\r\n            spinnerProfil.onItemSelectedListener = this\r\n\r\n            var spinnerCategoria = findViewById<Spinner>(R.id.spinnerCategoria)\r\n            val adapterCategoria = ArrayAdapter.createFromResource(this, R.array.category, R.layout.spinner_item)\r\n            adapterCategoria.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n            spinnerCategoria.adapter = adapterCategoria\r\n            spinnerCategoria.onItemSelectedListener = this\r\n            spinnerCategoria.visibility = View.VISIBLE\r\n\r\n        }\r\n        btnExpense.setOnClickListener {\r\n            transfer = false\r\n            textViewPON.text=\"-\"\r\n            textViewProfil.text= \"   Račun: \"\r\n            textViewCategoria.text = \"   Kategorija: \"\r\n            btnIncome.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            btnExpense.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            btnTransfer.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n\r\n            var spinnerProfil = findViewById<Spinner>(R.id.spinnerProfil)\r\n            val adapterProfil = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)\r\n            adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n            spinnerProfil.adapter = adapterProfil\r\n            spinnerProfil.onItemSelectedListener = this\r\n\r\n            var spinnerCategoria = findViewById<Spinner>(R.id.spinnerCategoria)\r\n            val adapterCategoria = ArrayAdapter.createFromResource(this, R.array.category, R.layout.spinner_item)\r\n            adapterCategoria.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n            spinnerCategoria.adapter = adapterCategoria\r\n            spinnerCategoria.onItemSelectedListener = this\r\n        }\r\n        btnTransfer.setOnClickListener {\r\n            transfer = true\r\n            textViewPON.text=\" \"\r\n            textViewProfil.text= \"   Iz računa: \"\r\n            textViewCategoria.text = \"   U račun: \"\r\n            btnIncome.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            btnExpense.setBackgroundColor(getColor(R.color.colorDarkGreen))\r\n            btnTransfer.setBackgroundColor(getColor(R.color.colorLightGreen))\r\n            spinnerCategoria.visibility = View.VISIBLE\r\n\r\n            var spinnerProfil = findViewById<Spinner>(R.id.spinnerProfil)\r\n            val adapterProfil = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)\r\n            adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n            spinnerProfil.adapter = adapterProfil\r\n            spinnerProfil.onItemSelectedListener = this\r\n\r\n            var spinnerProfil1 = findViewById<Spinner>(R.id.spinnerCategoria)\r\n            val adapterProfil1 = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)\r\n            adapterProfil1.setDropDownViewResource(R.layout.spinner_dropdown_item)\r\n            spinnerProfil1.adapter = adapterProfil1\r\n            spinnerProfil1.onItemSelectedListener = this\r\n        }\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n        //dodavanje u bazu\r\n        btnAcceptActivity.setOnClickListener {\r\n            if (editTextEnterMoney.text.isNotEmpty()) {\r\n\r\n                if (transfer == false) {\r\n                    var userValute = spinnerChoseMoney.selectedItem.toString()\r\n                    var categoryUser = spinnerCategoria.selectedItem.toString()\r\n                    profilStatus = spinnerProfil.selectedItem.toString()\r\n                    var getMoney: Double = editTextEnterMoney.getText().toString().toDouble()\r\n                    val dateTime = LocalDate.now().format(DateTimeFormatter.ofPattern(\"dd-MMM-yyyy\")).toString()\r\n\r\n                    if (textViewPON.text.toString() == \"-\") {\r\n                        getMoney = getMoney * (-1)\r\n                        val userActvities = UserActvities(\r\n                            userId,\r\n                            userValute,\r\n                            getMoney,\r\n                            categoryUser,\r\n                            profilStatus,\r\n                            dateTime\r\n                        )\r\n                        db.insertActions(userActvities)\r\n                        clear()\r\n                    } else {\r\n                        val userActvities = UserActvities(\r\n                            userId,\r\n                            userValute,\r\n                            getMoney,\r\n                            categoryUser,\r\n                            profilStatus,\r\n                            dateTime\r\n                        )\r\n                        db.insertActions(userActvities)\r\n                        clear()\r\n\r\n                    }\r\n\r\n                }\r\n            }\r\n            if (transfer == true){\r\n\r\n\r\n\r\n\r\n\r\n                profilStatus = spinnerProfil.selectedItem.toString()\r\n                profilStatus2 = spinnerProfil1.selectedItem.toString()\r\n                var getMoney: Double = editTextEnterMoney.getText().toString().toDouble()\r\n                var getMoney1 = getMoney*(-1)\r\n                val dateTime = LocalDate.now().format(DateTimeFormatter.ofPattern(\"dd-MMM-yyyy\")).toString()\r\n\r\n                val userActvitiesUlaz = UserActvities(\r\n                    userId,\r\n                    userValute,\r\n                    getMoney1,\r\n                    \"TransferIzlaz\",\r\n                    profilStatus,\r\n                    dateTime\r\n                )\r\n\r\n                db.insertActions(userActvitiesUlaz)\r\n\r\n\r\n\r\n                val userActvitiesIzlaz = UserActvities(\r\n                    userId,\r\n                    userValute,\r\n                    getMoney,\r\n                    \"TransferUlaz\",\r\n                    profilStatus2,\r\n                    dateTime\r\n                )\r\n                db.insertActions(userActvitiesIzlaz)\r\n\r\n                clear()\r\n            }\r\n\r\n\r\n        }\r\n\r\n\r\n    }\r\n\r\n\r\n\r\n    override fun onNothingSelected(parent: AdapterView<*>?) {\r\n        TODO(\"not implemented\") //To change body of created functions use File | Settings | File Templates.\r\n    }\r\n    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {\r\n        val money: String = parent?.getItemAtPosition(position).toString()}\r\n\r\n    private fun clear(){\r\n\r\n            editTextEnterMoney.text.clear()\r\n    }\r\n\r\n    }\r\n\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+--- app/src/main/java/com/mladenjovicic/novcanik/addNewActivity.kt	(revision 23271657ba6a2ef03b23db283df32be6c8af4f04)
++++ app/src/main/java/com/mladenjovicic/novcanik/addNewActivity.kt	(date 1611739847412)
+@@ -229,7 +229,7 @@
+ 
+ 
+     override fun onNothingSelected(parent: AdapterView<*>?) {
+-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
++
+     }
+     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+         val money: String = parent?.getItemAtPosition(position).toString()}
