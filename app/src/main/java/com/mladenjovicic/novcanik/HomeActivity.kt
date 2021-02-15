@@ -1,16 +1,17 @@
 package com.mladenjovicic.novcanik
 
+import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
 import android.graphics.Color
 import android.graphics.Typeface
+import android.media.Image
 import android.os.Bundle
 import android.util.Log
+import android.view.LayoutInflater
 import android.view.View
-import android.widget.AdapterView
-import android.widget.ArrayAdapter
-import android.widget.Spinner
-import android.widget.Toast
+import android.view.ViewGroup
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.load.engine.Resource
 import com.github.mikephil.charting.charts.PieChart
@@ -31,7 +32,12 @@ import kotlinx.android.synthetic.main.activity_registre.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
+import kotlin.math.roundToLong
 
+var test12 = 0
+private val valueCode= arrayListOf<String>("BAM", "RSD", "HRK", "USD", "EUR", "GPB", "CHF", "JPY", "AUD", "CAD", "RUB", "CHY")
+private val currenysValeus= mutableListOf<Double>(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
+private val countryFlags = arrayListOf<Int>(R.drawable.bih_flag, R.drawable.serbia_flag, R.drawable.croatia_flag, R.drawable.usa_flag,R.drawable.eu_flag,R.drawable.uk_flag, R.drawable.switzerland_flag, R.drawable.japanese_flag,R.drawable.australia_flag, R.drawable.canada_flag, R.drawable.russia_flag, R.drawable.chine_flag)
 class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -114,6 +120,12 @@ class HomeActivity : AppCompatActivity() {
         val adapterProfil = ArrayAdapter.createFromResource(this, R.array.profil, R.layout.spinner_item)
         adapterProfil.setDropDownViewResource(R.layout.spinner_dropdown_item)
         spinnerPlanProfil.adapter = adapterProfil
+
+        var choseSpinnerMoney= findViewById<Spinner>(R.id.choseSpinnerMoney)
+        val adapterMoney = ArrayAdapter.createFromResource(this, R.array.valute, R.layout.spinner_item)
+        adapterMoney.setDropDownViewResource(R.layout.spinner_dropdown_item)
+        choseSpinnerMoney.adapter = adapterMoney
+
 
 
         val context1 = this
@@ -650,7 +662,6 @@ class HomeActivity : AppCompatActivity() {
             //intent.putExtra("userLang", userLang)
             startActivity(intent )
             return@setOnLongClickListener true }
-
         btnNovcanik.setOnClickListener {
             btnDevise.setBackgroundColor(getColor(R.color.colorLightGreen))
             btnBanka.setBackgroundColor(getColor(R.color.colorLightGreen))
@@ -964,6 +975,230 @@ class HomeActivity : AppCompatActivity() {
                     //toast greska prayno polje
                 }
             }
+
+
+        }
+
+        btnConvertorValue.setOnClickListener {
+            if (editTextCurrencyValue.text.isNotEmpty()){
+                val readValute = db.readValute()
+                var BAM = readValute[0].BAM
+                var RSD = readValute[0].RSD
+                var HRK = readValute[0].HRK
+                var USD = readValute[0].USD
+                var EUR = readValute[0].EUR
+                var GBP = readValute[0].GBP
+                var CHF = readValute[0].CHF
+                var JPY = readValute[0].JPY
+                var AUD = readValute[0].AUD
+                var CAD = readValute[0].CAD
+                var RUB = readValute[0].RUB
+                var CHY = readValute[0].CNY
+                var BAM1 = 0.0
+                var RSD1 = 0.0
+                var HRK1 = 0.0
+                var USD1 = 0.0
+                var EUR1 = 0.0
+                var GBP1 = 0.0
+                var CHF1 = 0.0
+                var JPY1 = 0.0
+                var AUD1 = 0.0
+                var CAD1 = 0.0
+                var RUB1 = 0.0
+                var CHY1 = 0.0
+                when(choseSpinnerMoney.selectedItemPosition){
+                    0->{//BAM
+                        BAM1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = BAM1*(1/BAM)
+                        RSD1 = USD1*RSD
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                    }
+                    1->{//RSD
+                        RSD1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = RSD1*(1/RSD)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                    }
+                    2->{//HRK
+                        HRK1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = HRK1*(1/HRK)
+                        BAM1 = USD1*BAM
+                        RSD1 = USD1*RSD
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                    }
+                    3->{//USD
+                        USD1 = editTextCurrencyValue.text.toString().toDouble()
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                    }
+                    4->{//EUR
+                        EUR1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = EUR1*(1/EUR)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        RSD1 = USD1*RSD
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                         }
+                    5->{//GBP
+                        GBP1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = GBP1*(1/GBP)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        RSD1 = USD1*RSD
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                    }
+                    6->{//CHF
+                        CHF1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = CHF1*(1/CHF)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        RSD1 = USD1*RSD
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                        }
+                    7->{//JPY
+                        JPY1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = JPY1*(1/JPY)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        RSD1 = USD1*RSD
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+
+                    }
+                    8->{//AUD
+                        AUD1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = AUD1*(1/AUD)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        RSD1 = USD1*RSD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                    }
+                    9->{//CAD
+                        CAD1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = CAD1*(1/CAD)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        RSD1 = USD1*RSD
+                        RUB1 = USD1*RUB
+                        CHY1 = USD1*CHY
+                    }
+                    10->{//RUB
+                        RUB1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = RUB1*(1/RUB)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RSD1 = USD1*RSD
+                        CHY1 = USD1*CHY
+                    }
+                    11->{//CHY
+                        CHY1 = editTextCurrencyValue.text.toString().toDouble()
+                        USD1 = CHY1*(1/CHY)
+                        BAM1 = USD1*BAM
+                        HRK1 = USD1*HRK
+                        EUR1 = USD1*EUR
+                        GBP1 = USD1*GBP
+                        CHF1 = USD1*CHF
+                        JPY1 = USD1*JPY
+                        AUD1 = USD1*AUD
+                        CAD1 = USD1*CAD
+                        RUB1 = USD1*RUB
+                        RSD1 = USD1*RSD
+                    }
+
+
+                }
+                currenysValeus.set(0, BAM1)
+                currenysValeus.set(1,RSD1)
+                currenysValeus.set(2,HRK1)
+                currenysValeus.set(3,USD1)
+                currenysValeus.set(4,EUR1)
+                currenysValeus.set(5,GBP1)
+                currenysValeus.set(6,CHF1)
+                currenysValeus.set(7,JPY1)
+                currenysValeus.set(8,AUD1)
+                currenysValeus.set(9,CAD1)
+                currenysValeus.set(10,RUB1)
+                currenysValeus.set(11,CHY1)
+
+
+
+                val listView = findViewById<ListView>(R.id.listViewCurrenyValue)
+                listView.adapter = valueAdapter(this)
+                listViewCurrenyValue.visibility=View.VISIBLE
+            }else{
+                Toast.makeText(this, "Polje mora biti popunjeno", Toast.LENGTH_LONG)
+            }
         }
 
 
@@ -978,7 +1213,41 @@ class HomeActivity : AppCompatActivity() {
     }
 
 
+    private class  valueAdapter(context: Context):BaseAdapter(){
+        private val mContext: Context
+        init {
+            mContext = context
+        }
 
+        override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
+            val layoutInflater = LayoutInflater.from(mContext)
+            val rowValue = layoutInflater.inflate(R.layout.valuelist, parent, false)
+            val CountryFlag = rowValue.findViewById<ImageView>(R.id.imageViewContryFlag)
+            val CurrencyValue = rowValue.findViewById<TextView>(R.id.textViewValueCurrency)
+            val ValueCod = rowValue.findViewById<TextView>(R.id.textViewCodValue)
+
+            CurrencyValue.text= "" + currenysValeus.get(position).toString().take(10)
+            CountryFlag.setImageResource(countryFlags.get(position))
+            ValueCod.text = valueCode.get(position)
+
+
+            return rowValue
+        }
+
+        override fun getCount(): Int {
+            return valueCode.size
+        }
+
+        override fun getItem(position: Int): Any {
+            return "testss"
+        }
+
+        override fun getItemId(position: Int): Long {
+            return position.toLong()
+        }
+
+    }
 
 
 }
+

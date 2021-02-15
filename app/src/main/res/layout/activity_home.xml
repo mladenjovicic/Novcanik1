@@ -23,7 +23,7 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
 
 
@@ -102,13 +102,13 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    >
+                    android:orientation="horizontal">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
 
                         <TextView
@@ -120,16 +120,18 @@
                             android:textAlignment="center"
                             android:textColor="#FFFFFF"
                             android:textSize="14sp" />
-                <com.github.mikephil.charting.charts.PieChart
-                    android:id="@+id/pieChart"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp" />
+
+                        <com.github.mikephil.charting.charts.PieChart
+                            android:id="@+id/pieChart"
+                            android:layout_width="match_parent"
+                            android:layout_height="250dp" />
                     </LinearLayout>
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:layout_weight="1">
+                        android:layout_weight="1"
+                        android:orientation="vertical">
 
                         <TextView
                             android:id="@+id/textViewHome1"
@@ -148,11 +150,11 @@
 
 
                     </LinearLayout>
-            </LinearLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="250dp"
+                    android:layout_height="wrap_content"
                     android:orientation="vertical">
 
                     <LinearLayout
@@ -342,8 +344,53 @@
 
                 </LinearLayout>
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <Spinner
+                            android:id="@+id/choseSpinnerMoney"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:backgroundTint="@android:color/background_light"
+                            android:dropDownSelector="@android:color/background_light"
+                            android:popupBackground="#9acc60"
+                            android:textColor="@android:color/background_light" />
+
+                        <EditText
+                            android:id="@+id/editTextCurrencyValue"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1"
+                            android:ems="10"
+                            android:inputType="numberDecimal" />
+                    </LinearLayout>
+
+                    <Button
+                        android:id="@+id/btnConvertorValue"
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_marginLeft="107dp"
+                        android:layout_marginRight="105dp"
+                        android:backgroundTint="#ffffff"
+                        android:text="Button"
+                        android:textColor="#9acc60" />
 
 
+                </LinearLayout>
+
+                <ListView
+                    android:id="@+id/listViewCurrenyValue"
+                    android:layout_width="match_parent"
+                    android:layout_height="600dp"
+                    tools:visibility="gone" />
 
 
             </LinearLayout>
