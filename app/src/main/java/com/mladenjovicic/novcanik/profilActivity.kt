@@ -29,6 +29,10 @@ private val dateTime2 = arrayListOf<String>()
 private val idActivitis = arrayListOf<Int>()
 private val profilAktivnost = arrayListOf<String>()
 private val idUserActivitiy = arrayListOf<Int>()
+private val idUserPrimarValut = arrayListOf<String>()
+private val cursValut = arrayListOf<Double>()
+private val valueConvert = arrayListOf<Double>()
+private val dateCurrencyConvert = arrayListOf<String>()
 var test:Int= 0
 var profilStatus:Int=0
 
@@ -41,13 +45,11 @@ class profilActivity : AppCompatActivity() {
         work()
         profilStatus = intent.getIntExtra("profilStatus", 0)
     }
-
     override fun onRestart() {
         arrayClear()
         work()
         super.onRestart()
     }
-
     override fun onResume() {
 
         arrayClear()
@@ -56,6 +58,10 @@ class profilActivity : AppCompatActivity() {
     }
 
     fun arrayClear(){
+        idUserPrimarValut.clear()
+        cursValut.clear()
+        valueConvert.clear()
+        dateCurrencyConvert.clear()
         money.clear()
         valuta.clear()
         categoria.clear()
@@ -84,6 +90,10 @@ class profilActivity : AppCompatActivity() {
                     idActivitis.add(readActions[i].id)
                     profilAktivnost.add(readActions[i].profil)
                     idUserActivitiy.add(readActions[i].idUser)
+                    idUserPrimarValut.add(readActions[i].idUserPrimarValut)
+                    cursValut.add(readActions[i].cursValut)
+                    valueConvert.add(readActions[i].valueConvert)
+                    dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
 
 
                 } else if (profilStatus == 2 && readActions[i].profil == "Devize") {
@@ -94,6 +104,10 @@ class profilActivity : AppCompatActivity() {
                     idActivitis.add(readActions[i].id)
                     profilAktivnost.add(readActions[i].profil)
                     idUserActivitiy.add(readActions[i].idUser)
+                    idUserPrimarValut.add(readActions[i].idUserPrimarValut)
+                    cursValut.add(readActions[i].cursValut)
+                    valueConvert.add(readActions[i].valueConvert)
+                    dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
 
 
                 } else if (profilStatus == 3 && readActions[i].profil == "Banka") {
@@ -104,6 +118,10 @@ class profilActivity : AppCompatActivity() {
                     idActivitis.add(readActions[i].id)
                     profilAktivnost.add(readActions[i].profil)
                     idUserActivitiy.add(readActions[i].idUser)
+                    idUserPrimarValut.add(readActions[i].idUserPrimarValut)
+                    cursValut.add(readActions[i].cursValut)
+                    valueConvert.add(readActions[i].valueConvert)
+                    dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
 
 
                 } else if (profilStatus == 4) {
@@ -114,6 +132,10 @@ class profilActivity : AppCompatActivity() {
                     idActivitis.add(readActions[i].id)
                     profilAktivnost.add(readActions[i].profil)
                     idUserActivitiy.add(readActions[i].idUser)
+                    idUserPrimarValut.add(readActions[i].idUserPrimarValut)
+                    cursValut.add(readActions[i].cursValut)
+                    valueConvert.add(readActions[i].valueConvert)
+                    dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
 
 
                 } else {
@@ -215,9 +237,13 @@ class profilActivity : AppCompatActivity() {
                 var datetime = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString()
                 var category = categoria.get(position)
                 var profil = profilAktivnost.get(position)
+                var userPrimarValut= idUserPrimarValut.get(position)
+                    var cursVal = cursValut.get(position)
+                    var cursDate = dateCurrencyConvert.get(position)
                 val context = this
                 val db = DataBaseHandler(mContext)
-                val updateActions = db.updateData(id,idUser,valuta, moneys,datetime,category,profil )
+                val updateActions = db.updateData(id,idUser,valuta, moneys,datetime,category,profil,userPrimarValut,cursVal,
+                    (moneys*cursVal), cursDate )
                 enterEditMoney.text.clear()
                 boxEdit.visibility = View.GONE
                 boxBtnEdit.visibility = View.GONE

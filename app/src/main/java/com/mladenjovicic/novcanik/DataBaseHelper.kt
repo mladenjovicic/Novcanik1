@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.provider.ContactsContract
 import android.widget.Toast
 
-val DATABASENAME = "MYDATABASE5"
+const val DATABASENAME = "MYDATABASE6"
 //tabela za korsinika
 val TABLENAME = "Users"
 val COL_ID = "id"
@@ -26,6 +26,10 @@ val COL_MONEY = "money"
 val COL_TIME_DATE = "timeDate"
 val COL_CATEGORY = "category"
 val COL_PROFIL = "profil"
+val COL_USER_PRIMAR_VALUT = "idUserPrimarValut"
+val COL_CURS_VALUT = "cursValut"
+val COL_VALUE_CONVERT = "valueConvert"
+val COL_DATE_VALUT_CONVERT= "dateCurrencyConvert"
 //Tabela za planirane troskove
 val TABLENAMEPLAN = "PlanUser"
 val COL_ID_PLA = "id"
@@ -49,7 +53,7 @@ val COL_CURRENCY_EUR="EUR"
 val COL_CURRENCY_GBP="GBP"
 val COL_CURRENCY_CHF="CHF"
 val COL_CURRENCY_JPY="JPY"
-val COL_CURRENCY_AUD="AUD"
+const val COL_CURRENCY_AUD="AUD"
 val COL_CURRENCY_CAD="CAD"
 val COL_CURRENCY_RUB="RUB"
 val COL_CURRENCY_CNY="CNY"
@@ -73,7 +77,8 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         db?.execSQL(createTable)
 
         val createTableActions = "CREATE TABLE " + TABLENAMEACTIONS + " " +
-                "(" + COL_ID_ACT + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_ID_USER + " INTEGER," + COL_CURRENCY + " VARCHAR(256)," + COL_MONEY + " DOUBLE," + COL_CATEGORY + " VARCHAR(256)," + COL_PROFIL + " VARCHAR(256)," + COL_TIME_DATE + " VARCHAR(256))"
+                "(" + COL_ID_ACT + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_ID_USER + " INTEGER," + COL_CURRENCY + " VARCHAR(256)," + COL_MONEY + " DOUBLE," + COL_CATEGORY + " VARCHAR(256)," + COL_PROFIL + " VARCHAR(256)," + COL_TIME_DATE + " VARCHAR(256),"+ COL_CURS_VALUT + " DOUBLE," +
+                COL_VALUE_CONVERT +" DOUBLE," +COL_DATE_VALUT_CONVERT+ " VARCHAR(256),"+ COL_USER_PRIMAR_VALUT +  " VARCHAR(256))"
         db?.execSQL(createTableActions)
 
         val createTablePlan = "CREATE TABLE "+ TABLENAMEPLAN +" "+
@@ -82,9 +87,9 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         db?.execSQL(createTablePlan)
 
         val createTablecurrencyValue = "CREATE TABLE "+ TABLENAMEVALUTE +" "+
-                "("+ COL_ID_VALUTE+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_DATE_VALUT + " VARCHAR(256),"+ COL_CURRENCY_BAM+ " DOUBLE," + COL_CURRENCY_RSD + " DOUBLE," + COL_CURRENCY_HRK+ " DOUBLE,"+ COL_CURRENCY_HRK + " DOUBLE," + COL_CURRENCY_EUR  + " DOUBLE," +
-                COL_CURRENCY_GBP + " DOUBLE," + COL_CURRENCY_CHF+ " DOUBLE," + COL_CURRENCY_JPY+ " DOUBLE," + COL_CURRENCY_AUD+ " DOUBLE,"+ COL_CURRENCY_CAD+ " DOUBLE,"+ COL_CURRENCY_CAD+ " DOUBLE,"+ COL_CURRENCY_RUB+ " DOUBLE,"+ COL_CURRENCY_CNY + " DOUBLE)"
-        db?.execSQL(createTablePlan)
+                "("+ COL_ID_VALUTE+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_DATE_VALUT + " VARCHAR(256),"+ COL_CURRENCY_BAM+ " DOUBLE," + COL_CURRENCY_RSD + " DOUBLE," + COL_CURRENCY_HRK+ " DOUBLE,"+ COL_CURRENCY_USD + " DOUBLE," + COL_CURRENCY_EUR  + " DOUBLE," +
+                COL_CURRENCY_GBP + " DOUBLE," + COL_CURRENCY_CHF+ " DOUBLE," + COL_CURRENCY_JPY+ " DOUBLE," + COL_CURRENCY_AUD+ " DOUBLE,"+ COL_CURRENCY_CAD+ " DOUBLE,"+ COL_CURRENCY_RUB+ " DOUBLE,"+ COL_CURRENCY_CNY + " DOUBLE)"
+        db?.execSQL(createTablecurrencyValue)
     }
 
 
@@ -92,7 +97,6 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
 
 
     }
-
     fun insertValute(value: currencyValue) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
@@ -144,7 +148,6 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         }
         return list
     }
-
     fun insertData(user: User) {
         val database = this.writableDatabase
         val contentValues = ContentValues()
@@ -161,7 +164,6 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
             Toast.makeText(context, "Uspjesno ste se registrovali", Toast.LENGTH_SHORT).show()
         }
     }
-
     fun readData(): MutableList<User> {
         val list: MutableList<User> = ArrayList()
         val db = this.readableDatabase
@@ -192,6 +194,10 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_CATEGORY, userActvities.category)
         contentValues.put(COL_PROFIL, userActvities.profil)
         contentValues.put(COL_TIME_DATE, userActvities.timeDate)
+        contentValues.put(COL_USER_PRIMAR_VALUT, userActvities.idUserPrimarValut)
+        contentValues.put(COL_CURS_VALUT, userActvities.cursValut)
+        contentValues.put(COL_VALUE_CONVERT, userActvities.valueConvert)
+        contentValues.put(COL_DATE_VALUT_CONVERT, userActvities.dateCurrencyConvert)
         val result = database.insert(TABLENAMEACTIONS, null, contentValues)
         if (result == (0).toLong()) {
             Toast.makeText(context, "Neuspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
@@ -218,7 +224,6 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
             Toast.makeText(context, "Uspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
         }
     }
-
     fun readPlan(): MutableList<PlanUser>{
         var list: MutableList<PlanUser> = arrayListOf()
         val db = this.readableDatabase
@@ -243,7 +248,6 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
 
         return list
     }
-
     fun readActions(): MutableList<UserActvities> {
         var list: MutableList<UserActvities> = arrayListOf()
         val db = this.readableDatabase
@@ -259,17 +263,19 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
                 userActvities.category = result.getString(result.getColumnIndex(COL_CATEGORY))
                 userActvities.profil = result.getString(result.getColumnIndex(COL_PROFIL))
                 userActvities.timeDate = result.getString(result.getColumnIndex(COL_TIME_DATE))
+                userActvities.cursValut= result.getString(result.getColumnIndex(COL_CURS_VALUT)).toDouble()
+                userActvities.idUserPrimarValut= result.getString(result.getColumnIndex(COL_USER_PRIMAR_VALUT))
+                userActvities.valueConvert=result.getString(result.getColumnIndex(COL_VALUE_CONVERT)).toDouble()
+                userActvities.dateCurrencyConvert= result.getString(result.getColumnIndex(COL_DATE_VALUT_CONVERT))
                 list.add(userActvities)
             } while (result.moveToPrevious())
         }
         return list
     }
-
     fun deleteActions(id: String): Int {
         val db = this.writableDatabase
         return db.delete(TABLENAMEACTIONS, "id = ?", arrayOf(id))
     }
-
     fun updateData(
         id: String,
         idUser: Int,
@@ -277,7 +283,11 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         moneys: Double,
         timeDate: String,
         category: String,
-        profil: String
+        profil: String,
+        idUserPrimarValut:String,
+        cursValut:Double,
+        valueConvert:Double,
+        dateCurrencyConvert:String
     ): Boolean {
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -288,6 +298,10 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_TIME_DATE, timeDate)
         contentValues.put(COL_CATEGORY, category)
         contentValues.put(COL_PROFIL, profil)
+        contentValues.put(COL_USER_PRIMAR_VALUT,idUserPrimarValut)
+        contentValues.put(COL_CURS_VALUT,cursValut)
+        contentValues.put(COL_VALUE_CONVERT,valueConvert)
+        contentValues.put(COL_DATE_VALUT_CONVERT,dateCurrencyConvert)
         db.update(TABLENAMEACTIONS, contentValues, "id = ?", arrayOf(id))
         return true
     }
@@ -315,6 +329,4 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         db.update(TABLENAMEPLAN, contentValues, "id = ?", arrayOf(id))
         return true
     }
-
-
 }

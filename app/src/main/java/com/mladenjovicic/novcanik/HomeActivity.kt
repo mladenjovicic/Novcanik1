@@ -34,7 +34,7 @@ import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
 import kotlin.math.roundToLong
 
-var test12 = 0
+
 private val valueCode= arrayListOf<String>("BAM", "RSD", "HRK", "USD", "EUR", "GPB", "CHF", "JPY", "AUD", "CAD", "RUB", "CHY")
 private val currenysValeus= mutableListOf<Double>(0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0)
 private val countryFlags = arrayListOf<Int>(R.drawable.bih_flag, R.drawable.serbia_flag, R.drawable.croatia_flag, R.drawable.usa_flag,R.drawable.eu_flag,R.drawable.uk_flag, R.drawable.switzerland_flag, R.drawable.japanese_flag,R.drawable.australia_flag, R.drawable.canada_flag, R.drawable.russia_flag, R.drawable.chine_flag)
@@ -172,232 +172,232 @@ class HomeActivity : AppCompatActivity() {
         }
         for (i in 0 until readActions.size) {
             if(readActions[i].idUser==idUser&& readActions[i].profil== "Novcanik" ){
-                sumMOneyNovcanikaNEgativ = sumMOneyNovcanikaNEgativ + readActions[i].money
-                sumMoneyNovcanik = sumMoneyNovcanik + readActions[i].money
+                sumMOneyNovcanikaNEgativ = sumMOneyNovcanikaNEgativ + readActions[i].valueConvert
+                sumMoneyNovcanik = sumMoneyNovcanik + readActions[i].valueConvert
 
                 if (readActions[i].category=="Hrana i piće"){
-                    var hipN = listWalletCategory[0] + readActions[i].money
+                    var hipN = listWalletCategory[0] + readActions[i].valueConvert
                     listWalletCategory.set(0, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[0]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[0]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(0, hipNN)
-                        var hipNNA = listAllCategoryNeg[0]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[0]+readActions[i].valueConvert
                         listAllCategoryNeg.set(0,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Šoping"){
-                    var hipN = listWalletCategory[1] + readActions[i].money
+                    var hipN = listWalletCategory[1] + readActions[i].valueConvert
                     listWalletCategory.set(1, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[1]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[1]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(1, hipNN)
-                        var hipNNA = listAllCategoryNeg[1]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[1]+readActions[i].valueConvert
                         listAllCategoryNeg.set(1,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Transport"){
-                    var hipN = listWalletCategory[2] + readActions[i].money
+                    var hipN = listWalletCategory[2] + readActions[i].valueConvert
                     listWalletCategory.set(2, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[2]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[2]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(2, hipNN)
-                        var hipNNA = listAllCategoryNeg[2]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[2]+readActions[i].valueConvert
                         listAllCategoryNeg.set(2,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Režije"){
-                    var hipN = listWalletCategory[3] + readActions[i].money
+                    var hipN = listWalletCategory[3] + readActions[i].valueConvert
                     listWalletCategory.set(3, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[3]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[3]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(3, hipNN)
-                        var hipNNA = listAllCategoryNeg[3]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[3]+readActions[i].valueConvert
                         listAllCategoryNeg.set(3,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Automobil"){
-                    var hipN = listWalletCategory[4] + readActions[i].money
+                    var hipN = listWalletCategory[4] + readActions[i].valueConvert
                     listWalletCategory.set(4, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[4]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[4]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(4, hipNN)
-                        var hipNNA = listAllCategoryNeg[4]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[4]+readActions[i].valueConvert
                         listAllCategoryNeg.set(4,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Život i zabava"){
-                    var hipN = listWalletCategory[5] + readActions[i].money
+                    var hipN = listWalletCategory[5] + readActions[i].valueConvert
                     listWalletCategory.set(5, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[5]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[5]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(5, hipNN)
-                        var hipNNA = listAllCategoryNeg[5]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[5]+readActions[i].valueConvert
                         listAllCategoryNeg.set(5,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Investicije"){
-                    var hipN = listWalletCategory[6] + readActions[i].money
+                    var hipN = listWalletCategory[6] + readActions[i].valueConvert
                     listWalletCategory.set(6, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[6]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[6]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(6, hipNN)
-                        var hipNNA = listAllCategoryNeg[6]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[6]+readActions[i].valueConvert
                         listAllCategoryNeg.set(6,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Putovanja"){
-                    var hipN = listWalletCategory[7] + readActions[i].money
+                    var hipN = listWalletCategory[7] + readActions[i].valueConvert
                     listWalletCategory.set(7, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[7]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[7]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(7, hipNN)
-                        var hipNNA = listAllCategoryNeg[7]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[7]+readActions[i].valueConvert
                         listAllCategoryNeg.set(7,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Doktor i lijekovi"){
-                    var hipN = listWalletCategory[8] + readActions[i].money
+                    var hipN = listWalletCategory[8] + readActions[i].valueConvert
                     listWalletCategory.set(8, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[8]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[8]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(8, hipNN)
-                        var hipNNA = listAllCategoryNeg[8]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[8]+readActions[i].valueConvert
                         listAllCategoryNeg.set(8,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Edukacija"){
-                    var hipN = listWalletCategory[9] + readActions[i].money
+                    var hipN = listWalletCategory[9] + readActions[i].valueConvert
                     listWalletCategory.set(9, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[9]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[9]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(9, hipNN)
-                        var hipNNA = listAllCategoryNeg[9]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[9]+readActions[i].valueConvert
                         listAllCategoryNeg.set(9,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Ostalo"){
-                    var hipN = listWalletCategory[10] + readActions[i].money
+                    var hipN = listWalletCategory[10] + readActions[i].valueConvert
                     listWalletCategory.set(10, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listWalletCategoryNeg[10]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listWalletCategoryNeg[10]+readActions[i].valueConvert
                         listWalletCategoryNeg.set(10, hipNN)
-                        var hipNNA = listAllCategoryNeg[10]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[10]+readActions[i].valueConvert
                         listAllCategoryNeg.set(10,hipNNA)
                     }
                 }
 
             }
             if(readActions[i].idUser==idUser&& readActions[i].profil== "Devize" ){
-                sumMOneyDevizeNEgativ = sumMOneyDevizeNEgativ + readActions[i].money
-                sumMoneyDevize = sumMoneyDevize + readActions[i].money
+               sumMOneyDevizeNEgativ = sumMOneyDevizeNEgativ + readActions[i].valueConvert
+                sumMoneyDevize = sumMoneyDevize + readActions[i].valueConvert
                 if (readActions[i].category=="Hrana i piće"){
-                    var hipN = listDeviseCategory[0] + readActions[i].money
+                    var hipN = listDeviseCategory[0] + readActions[i].valueConvert
                     listDeviseCategory.set(0, hipN )
 
-                    if(readActions[i].money< 0){
-                    var hipNN = listDeviseCategoryNegativ[0]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                    var hipNN = listDeviseCategoryNegativ[0]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(0, hipNN)
-                        var hipNNA = listAllCategoryNeg[0]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[0]+readActions[i].valueConvert
                         listAllCategoryNeg.set(0,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Šoping"){
-                    var hipN = listDeviseCategory[1] + readActions[i].money
+                    var hipN = listDeviseCategory[1] + readActions[i].valueConvert
                     listDeviseCategory.set(1, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[1]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[1]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(1, hipNN)
-                        var hipNNA = listAllCategoryNeg[1]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[1]+readActions[i].valueConvert
                         listAllCategoryNeg.set(1,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Transport"){
-                    var hipN = listDeviseCategory[2] + readActions[i].money
+                    var hipN = listDeviseCategory[2] + readActions[i].valueConvert
                     listDeviseCategory.set(2, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[2]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[2]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(2, hipNN)
-                        var hipNNA = listAllCategoryNeg[2]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[2]+readActions[i].valueConvert
                         listAllCategoryNeg.set(2,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Režije"){
-                    var hipN = listDeviseCategory[3] + readActions[i].money
+                    var hipN = listDeviseCategory[3] + readActions[i].valueConvert
                     listDeviseCategory.set(3, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[3]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[3]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(3, hipNN)
-                        var hipNNA = listAllCategoryNeg[3]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[3]+readActions[i].valueConvert
                         listAllCategoryNeg.set(3,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Automobil"){
-                    var hipN = listDeviseCategory[4] + readActions[i].money
+                    var hipN = listDeviseCategory[4] + readActions[i].valueConvert
                     listDeviseCategory.set(4, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[4]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[4]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(4, hipNN)
-                        var hipNNA = listAllCategoryNeg[4]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[4]+readActions[i].valueConvert
                         listAllCategoryNeg.set(4,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Život i zabava"){
-                    var hipN = listDeviseCategory[5] + readActions[i].money
+                    var hipN = listDeviseCategory[5] + readActions[i].valueConvert
                     listDeviseCategory.set(5, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[5]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[5]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(5, hipNN)
-                        var hipNNA = listAllCategoryNeg[5]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[5]+readActions[i].valueConvert
                         listAllCategoryNeg.set(5,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Investicije"){
-                    var hipN = listDeviseCategory[6] + readActions[i].money
+                    var hipN = listDeviseCategory[6] + readActions[i].valueConvert
                     listDeviseCategory.set(6, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[6]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[6]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(6, hipNN)
-                        var hipNNA = listAllCategoryNeg[6]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[6]+readActions[i].valueConvert
                         listAllCategoryNeg.set(6,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Putovanja"){
-                    var hipN = listDeviseCategory[7] + readActions[i].money
+                    var hipN = listDeviseCategory[7] + readActions[i].valueConvert
                     listDeviseCategory.set(7, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[7]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[7]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(7, hipNN)
-                        var hipNNA = listAllCategoryNeg[7]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[7]+readActions[i].valueConvert
                         listAllCategoryNeg.set(7,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Doktor i lijekovi"){
-                    var hipN = listDeviseCategory[8] + readActions[i].money
+                    var hipN = listDeviseCategory[8] + readActions[i].valueConvert
                     listDeviseCategory.set(8, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[8]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[8]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(8, hipNN)
-                        var hipNNA = listAllCategoryNeg[8]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[8]+readActions[i].valueConvert
                         listAllCategoryNeg.set(8,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Edukacija"){
-                    var hipN = listDeviseCategory[9] + readActions[i].money
+                    var hipN = listDeviseCategory[9] + readActions[i].valueConvert
                     listDeviseCategory.set(9, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[9]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[9]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(9, hipNN)
-                        var hipNNA = listAllCategoryNeg[9]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[9]+readActions[i].valueConvert
                         listAllCategoryNeg.set(9,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Ostalo"){
-                    var hipN = listDeviseCategory[10] + readActions[i].money
+                    var hipN = listDeviseCategory[10] + readActions[i].valueConvert
                     listDeviseCategory.set(10, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listDeviseCategoryNegativ[10]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listDeviseCategoryNegativ[10]+readActions[i].valueConvert
                         listDeviseCategoryNegativ.set(10, hipNN)
-                        var hipNNA = listAllCategoryNeg[10]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[10]+readActions[i].valueConvert
                         listAllCategoryNeg.set(10,hipNNA)
                     }
                 }
@@ -405,130 +405,131 @@ class HomeActivity : AppCompatActivity() {
 
             }
             if(readActions[i].idUser==idUser&& readActions[i].profil== "Banka" ){
-                sumMoneyBanka = sumMoneyBanka + readActions[i].money
-                sumMOneyBankNEgativ = sumMOneyBankNEgativ + readActions[i].money
+                sumMoneyBanka = sumMoneyBanka + readActions[i].valueConvert
+                sumMOneyBankNEgativ = sumMOneyBankNEgativ + readActions[i].valueConvert
                 if (readActions[i].category=="Hrana i piće"){
-                    var hipN = listBankCategory[0] + readActions[i].money
+                    var hipN = listBankCategory[0] + readActions[i].valueConvert
                     listBankCategory.set(0, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[0]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[0]+readActions[i].valueConvert
                         listBankCategoryNeg.set(0, hipNN)
 
-                        var hipNNA = listAllCategoryNeg[0]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[0]+readActions[i].valueConvert
                         listAllCategoryNeg.set(0,hipNNA)
                     }
 
                 }
                 if (readActions[i].category=="Šoping"){
-                    var hipN = listBankCategory[1] + readActions[i].money
+                    var hipN = listBankCategory[1] + readActions[i].valueConvert
                     listBankCategory.set(1, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[1]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[1]+readActions[i].valueConvert
                         listBankCategoryNeg.set(1, hipNN)
-                        var hipNNA = listAllCategoryNeg[1]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[1]+readActions[i].valueConvert
                         listAllCategoryNeg.set(1,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Transport"){
-                    var hipN = listBankCategory[2] + readActions[i].money
+                    var hipN = listBankCategory[2] + readActions[i].valueConvert
                     listBankCategory.set(2, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[2]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[2]+readActions[i].valueConvert
                         listBankCategoryNeg.set(2, hipNN)
-                        var hipNNA = listAllCategoryNeg[2]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[2]+readActions[i].valueConvert
                         listAllCategoryNeg.set(2,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Režije"){
-                    var hipN = listBankCategory[3] + readActions[i].money
+                    var hipN = listBankCategory[3] + readActions[i].valueConvert
                     listBankCategory.set(3, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[3]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[3]+readActions[i].valueConvert
                         listBankCategoryNeg.set(3, hipNN)
-                        var hipNNA = listAllCategoryNeg[3]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[3]+readActions[i].valueConvert
                         listAllCategoryNeg.set(3,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Automobil"){
-                    var hipN = listBankCategory[4] + readActions[i].money
+                    var hipN = listBankCategory[4] + readActions[i].valueConvert
                     listBankCategory.set(4, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[4]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[4]+readActions[i].valueConvert
                         listBankCategoryNeg.set(4, hipNN)
-                        var hipNNA = listAllCategoryNeg[4]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[4]+readActions[i].valueConvert
                         listAllCategoryNeg.set(4,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Život i zabava"){
-                    var hipN = listBankCategory[5] + readActions[i].money
+                    var hipN = listBankCategory[5] + readActions[i].valueConvert
                     listBankCategory.set(5, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[5]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[5]+readActions[i].valueConvert
                         listBankCategoryNeg.set(5, hipNN)
-                        var hipNNA = listAllCategoryNeg[5]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[5]+readActions[i].valueConvert
                         listAllCategoryNeg.set(5,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Investicije"){
-                    var hipN = listBankCategory[6] + readActions[i].money
+                    var hipN = listBankCategory[6] + readActions[i].valueConvert
                     listBankCategory.set(6, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[6]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[6]+readActions[i].valueConvert
                         listBankCategoryNeg.set(6, hipNN)
-                        var hipNNA = listAllCategoryNeg[6]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[6]+readActions[i].valueConvert
                         listAllCategoryNeg.set(6,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Putovanja"){
-                    var hipN = listBankCategory[7] + readActions[i].money
+                    var hipN = listBankCategory[7] + readActions[i].valueConvert
                     listBankCategory.set(7, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[7]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[7]+readActions[i].valueConvert
                         listBankCategoryNeg.set(7, hipNN)
-                        var hipNNA = listAllCategoryNeg[7]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[7]+readActions[i].valueConvert
                         listAllCategoryNeg.set(7,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Doktor i lijekovi"){
-                    var hipN = listBankCategory[8] + readActions[i].money
+                    var hipN = listBankCategory[8] + readActions[i].valueConvert
                     listBankCategory.set(8, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[8]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[8]+readActions[i].valueConvert
                         listBankCategoryNeg.set(8, hipNN)
-                        var hipNNA = listAllCategoryNeg[8]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[8]+readActions[i].valueConvert
                         listAllCategoryNeg.set(8,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Edukacija"){
-                    var hipN = listBankCategory[9] + readActions[i].money
+                    var hipN = listBankCategory[9] + readActions[i].valueConvert
                     listBankCategory.set(9, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[9]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[9]+readActions[i].valueConvert
                         listBankCategoryNeg.set(9, hipNN)
-                        var hipNNA = listAllCategoryNeg[9]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[9]+readActions[i].valueConvert
                         listAllCategoryNeg.set(9,hipNNA)
                     }
                 }
                 if (readActions[i].category=="Ostalo"){
-                    var hipN = listBankCategory[10] + readActions[i].money
+                    var hipN = listBankCategory[10] + readActions[i].valueConvert
                     listBankCategory.set(10, hipN )
-                    if(readActions[i].money< 0){
-                        var hipNN = listBankCategoryNeg[10]+readActions[i].money
+                    if(readActions[i].valueConvert< 0){
+                        var hipNN = listBankCategoryNeg[10]+readActions[i].valueConvert
                         listBankCategoryNeg.set(10, hipNN)
-                        var hipNNA = listAllCategoryNeg[10]+readActions[i].money
+                        var hipNNA = listAllCategoryNeg[10]+readActions[i].valueConvert
                         listAllCategoryNeg.set(10,hipNNA)
                     }
                 }
             }
             if(readActions[i].idUser==idUser){
-                sumSum = sumSum + readActions[i].money
+                sumSum = sumSum + readActions[i].valueConvert
             }
         }
 
-        btnNovcanik.text ="Novčanik: \n $sumMoneyNovcanik"
-        btnBanka.text = "Banka: \n $sumMoneyBanka"
-        btnDevise.text = "Devize: \n $sumMoneyDevize"
-        btnAllMoney.text = "Sav novac: \n $sumSum"
+
+        btnNovcanik.text ="Novčanik: \n "+ sumMoneyNovcanik.toInt() +" "+ userValute
+        btnBanka.text = "Banka: \n "+sumMoneyBanka.toInt() +" "+  userValute
+        btnDevise.text = "Devize: \n "+sumMoneyDevize.toInt() +" "+  userValute
+        btnAllMoney.text = "Sav novac: \n " +sumSum.toInt()+" "+  userValute
 
         for (j in 0 until listCategorys.size) {
             var numv = listBankCategory[j]+listDeviseCategory[j]+listWalletCategory[j]
@@ -964,6 +965,7 @@ class HomeActivity : AppCompatActivity() {
                 var CAD = readValute[0].CAD
                 var RUB = readValute[0].RUB
                 var CHY = readValute[0].CNY
+                var dateUpadte= readValute[0].dateCurrency
                 var BAM1 = 0.0
                 var RSD1 = 0.0
                 var HRK1 = 0.0
@@ -1031,6 +1033,7 @@ class HomeActivity : AppCompatActivity() {
                         CAD1 = USD1*CAD
                         RUB1 = USD1*RUB
                         CHY1 = USD1*CHY
+                        RSD1 = USD1*RSD
                     }
                     4->{//EUR
                         EUR1 = editTextCurrencyValue.text.toString().toDouble()
@@ -1161,16 +1164,24 @@ class HomeActivity : AppCompatActivity() {
 
                 val listView = findViewById<ListView>(R.id.listViewCurrenyValue)
                 listView.adapter = valueAdapter(this)
+                textViewUpdateValue.text = "Podaci ažurirani: "+dateUpadte
                 listViewCurrenyValue.visibility=View.VISIBLE
+                textViewUpdateValue.visibility= View.VISIBLE
             }else{
                 Toast.makeText(this, "Polje mora biti popunjeno", Toast.LENGTH_LONG)
             }
+        }
+        btnConvertorValue.setOnLongClickListener {
+            listViewCurrenyValue.visibility=View.GONE
+            textViewUpdateValue.visibility=View.GONE
+            return@setOnLongClickListener true
         }
 
         addNewActions.setOnClickListener { view ->
             var intentAddNewActivity = Intent(this, addNewActivity::class.java)
             intentAddNewActivity.putExtra("userValute", userValute)
             intentAddNewActivity.putExtra("idUser", idUser)
+            intentAddNewActivity.putExtra("idUserVale", userValute)
             startActivity(intentAddNewActivity)
         }
     }

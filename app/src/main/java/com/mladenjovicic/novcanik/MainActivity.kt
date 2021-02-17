@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         var datum = LocalDate.now()
 
         val readValute = db.readValute()
-        println("brojac"+readValute.count())
         if(readValute.count()==0){
             val currencyValue = currencyValue("2021-01-27", 1.610665, 97.4, 6.2187, 1.0, 0.822132, 0.72775, 0.886654, 103.607, 1.289998,1.269385,75.1062,6.4652)
             db.insertValute(currencyValue)

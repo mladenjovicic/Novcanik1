@@ -132,7 +132,7 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
     }
     //spinner za izbor primarnog novca
     override fun onNothingSelected(parent: AdapterView<*>?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+
     }
     override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
         val money: String = parent?.getItemAtPosition(position).toString()
