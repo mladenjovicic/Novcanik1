@@ -17,6 +17,7 @@ val COL_EMAIL = "email"
 val COL_PASSWORD = "password"
 val COL_PRIMARY_MONEY = "primaryMoney"
 val COL_USER_LANG = "userLang"
+val COL_USER_UID = "uidUser"
 //tabela za Akcije korisnika
 val TABLENAMEACTIONS = "Actions"
 val COL_ID_ACT = "id"

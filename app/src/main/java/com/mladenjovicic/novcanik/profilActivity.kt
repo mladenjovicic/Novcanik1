@@ -45,7 +45,7 @@ class profilActivity : AppCompatActivity() {
         work()
         profilStatus = intent.getIntExtra("profilStatus", 0)
     }
-    override fun onRestart() {
+   override fun onRestart() {
         arrayClear()
         work()
         super.onRestart()
@@ -230,25 +230,25 @@ class profilActivity : AppCompatActivity() {
                     }
                     val test = rowProfil.findViewById<TextView>(R.id.textViewVrijednostTransakcije)
 
-                var id =  idActivitis.get(position) .toString()
-                var idUser = idUserActivitiy.get(position)
-                var valuta = valuta.get(position)
-                var moneys = moneyInsert
-                var datetime = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString()
-                var category = categoria.get(position)
-                var profil = profilAktivnost.get(position)
-                var userPrimarValut= idUserPrimarValut.get(position)
-                    var cursVal = cursValut.get(position)
-                    var cursDate = dateCurrencyConvert.get(position)
-                val context = this
-                val db = DataBaseHandler(mContext)
-                val updateActions = db.updateData(id,idUser,valuta, moneys,datetime,category,profil,userPrimarValut,cursVal,
-                    (moneys*cursVal), cursDate )
-                enterEditMoney.text.clear()
-                boxEdit.visibility = View.GONE
-                boxBtnEdit.visibility = View.GONE
-                boxSeen.visibility = View.VISIBLE
-                boxSeenBtn.visibility = View.VISIBLE
+                     var id =  idActivitis.get(position) .toString()
+                     var idUser = idUserActivitiy.get(position)
+                     var valuta = valuta.get(position)
+                     var moneys = moneyInsert
+                     var datetime = LocalDate.now().format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString()
+                     var category = categoria.get(position)
+                     var profil = profilAktivnost.get(position)
+                     var userPrimarValut= idUserPrimarValut.get(position)
+                     var cursVal = cursValut.get(position)
+                     var cursDate = dateCurrencyConvert.get(position)
+                     val context = this
+                     val db = DataBaseHandler(mContext)
+                     val updateActions = db.updateData(id,idUser,valuta, moneys,datetime,category,profil,userPrimarValut,cursVal,
+                     (moneys*cursVal), cursDate )
+                     enterEditMoney.text.clear()
+                     boxEdit.visibility = View.GONE
+                     boxBtnEdit.visibility = View.GONE
+                     boxSeen.visibility = View.VISIBLE
+                     boxSeenBtn.visibility = View.VISIBLE
                     if (moneys < 0.0) {
                         test.setTextColor(getColor(mContext, R.color.colorRed))
                     }else{
