@@ -88,9 +88,6 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                     if(editTextEmailUser.text.matches(emailPattern.toRegex())){
                         //provjera da li se sifra i ponovljena sifra ista
                          if (editTextPasswordUser.text.toString() == editTextPasswordAgainUser.text.toString()){
-
-
-
                              FirebaseAuth.getInstance().createUserWithEmailAndPassword(editTextEmailUser.text.toString(),editTextPasswordUser.text.toString()).addOnCompleteListener {
                                  if(!it.isSuccessful){
 
@@ -103,7 +100,7 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                                      val uid = FirebaseAuth.getInstance().uid
                                      val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
                                      ref.setValue(User(editTextNameUser.text.toString(), editTextLastNameUser.text.toString(),editTextEmailUser.text.toString(),editTextPasswordUser.text.toString(),money,lang))
-                                     
+
                                      clearField()
                                      var intent = Intent(this, MainActivity::class.java)
                                      intent.putExtra("login", true)

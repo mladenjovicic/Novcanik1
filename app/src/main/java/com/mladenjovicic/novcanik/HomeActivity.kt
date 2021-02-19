@@ -24,6 +24,7 @@ import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
+import com.google.firebase.auth.FirebaseAuth
 import java.util.*
 
 
@@ -101,7 +102,7 @@ class HomeActivity : AppCompatActivity() {
         val nameUser = intent.getStringExtra("nameUser")
         val lastNameUser = intent.getStringExtra("lastnameUser")
         val emailUser = intent.getStringExtra("emailUser")
-        val idUser = intent.getIntExtra("idUser", 0)
+        val idUser = intent.getStringExtra("idUser")
         val userValute = intent.getStringExtra("userValute")
 
         var spinnerPlan= findViewById<Spinner>(R.id.spinnerPlan)
@@ -133,7 +134,7 @@ class HomeActivity : AppCompatActivity() {
                 userPlan[i].idUser.toString() +" test  "+  userPlan[i].nextPayment + userPlan[i].moneyRata.toString()
             )*/
             var datum = LocalDate.now()
-            if(userPlan[i].idUser==idUser){
+            if(userPlan[i].idUser=="idUser"){
                 if(userPlan[i].nextPayment == datum.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString()){
                     if(userPlan[i].otherMoney>0.0){
                         when(userPlan[i].plan) {
@@ -520,7 +521,7 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
             }
-            if(readActions[i].idUser==idUser){
+            if(readActions[i].idUser=="idUser"){
                 sumSum = sumSum + readActions[i].valueConvert
             }
         }
@@ -949,7 +950,11 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }
-
+        imageButtonLogOut.setOnClickListener {
+            FirebaseAuth.getInstance().signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
         btnConvertorValue.setOnClickListener {
             if (editTextCurrencyValue.text.isNotEmpty()){
                 val readValute = db.readValute()

@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.provider.ContactsContract
 import android.widget.Toast
 
-const val DATABASENAME = "MYDATABASE6"
+const val DATABASENAME = "MYDATABASE7"
 //tabela za korsinika
 val TABLENAME = "Users"
 val COL_ID = "id"
@@ -78,12 +78,12 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         db?.execSQL(createTable)
 
         val createTableActions = "CREATE TABLE " + TABLENAMEACTIONS + " " +
-                "(" + COL_ID_ACT + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_ID_USER + " INTEGER," + COL_CURRENCY + " VARCHAR(256)," + COL_MONEY + " DOUBLE," + COL_CATEGORY + " VARCHAR(256)," + COL_PROFIL + " VARCHAR(256)," + COL_TIME_DATE + " VARCHAR(256),"+ COL_CURS_VALUT + " DOUBLE," +
+                "(" + COL_ID_ACT + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_ID_USER + " VARCHAR(256)," + COL_CURRENCY + " VARCHAR(256)," + COL_MONEY + " DOUBLE," + COL_CATEGORY + " VARCHAR(256)," + COL_PROFIL + " VARCHAR(256)," + COL_TIME_DATE + " VARCHAR(256),"+ COL_CURS_VALUT + " DOUBLE," +
                 COL_VALUE_CONVERT +" DOUBLE," +COL_DATE_VALUT_CONVERT+ " VARCHAR(256),"+ COL_USER_PRIMAR_VALUT +  " VARCHAR(256))"
         db?.execSQL(createTableActions)
 
         val createTablePlan = "CREATE TABLE "+ TABLENAMEPLAN +" "+
-                "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " INTEGER,"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," +
+                "("+ COL_ID_PLA+" INTEGER PRIMARY KEY AUTOINCREMENT,"+ COL_ID_USER_PLA + " VARCHAR(256),"+COL_PLAN+ " INTEGER," + COL_PLAN_MONEY + " DOUBLE," + COL_OTHER_MONEY+ " DOUBLE,"+ COL_MONEY_RATA + " DOUBLE," + COL_CATEGORY_PLAN  + " VARCHAR(256)," +
                 COL_NEXT_PAYMENT + " VARCHAR(256)," + COL_PROFIL_PLAN + " VARCHAR(256))"
         db?.execSQL(createTablePlan)
 
@@ -234,7 +234,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
             do{
                 val planUser = PlanUser()
                 planUser.id= result.getString(result.getColumnIndex(COL_ID_PLA)).toInt()
-                planUser.idUser= result.getString(result.getColumnIndex(COL_ID_USER_PLA)).toInt()
+                planUser.idUser= result.getString(result.getColumnIndex(COL_ID_USER_PLA))
                 planUser.categoryPlan=result.getString(result.getColumnIndex(COL_CATEGORY_PLAN))
                 planUser.moneyPlan=result.getString(result.getColumnIndex(COL_PLAN_MONEY)).toDouble()
                 planUser.moneyRata=result.getString(result.getColumnIndex(COL_MONEY_RATA)).toDouble()
@@ -258,7 +258,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
             do {
                 val userActvities = UserActvities()
                 userActvities.id = result.getString(result.getColumnIndex(COL_ID_ACT)).toInt()
-                userActvities.idUser = result.getString(result.getColumnIndex(COL_ID_USER)).toInt()
+                userActvities.idUser = result.getString(result.getColumnIndex(COL_ID_USER))
                 userActvities.idValuta = result.getString(result.getColumnIndex(COL_CURRENCY))
                 userActvities.money = result.getString(result.getColumnIndex(COL_MONEY)).toDouble()
                 userActvities.category = result.getString(result.getColumnIndex(COL_CATEGORY))
@@ -279,7 +279,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
     }
     fun updateData(
         id: String,
-        idUser: Int,
+        idUser: String,
         idValuta: String,
         moneys: Double,
         timeDate: String,
@@ -307,7 +307,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         return true
     }
     fun updatePlan(id: String,
-               idUser:Int,
+               idUser:String,
                plan:Int,
                moneyPlan:Double,
                otherMoney:Double,

@@ -32,7 +32,7 @@ class addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val readValute = db.readValute()
 
 
-        var userId = intent.getIntExtra("idUser", 0)
+        var userId = intent.getStringExtra("idUser")
         var userValute = intent.getStringExtra("userValute")
 
 

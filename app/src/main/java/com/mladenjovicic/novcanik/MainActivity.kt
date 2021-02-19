@@ -3,9 +3,15 @@ package com.mladenjovicic.novcanik
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.activity_registre.*
 import okhttp3.*
@@ -27,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         Glide.with(this).load(R.drawable.loding).into(imageViewLoding)
         val db = DataBaseHandler(context)
+        val intent = Intent(this, HomeActivity::class.java )
         var datum = LocalDate.now()
 
         val readValute = db.readValute()
@@ -72,13 +79,13 @@ class MainActivity : AppCompatActivity() {
 
 
         btnRegisterAct.setOnClickListener {
-            val intent = Intent(this, RegistreActivity::class.java )
-            startActivity(intent)
+            val intent1 = Intent(this, RegistreActivity::class.java )
+            startActivity(intent1)
         }
 
         if(login == true){
-            val intent = Intent(this, RegistreActivity::class.java )
-            startActivity(intent)
+            val intent2 = Intent(this, RegistreActivity::class.java )
+            startActivity(intent2)
         }else{
 
         }
@@ -92,30 +99,50 @@ class MainActivity : AppCompatActivity() {
             btnLoginUser.setOnClickListener {
                 //Provjera da li je editText za email i šifru prazni
                 if(editTextUserEmailLogin.text.toString().isNotEmpty()&& editTextUserPasswordLogin.text.toString().isNotEmpty()){
-                    //provjera podataka u bazi podataka
-                    val userData = db.readData()
-                    for (i in 0 until userData.size) {
-                    var userId = userData[i].id.toInt()
-                    var userEmail = userData[i].email.toString()
-                    var userPassword = userData[i].password.toString()
-                    var userName = userData[i].name.toString()
-                    var userLastname = userData[i].lastName.toString()
-                    var userValute=userData[i].primaryMoney.toString()
-                    var userLang = userData[i].userLang.toString()
-                    if(userEmail == editTextUserEmailLogin.text.toString()&& userPassword == editTextUserPasswordLogin.text.toString()){
-                        val intent = Intent(this, HomeActivity::class.java )
-                        intent.putExtra("idUser", userId)
-                        intent.putExtra("emailUser", userEmail)
-                        intent.putExtra("nameUser", userName)
-                        intent.putExtra("lastnameUser", userLastname)
-                        intent.putExtra("userValute", userValute)
-                        intent.putExtra("userLang", userLang)
-                        startActivity(intent)
-                        break
-                    }else{
-                        Toast.makeText(context, greskaToasts, Toast.LENGTH_SHORT).show()
-                    }
-                }
+                    FirebaseAuth.getInstance().signInWithEmailAndPassword(editTextUserEmailLogin.text.toString(),editTextUserPasswordLogin.text.toString()).addOnCompleteListener {
+                        if(!it.isSuccessful){
+                            Toast.makeText(this,"Greska 258", Toast.LENGTH_SHORT).show()
+                        }else{
+
+                        val uid = FirebaseAuth.getInstance().uid
+                        val ref = FirebaseDatabase.getInstance().getReference("/users")
+
+                            ref.addListenerForSingleValueEvent(object : ValueEventListener{
+                                override fun onCancelled(error: DatabaseError) {
+
+                                }
+
+                                override fun onDataChange(p0: DataSnapshot) {
+                                    p0.children.forEach {
+                                        Log.d("usersss", it.toString())
+                                        val userFire= it.getValue(userFirebase::class.java)
+                                        intent.putExtra("emailUser", userFire?.email)
+                                        intent.putExtra("nameUser", userFire?.name)
+                                        intent.putExtra("lastnameUser", userFire?.lastName)
+                                        intent.putExtra("userValute", userFire?.primaryMoney)
+                                        intent.putExtra("userLang", userFire?.userLang)
+                                        intent.putExtra("idUser", uid)
+                                        startActivity(intent)
+                                    }
+                                }
+                            })
+                        //provjera podataka u bazi podataka
+                       /* val userData = db.readData()
+                        for (i in 0 until userData.size) {
+                            var userId = userData[i].id.toInt()
+                            var userEmail = userData[i].email.toString()
+                            var userPassword = userData[i].password.toString()
+                            if(userEmail == editTextUserEmailLogin.text.toString()&& userPassword == editTextUserPasswordLogin.text.toString()){
+
+                                intent.putExtra("idUser", userId)
+                                startActivity(intent)
+                                break
+                            }else{
+                                Toast.makeText(context, greskaToasts, Toast.LENGTH_SHORT).show()
+                            }
+                        }*/
+                    }}
+
 
                 if (checkBoxSave.isChecked){
                     autoLogin = true
