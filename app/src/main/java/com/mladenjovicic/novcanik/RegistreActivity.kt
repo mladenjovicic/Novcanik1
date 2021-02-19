@@ -3,7 +3,6 @@ package com.mladenjovicic.novcanik
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
@@ -11,9 +10,7 @@ import android.widget.Spinner
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import kotlinx.android.synthetic.main.activity_home.*
 import kotlinx.android.synthetic.main.activity_registre.*
-import java.sql.DataTruncation
 import java.util.*
 
 
@@ -94,11 +91,14 @@ class RegistreActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener
                                      return@addOnCompleteListener
 
                                  }else{
-                                     val user = User(editTextNameUser.text.toString(), editTextLastNameUser.text.toString(),editTextEmailUser.text.toString(),editTextPasswordUser.text.toString(),money,lang)
-                                     db.insertData(user)
-                                     println("uspjesno si logovnani  ${it.result?.user?.uid}")
                                      val uid = FirebaseAuth.getInstance().uid
                                      val ref = FirebaseDatabase.getInstance().getReference("/users/$uid")
+                                     val user = User(editTextNameUser.text.toString(), editTextLastNameUser.text.toString(),editTextEmailUser.text.toString(),editTextPasswordUser.text.toString(),money,lang,
+                                         uid!!
+                                     )
+                                     db.insertData(user)
+                                     println("uspjesno si logovnani  ${it.result?.user?.uid}")
+
                                      ref.setValue(User(editTextNameUser.text.toString(), editTextLastNameUser.text.toString(),editTextEmailUser.text.toString(),editTextPasswordUser.text.toString(),money,lang))
 
                                      clearField()

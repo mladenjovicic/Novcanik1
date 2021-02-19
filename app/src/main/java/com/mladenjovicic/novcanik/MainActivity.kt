@@ -1,6 +1,9 @@
 package com.mladenjovicic.novcanik
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -13,14 +16,12 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.activity_registre.*
 import okhttp3.*
 import org.json.JSONObject
 import java.io.IOException
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import java.util.*
-import kotlin.concurrent.thread
 
 var login = false
 var autoLogin = false
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         var datum = LocalDate.now()
 
         val readValute = db.readValute()
+        val userData = db.readData()
         if(readValute.count()==0){
             val currencyValue = currencyValue("2021-01-27", 1.610665, 97.4, 6.2187, 1.0, 0.822132, 0.72775, 0.886654, 103.607, 1.289998,1.269385,75.1062,6.4652)
             db.insertValute(currencyValue)
@@ -99,50 +101,98 @@ class MainActivity : AppCompatActivity() {
             btnLoginUser.setOnClickListener {
                 //Provjera da li je editText za email i šifru prazni
                 if(editTextUserEmailLogin.text.toString().isNotEmpty()&& editTextUserPasswordLogin.text.toString().isNotEmpty()){
-                    FirebaseAuth.getInstance().signInWithEmailAndPassword(editTextUserEmailLogin.text.toString(),editTextUserPasswordLogin.text.toString()).addOnCompleteListener {
-                        if(!it.isSuccessful){
-                            Toast.makeText(this,"Greska 258", Toast.LENGTH_SHORT).show()
-                        }else{
 
-                        val uid = FirebaseAuth.getInstance().uid
-                        val ref = FirebaseDatabase.getInstance().getReference("/users")
+                    if(isOnline(context)== false){
 
-                            ref.addListenerForSingleValueEvent(object : ValueEventListener{
-                                override fun onCancelled(error: DatabaseError) {
-
-                                }
-
-                                override fun onDataChange(p0: DataSnapshot) {
-                                    p0.children.forEach {
-                                        Log.d("usersss", it.toString())
-                                        val userFire= it.getValue(userFirebase::class.java)
-                                        intent.putExtra("emailUser", userFire?.email)
-                                        intent.putExtra("nameUser", userFire?.name)
-                                        intent.putExtra("lastnameUser", userFire?.lastName)
-                                        intent.putExtra("userValute", userFire?.primaryMoney)
-                                        intent.putExtra("userLang", userFire?.userLang)
-                                        intent.putExtra("idUser", uid)
-                                        startActivity(intent)
-                                    }
-                                }
-                            })
                         //provjera podataka u bazi podataka
-                       /* val userData = db.readData()
                         for (i in 0 until userData.size) {
-                            var userId = userData[i].id.toInt()
-                            var userEmail = userData[i].email.toString()
-                            var userPassword = userData[i].password.toString()
-                            if(userEmail == editTextUserEmailLogin.text.toString()&& userPassword == editTextUserPasswordLogin.text.toString()){
+                            var userEmail = userData[i].email
+                            var userPassword = userData[i].password
+                            var userId=userData[i].uidUser
+                            var nameUser = userData[i].name
+                            var lastName = userData[i].lastName
+                            var userValute = userData[i].primaryMoney
+                            var userLang = userData[i].userLang
 
-                                intent.putExtra("idUser", userId)
-                                startActivity(intent)
-                                break
-                            }else{
-                                Toast.makeText(context, greskaToasts, Toast.LENGTH_SHORT).show()
+
+                        if(userEmail == editTextUserEmailLogin.text.toString()&& userPassword == editTextUserPasswordLogin.text.toString()){
+                            intent.putExtra("idUser", userId)
+                            intent.putExtra("emailUser", userEmail)
+                            intent.putExtra("nameUser", nameUser)
+                            intent.putExtra("lastnameUser", lastName)
+                            intent.putExtra("userValute", userValute)
+                            intent.putExtra("userLang", userLang)
+                        startActivity(intent)
+                        break
+                         }else{
+                        Toast.makeText(context, greskaToasts, Toast.LENGTH_SHORT).show()
                             }
-                        }*/
-                    }}
+                        }
 
+                    }else {
+                        FirebaseAuth.getInstance().signInWithEmailAndPassword(
+                            editTextUserEmailLogin.text.toString(),
+                            editTextUserPasswordLogin.text.toString()
+                        ).addOnCompleteListener {
+                            if (!it.isSuccessful) {
+                                Toast.makeText(this, "Greska 258", Toast.LENGTH_SHORT).show()
+                            } else {
+
+                                val uid = FirebaseAuth.getInstance().uid
+                                val ref = FirebaseDatabase.getInstance().getReference("/users")
+
+                                ref.addListenerForSingleValueEvent(object : ValueEventListener {
+                                    override fun onCancelled(error: DatabaseError) {
+
+                                    }
+
+                                    override fun onDataChange(p0: DataSnapshot) {
+                                        p0.children.forEach {
+                                            Log.d("usersss", it.toString())
+                                            val userFire = it.getValue(userFirebase::class.java)
+                                            if (userFire?.email == editTextUserEmailLogin.text.toString()){
+                                            if (userData.count() == 0) {
+                                                val user = User(
+                                                    userFire?.name!!,
+                                                    userFire?.lastName!!,
+                                                    userFire?.email!!,
+                                                    userFire?.password!!,
+                                                    userFire?.primaryMoney!!,
+                                                    userFire?.userLang!!,
+                                                    uid!!
+                                                )
+                                                db.insertData(user)}
+                                                for (i in 0 until userData.size) {
+                                                    var userEmail = userData[i].email
+                                                    if(userEmail == editTextUserEmailLogin.text.toString()){
+                                                    }else{
+                                                        val user = User(
+                                                            userFire?.name!!,
+                                                            userFire?.lastName!!,
+                                                            userFire?.email!!,
+                                                            userFire?.password!!,
+                                                            userFire?.primaryMoney!!,
+                                                            userFire?.userLang!!,
+                                                            uid!!
+                                                        )
+                                                        db.insertData(user)
+                                                    }
+                                                }
+                                                }
+                                            intent.putExtra("emailUser", userFire?.email)
+                                            intent.putExtra("nameUser", userFire?.name)
+                                            intent.putExtra("lastnameUser", userFire?.lastName)
+                                            intent.putExtra("userValute", userFire?.primaryMoney)
+                                            intent.putExtra("userLang", userFire?.userLang)
+                                            intent.putExtra("idUser", uid)
+                                            startActivity(intent)
+                                        }
+                                    }
+                                })
+
+                            }
+                        }
+                    }
 
                 if (checkBoxSave.isChecked){
                     autoLogin = true
@@ -190,7 +240,29 @@ class MainActivity : AppCompatActivity() {
             override fun onFailure(call: Call, e: IOException) {
                 println("greska sa serverom")
             }
+
         })
 
+    }
+    fun isOnline(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (connectivityManager != null) {
+            val capabilities =
+                connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+            if (capabilities != null) {
+                if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                    return true
+                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                    return true
+                } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                    Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                    return true
+                }
+            }
+        }
+        Log.i("Internet", "nema neta")
+        return false
     }
 }

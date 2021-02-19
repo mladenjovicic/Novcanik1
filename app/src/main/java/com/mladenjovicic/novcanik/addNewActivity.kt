@@ -8,7 +8,9 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_add_new.*
+import kotlinx.android.synthetic.main.activity_registre.*
 import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
@@ -851,6 +853,9 @@ class addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             dateUpadte
                         )
                         db.insertActions(userActvities)
+                        val lenghBase = db.readActions().size
+                        val ref = FirebaseDatabase.getInstance().getReference("/userActions/$userId"+"/"+lenghBase)
+                        ref.setValue(userActionFirebase(lenghBase,userId,userValute,getMoney,categoryUser, profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte))
                         clear()
                     } else {
                         val userActvities = UserActvities(
@@ -866,6 +871,9 @@ class addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             dateUpadte
                         )
                         db.insertActions(userActvities)
+                        val lenghBase = db.readActions().size
+                        val ref = FirebaseDatabase.getInstance().getReference("/userActions/$userId"+"/"+lenghBase)
+                        ref.setValue(userActionFirebase(lenghBase,userId,userValute,getMoney,categoryUser, profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte))
                         clear()
 
                     }
@@ -899,6 +907,9 @@ class addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     )
 
                     db.insertActions(userActvitiesUlaz)
+                    val lenghBase1 = db.readActions().size
+                    val ref = FirebaseDatabase.getInstance().getReference("/userActions/$userId"+"/"+lenghBase1)
+                    ref.setValue(userActionFirebase(lenghBase1,userId,userValute,getMoney,"TransferIzlaz", profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte))
 
 
 
@@ -915,6 +926,10 @@ class addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         dateUpadte
                     )
                     db.insertActions(userActvitiesIzlaz)
+
+                    val lenghBase2 = db.readActions().size
+                    val ref1 = FirebaseDatabase.getInstance().getReference("/userActions/$userId"+"/"+lenghBase2)
+                    ref1.setValue(userActionFirebase(lenghBase2,userId,userValute,getMoney,"TransferUlaz", profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte))
 
                     clear()
                 }

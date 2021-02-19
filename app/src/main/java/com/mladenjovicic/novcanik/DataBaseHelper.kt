@@ -4,10 +4,9 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
-import android.provider.ContactsContract
 import android.widget.Toast
 
-const val DATABASENAME = "MYDATABASE7"
+const val DATABASENAME = "MYDATABASE10"
 //tabela za korsinika
 val TABLENAME = "Users"
 val COL_ID = "id"
@@ -74,7 +73,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
 
     override fun onCreate(db: SQLiteDatabase?) {
         val createTable = "CREATE TABLE " + TABLENAME + " " +
-                "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_LASTNAME + " VARCHAR(256)," + COL_EMAIL + " VARCHAR(256)," + COL_PASSWORD + " VARCHAR(256)," + COL_PRIMARY_MONEY + " VARCHAR(256)," + COL_USER_LANG + " VARCHAR(256))"
+                "(" + COL_ID + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_NAME + " VARCHAR(256)," + COL_USER_UID+ " VARCHAR(256)," + COL_LASTNAME + " VARCHAR(256)," + COL_EMAIL + " VARCHAR(256)," + COL_PASSWORD + " VARCHAR(256)," + COL_PRIMARY_MONEY + " VARCHAR(256)," + COL_USER_LANG + " VARCHAR(256))"
         db?.execSQL(createTable)
 
         val createTableActions = "CREATE TABLE " + TABLENAMEACTIONS + " " +
@@ -158,6 +157,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_PASSWORD, user.password)
         contentValues.put(COL_PRIMARY_MONEY, user.primaryMoney)
         contentValues.put(COL_USER_LANG, user.userLang)
+        contentValues.put(COL_USER_UID, user.uidUser)
         val result = database.insert(TABLENAME, null, contentValues)
         if (result == (0).toLong()) {
             Toast.makeText(context, "Neuspjesno ste se registrovali", Toast.LENGTH_SHORT).show()
@@ -180,6 +180,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
                 user.password = result.getString(result.getColumnIndex(COL_PASSWORD))
                 user.primaryMoney = result.getString(result.getColumnIndex(COL_PRIMARY_MONEY))
                 user.userLang = result.getString(result.getColumnIndex(COL_USER_LANG))
+                user.uidUser= result.getString(result.getColumnIndex(COL_USER_UID))
                 list.add(user)
             } while (result.moveToNext())
         }
