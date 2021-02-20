@@ -3,7 +3,10 @@ package com.mladenjovicic.novcanik
 import android.content.Context
 import android.content.Intent
 import android.graphics.Color
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +16,7 @@ import androidx.core.app.ActivityCompat.startActivities
 import androidx.core.app.ActivityCompat.startActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.getColor
+import com.google.firebase.database.FirebaseDatabase
 
 import java.text.DateFormat
 import java.time.LocalDate
@@ -33,6 +37,7 @@ private val idUserPrimarValut = arrayListOf<String>()
 private val cursValut = arrayListOf<Double>()
 private val valueConvert = arrayListOf<Double>()
 private val dateCurrencyConvert = arrayListOf<String>()
+private val idStatus = arrayListOf<Int>()
 var test:Int= 0
 var profilStatus:Int=0
 
@@ -68,6 +73,7 @@ class profilActivity : AppCompatActivity() {
         dateTime2.clear()
         idActivitis.clear()
         profilAktivnost.clear()
+        idStatus.clear()
     }
 
     fun  work() {
@@ -94,6 +100,7 @@ class profilActivity : AppCompatActivity() {
                     cursValut.add(readActions[i].cursValut)
                     valueConvert.add(readActions[i].valueConvert)
                     dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
+                    idStatus.add(readActions[i].idStatus)
 
 
                 } else if (profilStatus == 2 && readActions[i].profil == "Devize") {
@@ -108,6 +115,7 @@ class profilActivity : AppCompatActivity() {
                     cursValut.add(readActions[i].cursValut)
                     valueConvert.add(readActions[i].valueConvert)
                     dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
+                    idStatus.add(readActions[i].idStatus)
 
 
                 } else if (profilStatus == 3 && readActions[i].profil == "Banka") {
@@ -122,6 +130,7 @@ class profilActivity : AppCompatActivity() {
                     cursValut.add(readActions[i].cursValut)
                     valueConvert.add(readActions[i].valueConvert)
                     dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
+                    idStatus.add(readActions[i].idStatus)
 
 
                 } else if (profilStatus == 4) {
@@ -136,6 +145,7 @@ class profilActivity : AppCompatActivity() {
                     cursValut.add(readActions[i].cursValut)
                     valueConvert.add(readActions[i].valueConvert)
                     dateCurrencyConvert.add(readActions[i].dateCurrencyConvert)
+                    idStatus.add(readActions[i].idStatus)
 
 
                 } else {
@@ -180,20 +190,33 @@ class profilActivity : AppCompatActivity() {
             val statusMoneyEdit = rowProfil.findViewById<TextView>(R.id.textViewPosNeg)
             val enterEditMoney = rowProfil.findViewById<EditText>(R.id.editTextEnterValueMoney)
             val textViewDlt = rowProfil.findViewById<TextView>(R.id.textViewDlt)
+            var statusInt:Boolean
+
+
 
             btnDelete.setOnClickListener{
-               var deleting =  idActivitis.get(position) .toString()
-                val context = this
-                val db = DataBaseHandler(mContext)
-                val deleteActions = db.deleteActions(deleting)
-                boxEdit.visibility = View.GONE
-                boxBtnEdit.visibility = View.GONE
-                boxSeen.visibility = View.GONE
-                boxSeenBtn.visibility = View.GONE
-                textViewDlt.visibility = View.VISIBLE
-                slikaPrfil.visibility = View.GONE
 
-                textViewDlt.text = "Izbrisana je akcija"
+                if (isOnline(mContext)==false){
+                    Toast.makeText(mContext, "Za ovu akciju trebate biti povezani na internet", Toast.LENGTH_SHORT).show()
+                }else{
+                    var deleting =  idActivitis.get(position) .toString()
+                    var idUser = idUserActivitiy.get(position)
+                    var id =  idActivitis.get(position) .toString()
+
+                    val context = this
+                    val ref1 = FirebaseDatabase.getInstance().getReference("/userActions/$idUser"+"/"+id)
+                    val db = DataBaseHandler(mContext)
+                    ref1.removeValue()
+                    val deleteActions = db.deleteActions(deleting)
+                    boxEdit.visibility = View.GONE
+                    boxBtnEdit.visibility = View.GONE
+                    boxSeen.visibility = View.GONE
+                    boxSeenBtn.visibility = View.GONE
+                    textViewDlt.visibility = View.VISIBLE
+                    slikaPrfil.visibility = View.GONE
+                    textViewDlt.text = "Izbrisana je akcija"
+                }
+
 
 
             }
@@ -220,6 +243,10 @@ class profilActivity : AppCompatActivity() {
             }
             btnSaveEdit.setOnClickListener {
 
+
+                if (isOnline(mContext)==false){
+                    Toast.makeText(mContext, "Za ovu akciju trebate biti povezani na internet", Toast.LENGTH_SHORT).show()
+                }else{
                 if(enterEditMoney.text.isEmpty()){
                     Toast.makeText(mContext, "Polje mora biti popunjeno", Toast.LENGTH_SHORT).show()
                 }else{
@@ -240,10 +267,14 @@ class profilActivity : AppCompatActivity() {
                      var userPrimarValut= idUserPrimarValut.get(position)
                      var cursVal = cursValut.get(position)
                      var cursDate = dateCurrencyConvert.get(position)
+                     var idStatus = idStatus.get(position)
                      val context = this
                      val db = DataBaseHandler(mContext)
                      val updateActions = db.updateData(id,idUser,valuta, moneys,datetime,category,profil,userPrimarValut,cursVal,
-                     (moneys*cursVal), cursDate )
+                     (moneys*cursVal), cursDate,idStatus )
+                        val ref1 = FirebaseDatabase.getInstance().getReference("/userActions/$idUser"+"/"+id)
+                         ref1.setValue(userActionFirebase(id.toInt(),idUser,valuta, moneys,datetime,category,profil,userPrimarValut,cursVal,
+                             (moneys*cursVal), cursDate ))
                      enterEditMoney.text.clear()
                      boxEdit.visibility = View.GONE
                      boxBtnEdit.visibility = View.GONE
@@ -257,7 +288,7 @@ class profilActivity : AppCompatActivity() {
                     test.text = "Novca: " + moneys + " " + com.mladenjovicic.novcanik.valuta.get(position)
                     datum.text = "Datum: " + datetime
                 }
-            }
+            }}
             if (position % 2 == 0) {
                 rowProfil.setBackgroundColor(getColor(mContext,R.color.colorDarkGreen))
             } else {
@@ -289,5 +320,27 @@ class profilActivity : AppCompatActivity() {
         override fun getItemId(position: Int): Long {
             return position.toLong()
         }
+        fun isOnline(context: Context): Boolean {
+            val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+            if (connectivityManager != null) {
+                val capabilities =
+                    connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+                if (capabilities != null) {
+                    if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_CELLULAR")
+                        return true
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_WIFI")
+                        return true
+                    } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                        Log.i("Internet", "NetworkCapabilities.TRANSPORT_ETHERNET")
+                        return true
+                    }
+                }
+            }
+            Log.i("Internet", "nema neta")
+            return false
+        }
     }
+
 }

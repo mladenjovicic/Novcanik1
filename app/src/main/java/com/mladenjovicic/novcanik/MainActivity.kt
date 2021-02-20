@@ -35,6 +35,7 @@ class MainActivity : AppCompatActivity() {
         Glide.with(this).load(R.drawable.loding).into(imageViewLoding)
         val db = DataBaseHandler(context)
         val intent = Intent(this, HomeActivity::class.java )
+        val intent2 = Intent(this,  lodingActivity::class.java)
         var datum = LocalDate.now()
 
         val readValute = db.readValute()
@@ -176,16 +177,18 @@ class MainActivity : AppCompatActivity() {
                                                             uid!!
                                                         )
                                                         db.insertData(user)
+                                                        break
                                                     }
                                                 }
+                                                intent2.putExtra("emailUser", userFire?.email)
+                                                intent2.putExtra("nameUser", userFire?.name)
+                                                intent2.putExtra("lastnameUser", userFire?.lastName)
+                                                intent2.putExtra("userValute", userFire?.primaryMoney)
+                                                intent2.putExtra("userLang", userFire?.userLang)
+                                                intent2.putExtra("idUser", uid)
+                                                startActivity(intent2)
                                                 }
-                                            intent.putExtra("emailUser", userFire?.email)
-                                            intent.putExtra("nameUser", userFire?.name)
-                                            intent.putExtra("lastnameUser", userFire?.lastName)
-                                            intent.putExtra("userValute", userFire?.primaryMoney)
-                                            intent.putExtra("userLang", userFire?.userLang)
-                                            intent.putExtra("idUser", uid)
-                                            startActivity(intent)
+
                                         }
                                     }
                                 })

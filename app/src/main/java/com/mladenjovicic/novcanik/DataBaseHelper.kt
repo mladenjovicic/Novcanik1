@@ -6,7 +6,7 @@ import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
 import android.widget.Toast
 
-const val DATABASENAME = "MYDATABASE10"
+const val DATABASENAME = "MYDATABASE"
 //tabela za korsinika
 val TABLENAME = "Users"
 val COL_ID = "id"
@@ -30,6 +30,7 @@ val COL_USER_PRIMAR_VALUT = "idUserPrimarValut"
 val COL_CURS_VALUT = "cursValut"
 val COL_VALUE_CONVERT = "valueConvert"
 val COL_DATE_VALUT_CONVERT= "dateCurrencyConvert"
+val COL_DATE_STATUS = "idStatus"
 //Tabela za planirane troskove
 val TABLENAMEPLAN = "PlanUser"
 val COL_ID_PLA = "id"
@@ -78,7 +79,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
 
         val createTableActions = "CREATE TABLE " + TABLENAMEACTIONS + " " +
                 "(" + COL_ID_ACT + " INTEGER PRIMARY KEY AUTOINCREMENT," + COL_ID_USER + " VARCHAR(256)," + COL_CURRENCY + " VARCHAR(256)," + COL_MONEY + " DOUBLE," + COL_CATEGORY + " VARCHAR(256)," + COL_PROFIL + " VARCHAR(256)," + COL_TIME_DATE + " VARCHAR(256),"+ COL_CURS_VALUT + " DOUBLE," +
-                COL_VALUE_CONVERT +" DOUBLE," +COL_DATE_VALUT_CONVERT+ " VARCHAR(256),"+ COL_USER_PRIMAR_VALUT +  " VARCHAR(256))"
+                COL_VALUE_CONVERT +" DOUBLE," +COL_DATE_VALUT_CONVERT+ " VARCHAR(256),"+COL_DATE_STATUS+" INTEGER,"+ COL_USER_PRIMAR_VALUT +  " VARCHAR(256))"
         db?.execSQL(createTableActions)
 
         val createTablePlan = "CREATE TABLE "+ TABLENAMEPLAN +" "+
@@ -200,11 +201,12 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_CURS_VALUT, userActvities.cursValut)
         contentValues.put(COL_VALUE_CONVERT, userActvities.valueConvert)
         contentValues.put(COL_DATE_VALUT_CONVERT, userActvities.dateCurrencyConvert)
+        contentValues.put(COL_DATE_STATUS, userActvities.idStatus)
         val result = database.insert(TABLENAMEACTIONS, null, contentValues)
         if (result == (0).toLong()) {
-            Toast.makeText(context, "Neuspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(context, "Uspjesno ste se dodali akciju", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(context, "", Toast.LENGTH_SHORT).show()
         }
 
     }
@@ -269,6 +271,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
                 userActvities.idUserPrimarValut= result.getString(result.getColumnIndex(COL_USER_PRIMAR_VALUT))
                 userActvities.valueConvert=result.getString(result.getColumnIndex(COL_VALUE_CONVERT)).toDouble()
                 userActvities.dateCurrencyConvert= result.getString(result.getColumnIndex(COL_DATE_VALUT_CONVERT))
+                userActvities.idStatus=result.getString(result.getColumnIndex(COL_DATE_STATUS)).toInt()
                 list.add(userActvities)
             } while (result.moveToPrevious())
         }
@@ -289,7 +292,8 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         idUserPrimarValut:String,
         cursValut:Double,
         valueConvert:Double,
-        dateCurrencyConvert:String
+        dateCurrencyConvert:String,
+        idStatus:Int
     ): Boolean {
         val db = this.writableDatabase
         val contentValues = ContentValues()
@@ -304,6 +308,7 @@ class DataBaseHandler(var context: Context) : SQLiteOpenHelper(
         contentValues.put(COL_CURS_VALUT,cursValut)
         contentValues.put(COL_VALUE_CONVERT,valueConvert)
         contentValues.put(COL_DATE_VALUT_CONVERT,dateCurrencyConvert)
+        contentValues.put(COL_DATE_STATUS, idStatus)
         db.update(TABLENAMEACTIONS, contentValues, "id = ?", arrayOf(id))
         return true
     }

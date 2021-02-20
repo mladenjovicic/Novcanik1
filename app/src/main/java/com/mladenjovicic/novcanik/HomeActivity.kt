@@ -25,6 +25,11 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener
 import com.github.mikephil.charting.utils.ColorTemplate
 import com.github.mikephil.charting.utils.MPPointF
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
+import kotlinx.android.synthetic.*
 import java.util.*
 
 
@@ -33,6 +38,7 @@ import kotlinx.android.synthetic.main.activity_registre.*
 import java.time.LocalDate
 import java.time.format.DateTimeFormatter
 import kotlin.collections.ArrayList
+import kotlin.math.log
 import kotlin.math.roundToLong
 
 
@@ -79,6 +85,7 @@ class HomeActivity : AppCompatActivity() {
         val arrayBank = ArrayList<PieEntry>()
         val arrayBankNegativ = ArrayList<PieEntry>()
 
+
         var listCategorys = res.getStringArray(R.array.category)
         var listWalletCategory  = ArrayList<Double>()
         var listDeviseCategory  = ArrayList<Double>()
@@ -105,6 +112,7 @@ class HomeActivity : AppCompatActivity() {
         val idUser = intent.getStringExtra("idUser")
         val userValute = intent.getStringExtra("userValute")
 
+
         var spinnerPlan= findViewById<Spinner>(R.id.spinnerPlan)
         val adapter = ArrayAdapter.createFromResource(this, R.array.plan, R.layout.spinner_item)
         adapter.setDropDownViewResource(R.layout.spinner_dropdown_item)
@@ -129,10 +137,8 @@ class HomeActivity : AppCompatActivity() {
         val context1 = this
         val db1 = DataBaseHandler(context1)
         val userPlan = db1.readPlan()
+
         for (i in 0 until userPlan.size) {
-            /*textViewTestAC.append(
-                userPlan[i].idUser.toString() +" test  "+  userPlan[i].nextPayment + userPlan[i].moneyRata.toString()
-            )*/
             var datum = LocalDate.now()
             if(userPlan[i].idUser=="idUser"){
                 if(userPlan[i].nextPayment == datum.format(DateTimeFormatter.ofPattern("dd-MMM-yyyy")).toString()){
@@ -521,10 +527,11 @@ class HomeActivity : AppCompatActivity() {
                     }
                 }
             }
-            if(readActions[i].idUser=="idUser"){
+            if(readActions[i].idUser==idUser){
                 sumSum = sumSum + readActions[i].valueConvert
             }
         }
+
 
 
         btnNovcanik.text ="Novčanik: \n "+ sumMoneyNovcanik.toInt() +" "+ userValute
