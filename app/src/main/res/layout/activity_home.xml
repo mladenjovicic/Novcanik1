@@ -44,13 +44,12 @@
                         android:textSize="30sp"
                         />
 
-                    <ImageButton
+                    <ImageView
                         android:id="@+id/imageButtonLogOut"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
                         android:layout_weight="1"
-                        android:background="@color/colorDarkGreen"
-                        app:srcCompat="@android:drawable/btn_dialog" />
+                        app:srcCompat="@drawable/sign_out_2" />
 
                 </LinearLayout>
 
@@ -418,7 +417,7 @@
                     android:id="@+id/listViewCurrenyValue"
                     android:layout_width="match_parent"
                     android:layout_height="600dp"
-                    tools:visibility="gone" />
+                    android:visibility="gone" />
 
 
             </LinearLayout>

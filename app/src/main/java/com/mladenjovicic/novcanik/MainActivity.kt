@@ -1,11 +1,13 @@
 package com.mladenjovicic.novcanik
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telecom.TelecomManager
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -27,6 +29,7 @@ var login = false
 var autoLogin = false
 class MainActivity : AppCompatActivity() {
 
+    @SuppressLint("ServiceCast")
     override fun onCreate(savedInstanceState: Bundle?) {
 
         val context = this
@@ -107,6 +110,7 @@ class MainActivity : AppCompatActivity() {
 
                         //provjera podataka u bazi podataka
                         for (i in 0 until userData.size) {
+                            var idBase = userData[i].id
                             var userEmail = userData[i].email
                             var userPassword = userData[i].password
                             var userId=userData[i].uidUser
@@ -136,7 +140,8 @@ class MainActivity : AppCompatActivity() {
                             editTextUserPasswordLogin.text.toString()
                         ).addOnCompleteListener {
                             if (!it.isSuccessful) {
-                                Toast.makeText(this, "Greska 258", Toast.LENGTH_SHORT).show()
+
+                                //Toast.makeText(this, "Greska 258", Toast.LENGTH_SHORT).show()
                             } else {
 
                                 val uid = FirebaseAuth.getInstance().uid
@@ -193,6 +198,14 @@ class MainActivity : AppCompatActivity() {
                                     }
                                 })
 
+                            }
+                        }.addOnFailureListener {
+                            println("greskica +${it.message}")
+                            if(it.message=="The password is invalid or the user does not have a password."){
+                                Toast.makeText(this,"Šifra nije ispravna",Toast.LENGTH_LONG).show()
+                            }
+                            if (it.message=="There is no user record corresponding to this identifier. The user may have been deleted."){
+                                Toast.makeText(this,"Nepoznat email",Toast.LENGTH_LONG).show()
                             }
                         }
                     }

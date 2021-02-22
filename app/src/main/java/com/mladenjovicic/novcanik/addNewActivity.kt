@@ -866,7 +866,7 @@ class addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         db.insertActions(userActvities)
                         val lenghBase = db.readActions().size
                         val ref = FirebaseDatabase.getInstance().getReference("/userActions/$userId"+"/"+lenghBase)
-                        ref.setValue(userActionFirebase(lenghBase,userId,userValute,getMoney,categoryUser, profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte))
+                        ref.setValue(userActionFirebase(lenghBase,userId,userValute,getMoney,categoryUser, profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte, "$userId$lenghBase"))
                         clear()
                     } else {
                         val userActvities = UserActvities(
@@ -881,11 +881,12 @@ class addNewActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                             valueConvert,
                             dateUpadte,
                             statusActiovnosti
+
                         )
                         db.insertActions(userActvities)
                         val lenghBase = db.readActions().size
                         val ref = FirebaseDatabase.getInstance().getReference("/userActions/$userId"+"/"+lenghBase)
-                        ref.setValue(userActionFirebase(lenghBase,userId,userValute,getMoney,categoryUser, profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte))
+                        ref.setValue(userActionFirebase(lenghBase,userId,userValute,getMoney,categoryUser, profilStatus, dateTime, idUserVale, cursValues, valueConvert, dateUpadte,"$userId$lenghBase"))
                         clear()
 
                     }

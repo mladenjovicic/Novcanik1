@@ -21,8 +21,8 @@ class lodingActivity : AppCompatActivity() {
         setContentView(R.layout.activity_loding)
         Glide.with(this).load(R.drawable.loding_anim).into(imageViewLodingSih)
 
-        var task1 = false
-        var task2 = false
+        var task1 = 0
+        var task2 = 0
         val nameUser = intent.getStringExtra("nameUser")
         val lastNameUser = intent.getStringExtra("lastnameUser")
         val emailUser = intent.getStringExtra("emailUser")
@@ -31,9 +31,15 @@ class lodingActivity : AppCompatActivity() {
         val db = DataBaseHandler(this)
         val readActions = db.readActions()
         val intent = Intent(this, HomeActivity::class.java )
-
+        var testloop = 0
         val lenghBase = db.readActions().size
         val ref= FirebaseDatabase.getInstance().getReference("/userActions/$idUser")
+        for (i in 0 until readActions.size){
+            if(readActions[i].idUser==idUser){
+                task2++
+            }
+        }
+
 
         ref.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onCancelled(error: DatabaseError) {
@@ -43,8 +49,7 @@ class lodingActivity : AppCompatActivity() {
             override fun onDataChange(p0: DataSnapshot) {
                 p0.children.forEach {
                     val userActionFirebase = it.getValue(userActionFirebase::class.java)
-                    println("akcijeee"+ it.toString())
-
+                    task1 ++
                     if(userActionFirebase?.idUser==idUser){
                         if(readActions.size==0){
                             val userActvities = UserActvities(
@@ -62,13 +67,57 @@ class lodingActivity : AppCompatActivity() {
                             )
                             db.insertActions(userActvities)
                         }
+                        if (task1>task2){
+                            val userActvities = UserActvities(
+                                userActionFirebase?.idUser!!,
+                                userActionFirebase?.idValuta!!,
+                                userActionFirebase?.money!!,
+                                userActionFirebase?.category!!,
+                                userActionFirebase?.profil!!,
+                                userActionFirebase?.timeDate!!,
+                                userActionFirebase?.idUserPrimarValut!!,
+                                userActionFirebase?.cursValut!!,
+                                userActionFirebase?.valueConvert!!,
+                                userActionFirebase?.dateCurrencyConvert!!,
+                                2
+                            )
+                            db.insertActions(userActvities)
+                        }
+
+
+
+
+                        /* if(readActions[testloop].id==userActionFirebase?.id!!){
+
+                         }
+ */
+                        /*
+                         if(userActionFirebase?.=readActions[i].id){
+                            val userActvities = UserActvities(
+                                userActionFirebase?.idUser!!,
+                                userActionFirebase?.idValuta!!,
+                                userActionFirebase?.money!!,
+                                userActionFirebase?.category!!,
+                                userActionFirebase?.profil!!,
+                                userActionFirebase?.timeDate!!,
+                                userActionFirebase?.idUserPrimarValut!!,
+                                userActionFirebase?.cursValut!!,
+                                userActionFirebase?.valueConvert!!,
+                                userActionFirebase?.dateCurrencyConvert!!,
+                                2
+                                               )
+                            db.insertActions(userActvities)
+                        }*/
+
                     }
 
                 }
-                task1 = true
+
             }
         })
         for (i in 0 until readActions.size){
+
+
 
             if(readActions[i].idStatus==1&&readActions[i].idUser==idUser){
                 val ref1 = FirebaseDatabase.getInstance().getReference("/userActions/$idUser"+"/"+readActions[i].id)
@@ -77,8 +126,9 @@ class lodingActivity : AppCompatActivity() {
                 val updateActions = db.updateData(readActions[i].id.toString(),readActions[i].idUser,readActions[i].idValuta,readActions[i].money,readActions[i].timeDate,readActions[i].category,readActions[i].profil,readActions[i].idUserPrimarValut,readActions[i].cursValut,readActions[i].valueConvert,readActions[i].dateCurrencyConvert, 2)
 
             }
-            task2=true
+
         }
+
         val r = Runnable {
 
             intent.putExtra("idUser", idUser)
